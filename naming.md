@@ -13,4 +13,4 @@
 
 - Pynesis: [pynesis](https://github.com/tt-and-tk/pynesis)
 - Pyntaxis: [pyntaxis](https://github.com/tt-and-tk/pyntaxis)
-- Qurge: Vivadoプロジェクト(未リポジトリ化)
+- Qurge: [qurge](https://github.com/tt-and-tk/qurge)
