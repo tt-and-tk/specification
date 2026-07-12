@@ -9,7 +9,7 @@
 # sv
 - mother_board_sv マザーボードのSystem Verilogソース
 - ram_sv メインメモリ
-- cpu_sv CPUのラッパ．decorderとaluをインスタンス化．
+- cpu_sv QurgeのCPUのラッパ．decorderとaluをインスタンス化．
 - rom_sv ROM
 - decorder_sv デコーダー．機械語を分解してレジスタ番号などを取得する
 - alu_sv alu
