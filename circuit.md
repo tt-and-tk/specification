@@ -15,7 +15,7 @@
 - cpu_sv QurgeのCPUのラッパ．decoderとaluをインスタンス化．
 - rom_sv ROM
 - decoder_sv デコーダー．機械語を分解してレジスタ番号などを取得する
-- alu_sv alu
+- alu_sv alu．次段命令の先読みデコード用にdecoderをもう一つインスタンス化．
 
 ## v
 VivadoのブロックデザインはSystemVerilogで作ったモジュールに対応していないため，svファイルのモジュールをブロックデザインへ組み込むために必要なファイル群．内部でsvファイルのモジュールをインスタンス化するのみで，独自の回路ロジックは持たない．
@@ -32,6 +32,7 @@ mother_board (v)
     ├─ cpu_sv (sv)
     │   ├─ decoder_sv (sv)
     │   └─ alu_sv (sv)
+    │       └─ decoder_sv (sv)
     └─ rom_sv (sv)
 ```
 
