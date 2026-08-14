@@ -32,7 +32,7 @@ mother_board (v)
     ├─ cpu_sv (sv)
     │   ├─ decoder_sv (sv)
     │   └─ alu_sv (sv)
-    │       └─ decoder_sv (sv)  # 次段命令の先読みデコード用
+    │       └─ decoder_sv (sv)  // 次段命令の先読みデコード用
     └─ rom_sv (sv)
 ```
 
