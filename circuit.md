@@ -22,6 +22,20 @@ VivadoのブロックデザインはSystemVerilogで作ったモジュールに�
 
 - mother_board マザーボード．mother_board_sv(sv)をインスタンス化し，ブロックデザインへ組み込むためのラッパー．
 
+# 階層構造
+sv・vファイル群のインスタンス化の親子関係(svhはインスタンス化されないため対象外)．ブロックデザインに直接組み込まれるのはmother_board(v)のみで，他のsvモジュールはその内部で間接的にインスタンス化される．
+
+```
+mother_board (v)
+└─ mother_board_sv (sv)
+    ├─ ram_sv (sv)
+    ├─ cpu_sv (sv)
+    │   ├─ decoder_sv (sv)
+    │   └─ alu_sv (sv)
+    │       └─ decoder_sv (sv)  // 次段命令の先読みデコード用
+    └─ rom_sv (sv)
+```
+
 # 識別子命名規則
 - パッケージ: `xx_p`
 - 列挙体: `xx_enum`
