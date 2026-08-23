@@ -14,14 +14,14 @@
 
 例
 ```
-.global get_num, main
-
-get_num:
-    mov fh r0 r1 42  ; r1に42を代入
-    ret
+.global main, get_num
 
 main:
     call get_num
+    ret
+
+get_num:
+    mov fh r0 r1 42  ; r1に42を代入
     ret
 ```
 
