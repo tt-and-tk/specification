@@ -246,11 +246,11 @@ SP(スタックポインタ，`6'h10`)がハードウェア実装上読み書き
 | 実行ファイル | 変換範囲 |
 |:-|:-|
 | `c2asm.exe` | Pynesisソース(`.pn`) → アセンブリ(`.pt`) |
-| `asm2bin.exe`(アセンブラ，`../assembler/`) | アセンブリ(`.pt`) → SystemVerilog ROM(`.sv`)．起動引数は`assembler.md`の「起動引数」を参照 |
+| `asm2sv.exe`(アセンブラ，`../assembler/`) | アセンブリ(`.pt`) → SystemVerilog ROM(`.sv`)．起動引数は`assembler.md`の「起動引数」を参照 |
 | `c2bin.exe` | Pynesisソース(`.pn`) → SystemVerilog ROM(`.sv`) まで一貫変換．今後のコンパイラの入口 |
 
 `c2bin.exe`は`c2asm.exe`・アセンブラの本処理をそれぞれ`main`から分離した関数として直接リンクし，順に呼び出す(サブプロセス起動はしない)．  
-`c2asm.exe`・`asm2bin.exe`は単体の実行ファイルとしても引き続き動作する．
+`c2asm.exe`・`asm2sv.exe`は単体の実行ファイルとしても引き続き動作する．
 
 ### c2asm.exe
 
@@ -269,8 +269,8 @@ SP(スタックポインタ，`6'h10`)がハードウェア実装上読み書き
 |:-|:-|:-|
 | `-pn` | 入力Pynesisソースファイル名(`.pn`) | 必須(省略不可) |
 | `-pt` | 中間生成物のアセンブリファイル名(`.pt`) | 必須(省略不可) |
-| `-bin` | 出力SystemVerilog ROMファイル名(`.sv`) | `-pt`の拡張子を`.sv`に変えた名前を自動的に使う(`asm2bin.exe`単体の場合と同じ自動導出がそのまま働く) |
+| `-sv` | 出力SystemVerilog ROMファイル名(`.sv`) | `-pt`の拡張子を`.sv`に変えた名前を自動的に使う(`asm2sv.exe`単体の場合と同じ自動導出がそのまま働く) |
 
-例: `c2bin.exe -pn program.pn -pt program.pt -bin program.sv`
+例: `c2bin.exe -pn program.pn -pt program.pt -sv program.sv`
 
-内部で呼び出す`c2asm.exe`/`asm2bin.exe`相当の引数解析をそのまま使うため，`-pn`/`-pt`/`-bin`を複数回指定した場合の後勝ち上書きも同様に発生する．
+内部で呼び出す`c2asm.exe`/`asm2sv.exe`相当の引数解析をそのまま使うため，`-pn`/`-pt`/`-sv`を複数回指定した場合の後勝ち上書きも同様に発生する．
