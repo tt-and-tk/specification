@@ -247,9 +247,9 @@ SP(スタックポインタ，`6'h10`)がハードウェア実装上読み書き
 |:-|:-|
 | `c2asm.exe` | Pynesisソース(`.pn`) → アセンブリ(`.pt`) |
 | `asm2sv.exe`(アセンブラ，`../assembler/`) | アセンブリ(`.pt`) → SystemVerilog ROM(`.sv`)．起動引数は`assembler.md`の「起動引数」を参照 |
-| `c2bin.exe` | Pynesisソース(`.pn`) → SystemVerilog ROM(`.sv`) まで一貫変換．今後のコンパイラの入口 |
+| `c2sv.exe` | Pynesisソース(`.pn`) → SystemVerilog ROM(`.sv`) まで一貫変換．今後のコンパイラの入口 |
 
-`c2bin.exe`は`c2asm.exe`・アセンブラの本処理をそれぞれ`main`から分離した関数として直接リンクし，順に呼び出す(サブプロセス起動はしない)．  
+`c2sv.exe`は`c2asm.exe`・アセンブラの本処理をそれぞれ`main`から分離した関数として直接リンクし，順に呼び出す(サブプロセス起動はしない)．  
 `c2asm.exe`・`asm2sv.exe`は単体の実行ファイルとしても引き続き動作する．
 
 ### c2asm.exe
@@ -263,7 +263,7 @@ SP(スタックポインタ，`6'h10`)がハードウェア実装上読み書き
 
 同じフラグ(`-pn`／`-pt`)や指定子なし引数を複数回指定した場合，エラーにはならず最後に指定した値で上書きされる(後勝ち)．
 
-### c2bin.exe
+### c2sv.exe
 
 | フラグ | 内容 | 省略時 |
 |:-|:-|:-|
@@ -271,6 +271,6 @@ SP(スタックポインタ，`6'h10`)がハードウェア実装上読み書き
 | `-pt` | 中間生成物のアセンブリファイル名(`.pt`) | 必須(省略不可) |
 | `-sv` | 出力SystemVerilog ROMファイル名(`.sv`) | `-pt`の拡張子を`.sv`に変えた名前を自動的に使う(`asm2sv.exe`単体の場合と同じ自動導出がそのまま働く) |
 
-例: `c2bin.exe -pn program.pn -pt program.pt -sv program.sv`
+例: `c2sv.exe -pn program.pn -pt program.pt -sv program.sv`
 
 内部で呼び出す`c2asm.exe`/`asm2sv.exe`相当の引数解析をそのまま使うため，`-pn`/`-pt`/`-sv`を複数回指定した場合の後勝ち上書きも同様に発生する．
