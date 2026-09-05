@@ -162,7 +162,7 @@ CPU内部レジスタ(r0〜r15，SP，FLG，RAX等)はコンパイラが内部�
 | `PMOD_A` | `6'h24` | Pmod A | 可 | 可 |
 | `PMOD_B` | `6'h25` | Pmod B | 可 | 可 |
 | `AR8_13` | `6'h26` | Arduinoピン AR8〜AR13 | 可 | 可 |
-| `AR_I2C` | `6'h27` | A，AR_SDA，AR_SCL | 可 | 可 |
+| `AR_I2C` | `6'h27` | A(AREF)，AR_SDA，AR_SCL | 可 | 可 |
 | `AR0_7` | `6'h28` | Arduinoピン AR0〜AR7 | 可 | 可 |
 | `AR_RST` | `6'h29` | Arduinoリセット | 可 | 不可 |
 | `AR_SPI` | `6'h2A` | AR_MISO，AR_SCK，AR_MOSI，AR_SS | 可 | 可 |
