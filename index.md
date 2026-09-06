@@ -13,7 +13,7 @@
 
 各名称に対応するリポジトリ:
 
-- Pynthesis: プロジェクト全体を表す用語のため対応するリポジトリなし
+- Pynthesis: 自作パソコン全体を表す用語のため対応するリポジトリなし
 - Pynesis: [pynesis](https://github.com/tt-and-tk/pynesis)
 - Pyntaxis: [pyntaxis](https://github.com/tt-and-tk/pyntaxis)
 - Qurge: [qurge](https://github.com/tt-and-tk/qurge)
