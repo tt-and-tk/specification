@@ -13,7 +13,7 @@ svファイルで使用する型・定数・enum・interface等の定義をま�
 ## sv
 回路の実体を格納するファイル群．
 
-- mother_board_sv マザーボードのSystem Verilogソース．ram_sv・cpu_sv・rom_svをインスタンス化し，各インターフェース(ram_read/ram_write/rom_read等)を介して接続する
+- mother_board_sv マザーボードのSystem Verilogソース．ram_sv・cpu_sv・rom_svをインスタンス化し，各インターフェース(ram_read_if/ram_write_if/rom_read_if)を介して接続する
 - ram_sv メインメモリ．データをBlock RAMへ保持し，読み込み・書き込みインターフェース経由でアクセスを提供する
 - cpu_sv QurgeのCPUの上位モジュール．decoder_svとalu_svをインスタンス化
 - rom_sv ROM．プログラム(機械語列)を格納し，受け取ったPCに対応する機械語をクロック同期で返す
