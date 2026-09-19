@@ -3,10 +3,10 @@
 svファイルで使用する型・定数・enum・interface等の定義をまとめたファイル群であり，必要とするsvファイルがある場合にのみ存在する(複数のsvファイルから共有されることもある)．
 
 - util 特に分類できない
-- ram メインメモリに関する関数などを定義
+- ram メインメモリに関する型・定数と，その読み書き用のインターフェースを定義
 - machine 機械語を生成する関数群を定義
-- rom ROM関係の関数などを定義
-- decoder デコーダー用の関数などを定義
+- rom ROMに関する型・定数と，その読み込み用のインターフェースを定義
+- decoder 機械語とそのデコード結果を受け渡すインターフェースを定義
 - alu aluに関するデータ型宣言など
 - register レジスタアドレス定数を定義
 
@@ -15,7 +15,7 @@ svファイルで使用する型・定数・enum・interface等の定義をま�
 
 - mother_board_sv マザーボードのSystem Verilogソース．ram_sv・cpu_sv・rom_svをインスタンス化し，各インターフェース(ram_read_if/ram_write_if/rom_read_if)を介して接続する
 - ram_sv メインメモリ．データをBlock RAMへ保持し，読み込み・書き込みインターフェース経由でアクセスを提供する
-- cpu_sv QurgeのCPUの上位モジュール．decoder_svとalu_svをインスタンス化
+- cpu_sv QurgeのCPUの上位モジュール．decoder_svとalu_svをインスタンス化し，command_ifを介して接続する
 - rom_sv ROM．プログラム(機械語列)を格納し，受け取ったPCに対応する機械語をクロック同期で返す
 - decoder_sv デコーダー．機械語を分解してレジスタ番号などを取得する
 - alu_sv ALU．レジスタファイルを保持し，命令のフェッチ・デコード結果に基づいて演算・分岐・メモリアクセス等を実行する
