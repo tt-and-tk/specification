@@ -606,4 +606,4 @@ int x = DIPSW;   // DIPスイッチレジスタからの読み込み
 
 例: `pn2sv.exe -pn program.pn -pt program.pt -sv program.sv`
 
-内部で呼び出す`pn2asm.exe`/`asm2sv.exe`相当の引数解析をそのまま使うため，`-pn`/`-pt`/`-sv`を複数回指定した場合の後勝ち上書きも同様に発生する．
+引数は変換を始める前にまとめて検査し，誤りがあれば中間アセンブリファイルを書き出さずにエラーにする．指定子なし引数は受け付けない(`pn2asm.exe`は入力Pynesisソース名，`asm2sv.exe`はアセンブリ名と解釈が異なるため)．`-pn`/`-pt`/`-sv`を複数回指定した場合は，`pn2asm.exe`/`asm2sv.exe`と同じく後勝ちで上書きされる．
