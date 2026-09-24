@@ -607,7 +607,7 @@ int x = DIPSW;   // DIPスイッチレジスタからの読み込み
 | 実行ファイル | 変換範囲 |
 |:-|:-|
 | `pn2asm.exe` | Pynesisソース(`.pn`) → アセンブリ(`.pt`) |
-| `asm2sv.exe`(アセンブラ，`../assembler/`) | アセンブリ(`.pt`) → SystemVerilog ROM(`.sv`)．起動引数は`assembler.md`の「起動引数」を参照 |
+| `asm2sv.exe`(アセンブラ，`../assembler/`) | アセンブリ(`.pt`) → SystemVerilog ROM(`.sv`)またはQosmosの実行ファイル．起動引数は`assembler.md`の「起動引数」を参照 |
 | `pn2sv.exe` | Pynesisソース(`.pn`) → SystemVerilog ROM(`.sv`) まで一貫変換．今後のコンパイラの入口 |
 
 `pn2sv.exe`は`pn2asm.exe`・アセンブラの本処理をそれぞれ`main`から分離した関数として直接リンクし，順に呼び出す(サブプロセス起動はしない)．  
