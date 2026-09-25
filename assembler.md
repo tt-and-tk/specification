@@ -216,7 +216,7 @@ main:
 
 ## 起動引数
 
-実行ファイル名は `asm2sv.exe`．
+実行ファイル名は `asm2mc.exe`．
 
 | フラグ | 内容 | 省略時 |
 |:-|:-|:-|
@@ -226,7 +226,7 @@ main:
 
 出力するファイルの種類は`-bin`の有無で決まる．出力ファイルを何も指定しない場合は，SystemVerilog ROMを出力する．実行ファイルを出力するには`-bin`の指定が必須である．`-sv`と`-bin`を両方指定した場合はエラーになる．
 
-例: `asm2sv.exe -pt program.pt -sv program.sv`\
-例: `asm2sv.exe -pt hello.pt -bin HELLO`
+例: `asm2mc.exe -pt program.pt -sv program.sv`\
+例: `asm2mc.exe -pt hello.pt -bin HELLO`
 
 同じフラグ(`-pt`／`-sv`／`-bin`)や指定子なし引数を複数回指定した場合，エラーにはならず最後に指定した値で上書きされる(後勝ち)．
