@@ -216,7 +216,7 @@ main:
 
 ## 起動引数
 
-実行ファイル名は `asm2mc.exe`．
+実行ファイル名は `asm2mc.exe`(mcは機械語(machine code)を表し，出力先がSystemVerilog ROMでも実行ファイルでも同じ名前を使う)．
 
 | フラグ | 内容 | 省略時 |
 |:-|:-|:-|
