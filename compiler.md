@@ -633,16 +633,16 @@ int x = DIPSW;   // DIPスイッチレジスタからの読み込み
 | 実行ファイル | 変換範囲 |
 |:-|:-|
 | `pn2asm.exe` | Pynesisソース(`.pn`) → アセンブリ(`.pt`) |
-| `asm2sv.exe`(アセンブラ，`../assembler/`) | アセンブリ(`.pt`) → SystemVerilog ROM(`.sv`)またはQosmosの実行ファイル．起動引数は`assembler.md`の「起動引数」を参照 |
-| `pn2sv.exe` | Pynesisソース(`.pn`) → SystemVerilog ROM(`.sv`)またはQosmosの実行ファイルまで一貫変換．今後のコンパイラの入口 |
+| `asm2mc.exe`(アセンブラ，`../assembler/`) | アセンブリ(`.pt`) → SystemVerilog ROM(`.sv`)またはQosmosの実行ファイル．起動引数は`assembler.md`の「起動引数」を参照 |
+| `pn2mc.exe` | Pynesisソース(`.pn`) → SystemVerilog ROM(`.sv`)またはQosmosの実行ファイルまで一貫変換．今後のコンパイラの入口 |
 
-`pn2sv.exe`は`pn2asm.exe`・アセンブラの本処理をそれぞれ`main`から分離した関数として直接リンクし，順に呼び出す(サブプロセス起動はしない)．  
-`pn2asm.exe`・`asm2sv.exe`は単体の実行ファイルとしても引き続き動作する．
+`pn2mc.exe`は`pn2asm.exe`・アセンブラの本処理をそれぞれ`main`から分離した関数として直接リンクし，順に呼び出す(サブプロセス起動はしない)．  
+`pn2asm.exe`・`asm2mc.exe`は単体の実行ファイルとしても引き続き動作する．
 
 生成するアセンブリは出力先によって異なる(「出力先」を参照)．Qosmosの実行ファイルは，次のどちらかで作る．
 
-- `pn2sv.exe`に`-bin`を指定する
-- `pn2asm.exe`に`--bin-mode`を指定してアセンブリを生成し，`asm2sv.exe`の`-bin`で変換する．アセンブリは出力先の情報を持たず，`--bin-mode`を付けずに生成したアセンブリを`-bin`で変換しても検出されないため，`--bin-mode`を必ず付ける
+- `pn2mc.exe`に`-bin`を指定する
+- `pn2asm.exe`に`--bin-mode`を指定してアセンブリを生成し，`asm2mc.exe`の`-bin`で変換する．アセンブリは出力先の情報を持たず，`--bin-mode`を付けずに生成したアセンブリを`-bin`で変換しても検出されないため，`--bin-mode`を必ず付ける
 
 ### pn2asm.exe
 
@@ -656,17 +656,17 @@ int x = DIPSW;   // DIPスイッチレジスタからの読み込み
 
 同じフラグ(`-pn`／`-pt`)や指定子なし引数を複数回指定した場合，エラーにはならず最後に指定した値で上書きされる(後勝ち)．
 
-### pn2sv.exe
+### pn2mc.exe
 
 | フラグ | 内容 | 省略時 |
 |:-|:-|:-|
 | `-pn` | 入力Pynesisソースファイル名(`.pn`) | 必須(省略不可) |
 | `-pt` | 中間生成物のアセンブリファイル名(`.pt`) | 必須(省略不可) |
 | `-sv` | 出力SystemVerilog ROMファイル名(`.sv`) | 表の下を参照 |
-| `-bin` | 出力するQosmosの実行ファイル名．名前の規則は`asm2sv.exe`の`-bin`と同じ([assembler.md](assembler.md)の「起動引数」を参照)．実行ファイル用のアセンブリを生成してから，実行ファイルに変換する | 表の下を参照 |
+| `-bin` | 出力するQosmosの実行ファイル名．名前の規則は`asm2mc.exe`の`-bin`と同じ([assembler.md](assembler.md)の「起動引数」を参照)．実行ファイル用のアセンブリを生成してから，実行ファイルに変換する | 表の下を参照 |
 
-例: `pn2sv.exe -pn program.pn -pt program.pt -sv program.sv`，`pn2sv.exe -pn hello.pn -pt hello.pt -bin HELLO`
+例: `pn2mc.exe -pn program.pn -pt program.pt -sv program.sv`，`pn2mc.exe -pn hello.pn -pt hello.pt -bin HELLO`
 
-出力先は`-sv`と`-bin`のどちらか一方で指定し，両方指定した場合はエラーになる．どちらも省略した場合は，`-pt`の拡張子を`.sv`に変えた名前の`.sv`ファイルを出力する(`asm2sv.exe`単体の場合と同じ自動導出がそのまま働く)．
+出力先は`-sv`と`-bin`のどちらか一方で指定し，両方指定した場合はエラーになる．どちらも省略した場合は，`-pt`の拡張子を`.sv`に変えた名前の`.sv`ファイルを出力する(`asm2mc.exe`単体の場合と同じ自動導出がそのまま働く)．
 
-引数は変換を始める前にまとめて検査し，誤りがあれば中間アセンブリファイルを書き出さずにエラーにする．指定子なし引数(`pn2asm.exe`は入力Pynesisソース名，`asm2sv.exe`はアセンブリ名と解釈が異なる)と，上表にない指定子・値のない指定子(単体の各ツールでは黙って無視され，打ち間違いに気づけない)は受け付けない．`-pn`/`-pt`/`-sv`/`-bin`を複数回指定した場合は，`pn2asm.exe`/`asm2sv.exe`と同じく後勝ちで上書きされる．
+引数は変換を始める前にまとめて検査し，誤りがあれば中間アセンブリファイルを書き出さずにエラーにする．指定子なし引数(`pn2asm.exe`は入力Pynesisソース名，`asm2mc.exe`はアセンブリ名と解釈が異なる)と，上表にない指定子・値のない指定子(単体の各ツールでは黙って無視され，打ち間違いに気づけない)は受け付けない．`-pn`/`-pt`/`-sv`/`-bin`を複数回指定した場合は，`pn2asm.exe`/`asm2mc.exe`と同じく後勝ちで上書きされる．
