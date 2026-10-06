@@ -15,10 +15,10 @@ svファイルで使用する型・定数・enum・関数・interface等の定�
 ## sv
 回路の実体を格納するファイル群．
 
-- mother_board_sv マザーボードのSystem Verilogソース．ram_sv・cpu_sv・rom_svをインスタンス化し，各インターフェース(ram_read_if/ram_write_if/rom_read_if)を介して接続する
+- mother_board_sv マザーボードのSystem Verilogソース．ram_sv・cpu_sv・rom_svをインスタンス化し，各インターフェース(ram_read_if/ram_write_if/rom_read_if)を介して接続する．rom_read_ifは，ROMの2つの読み出しポートそれぞれに1つずつ使う
 - ram_sv メインメモリ．データをBlock RAMへ保持し，読み込み・書き込みインターフェース経由でアクセスを提供する
 - cpu_sv QurgeのCPUの上位モジュール．decoder_svとalu_svをインスタンス化し，command_ifを介して接続する
-- rom_sv ROM．プログラム(機械語列)を格納し，受け取ったPCに対応する機械語をクロック同期で返す
+- rom_sv ROM．プログラム(機械語列)を格納する．2つの読み出しポートを持ち，それぞれが受け取ったPCに対応する機械語をクロック同期で返す(1サイクルに2つの番地の命令を読み出せる)
 - decoder_sv デコーダー．機械語を分解してレジスタ番号などを取得する
 - alu_sv ALU．レジスタファイルを保持し，命令のフェッチ・デコード結果に基づいて演算・分岐・メモリアクセス等を実行する
 
@@ -36,7 +36,8 @@ mother_board (v)
     ├─ cpu_sv (sv)
     │   ├─ decoder_sv (sv)
     │   └─ alu_sv (sv)
-    │       └─ decoder_sv (sv)  // 確認段の命令のデコード用
+    │       ├─ decoder_sv (sv)  // 確認段の命令のデコード用
+    │       └─ decoder_sv (sv)  // ROMから届いた命令のデコード用(2つの読み出しポートそれぞれに1つ)
     └─ rom_sv (sv)
 ```
 
