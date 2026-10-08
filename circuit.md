@@ -37,7 +37,7 @@ mother_board (v)
     │   ├─ decoder_sv (sv)
     │   └─ alu_sv (sv)
     │       ├─ decoder_sv (sv)  // 確認段の命令のデコード用
-    │       └─ decoder_sv (sv)  // ROMから届いた命令のデコード用(2つの読み出しポートそれぞれに1つ)
+    │       └─ decoder_sv (sv)  // ROMから届いた命令のデコード用(ROMの読み出しポートごとに1つ)
     └─ rom_sv (sv)
 ```
 
