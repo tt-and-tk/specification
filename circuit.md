@@ -37,6 +37,7 @@ mother_board (v)
     │   ├─ decoder_sv (sv)
     │   └─ alu_sv (sv)
     │       ├─ decoder_sv (sv)  // 確認段の命令のデコード用
+    │       ├─ decoder_sv (sv)  // 命令キューの2番目の命令のデコード用(同時発行の判定に使う．pipeline.mdを参照)
     │       ├─ decoder_sv (sv)  // ROMの1つ目の読み出しポートから届いた命令のデコード用
     │       └─ decoder_sv (sv)  // ROMの2つ目の読み出しポートから届いた命令のデコード用
     └─ rom_sv (sv)
