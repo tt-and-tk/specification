@@ -496,16 +496,16 @@ int x = DIPSW;   // DIPスイッチレジスタからの読み込み
 | `DIPSW` | `6'h21` | DIPスイッチ×2 | 可 | 不可 |
 | `LED` | `6'h22` | LED×4 | 不可 | 可 |
 | `RGBLED` | `6'h23` | RGB LED×2 | 不可 | 可 |
-| `PMOD_A` | `6'h24` | Pmod A | 可 | 可 |
-| `PMOD_B` | `6'h25` | Pmod B | 可 | 可 |
+| `PMOD_A` | `6'h24` | Pmod A | 不可 | 可 |
+| `PMOD_B` | `6'h25` | Pmod B | 不可 | 可 |
 | `ETH_SPI` | `6'h26` | Ethernetモジュール(W5100S)のSCK，MISO，MOSI，CSn，RSTn，INTn(Arduinoピン AR8〜AR13) | 可 | 可 |
-| `AR_I2C` | `6'h27` | A(AREF)，AR_SDA，AR_SCL | 可 | 可 |
-| `AR0_7` | `6'h28` | Arduinoピン AR0〜AR7 | 可 | 可 |
+| `AR_I2C` | `6'h27` | A(AREF)，AR_SDA，AR_SCL | 不可 | 可 |
+| `AR0_7` | `6'h28` | Arduinoピン AR0〜AR7 | 不可 | 可 |
 | `AR_SPI` | `6'h2A` | AR_MISO，AR_SCK，AR_MOSI，AR_SS | 可 | 可 |
-| `GPIO0_7` | `6'h2D` | GPIO0〜7 | 可 | 可 |
-| `GPIO8_15` | `6'h2E` | GPIO8〜15 | 可 | 可 |
-| `GPIO16_23` | `6'h2F` | GPIO16〜23 | 可 | 可 |
-| `GPIO24_27` | `6'h30` | GPIO24〜27 | 可 | 可 |
+| `GPIO0_7` | `6'h2D` | GPIO0〜7 | 不可 | 可 |
+| `GPIO8_15` | `6'h2E` | GPIO8〜15 | 不可 | 可 |
+| `GPIO16_23` | `6'h2F` | GPIO16〜23 | 不可 | 可 |
+| `GPIO24_27` | `6'h30` | GPIO24〜27 | 不可 | 可 |
 
 型は全て`unsigned int`として扱う(ピンやスイッチの状態を表すビット列として使うため．演算の結果への影響は「型変換」を参照)．  
 レジスタに置かれメモリ上の番地を持たないため，`&`で番地を取ることはできない．  
