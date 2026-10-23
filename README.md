@@ -35,3 +35,4 @@
 1. [OS](qosmos.md) — 自作OS Qosmosの機能
 1. [一般的なCPUとの差分・非対応事項](limitations.md) — 一般的なCPUとの差分・非対応事項一覧
 1. [回路](circuit.md) — ハードウェア実装(SystemVerilog)のファイル構成・階層構造・命名規則
+1. [実機の構成](board.md) — PYNQ-Z2を中心とする実機の物理的な構成と，そこから生じる操作上の制約
