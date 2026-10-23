@@ -15,12 +15,14 @@ svファイルで使用する型・定数・enum・関数・interface等の定�
 ## sv
 回路の実体を格納するファイル群．
 
-- mother_board_sv マザーボードのSystem Verilogソース．ram_sv・cpu_sv・rom_svをインスタンス化し，各インターフェース(ram_read_if/ram_write_if/rom_read_if．rom_read_ifはROMの読み出しポートごとに1つ)を介して接続する
+- mother_board_sv マザーボードのSystem Verilogソース．ram_sv・cpu_sv・rom_sv・uart_bridge_svをインスタンス化し，各インターフェース(ram_read_if/ram_write_if/rom_read_if．rom_read_ifはROMの読み出しポートごとに1つ)と，送受信バッファを操作する信号(cpu_svとuart_bridge_svの間)を介して接続する
 - ram_sv メインメモリ．データをBlock RAMへ保持し，読み込み・書き込みインターフェース経由でアクセスを提供する
 - cpu_sv QurgeのCPUの上位モジュール．decoder_svとalu_svをインスタンス化し，command_ifを介して接続する
 - rom_sv ROM．プログラム(機械語列)を格納する．2つの読み出しポートを持ち，それぞれが受け取ったPCに対応する機械語をクロック同期で返す(1サイクルに2つの番地の命令を読み出せる)
 - decoder_sv デコーダー．機械語を分解してレジスタ番号などを取得する
 - alu_sv ALU．レジスタファイルを保持し，命令のフェッチ・デコード結果に基づいて演算・分岐・メモリアクセス等を実行する
+- uart_bridge_sv UARTの橋渡し回路．PSのUART0のレジスタをAXI4-Liteで読み書きしてUSBのシリアル通信を行い，CPUのUARTのレジスタ([register.md](register.md)を参照)から送受信バッファを操作できるようにする
+- uart_buffer_sv UARTの橋渡し回路の送信バッファ・受信バッファ．入れた順にバイトを取り出すバッファ(FIFO)で，中身をBlock RAMへ保持する
 
 ## v
 ブロックデザイン上で使用する．svファイルのラッパを兼ねる(svファイルはブロックデザインに直接配置できないため)．
@@ -40,7 +42,10 @@ mother_board (v)
     │       ├─ decoder_sv (sv)  // 命令キューの2番目の命令のデコード用(同時実行の判定に使う．pipeline.mdを参照)
     │       ├─ decoder_sv (sv)  // ROMの1つ目の読み出しポートから届いた命令のデコード用
     │       └─ decoder_sv (sv)  // ROMの2つ目の読み出しポートから届いた命令のデコード用
-    └─ rom_sv (sv)
+    ├─ rom_sv (sv)
+    └─ uart_bridge_sv (sv)
+        ├─ uart_buffer_sv (sv)  // 送信バッファ
+        └─ uart_buffer_sv (sv)  // 受信バッファ
 ```
 
 # 識別子命名規則
