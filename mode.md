@@ -12,12 +12,14 @@ QurgeのCPUは，OSを動かすカーネルモードと，OSの状態を書き�
 
 |命令|動作|実行できる動作状態|
 |:-|:-|:-|
-|SYSCALL|次の命令のPC(SYSCALLのPC+1)をKRET(`6'h12`)へ書き込み，カーネルモードにして，KENTRY(`6'h11`)の値をPCとする|両方|
-|SYSRET|ユーザーモードにして，KRETの値をPCとする|カーネルモードのみ|
+|SYSCALL|次の命令のPC(SYSCALLのPC+1)をKRET(`6'h12`)へ書き込み，カーネルモードにして，KENTRY(`6'h11`)の値が示す番地へ飛ぶ|両方|
+|SYSRET|ユーザーモードにして，KRETの値が示す番地へ飛ぶ|カーネルモードのみ|
 
 KENTRY・KRETの内容は[register.md](register.md)を参照．使う側は次の点に注意する．
 
-- KENTRY・KRETの初期値は0である．OSがKENTRYへ入口の番地を書き込む前にユーザーモードへ移ると，SYSCALLは0番地へ飛ぶ
+- KENTRY・KRETの初期値は0である
+- ユーザーモードでプログラムを始めるときも，SYSRETで移る．SYSRETの前に，プログラムの先頭の命令の番地をKRETへ書き込んでおく．書き込まずにSYSRETを実行すると，KRETが示す番地(初期値なら0番地)からユーザーモードで実行する
+- OSがKENTRYへ入口の番地を書き込む前にユーザーモードへ移ると，SYSCALLはKENTRYの初期値の0番地へ飛ぶ
 - カーネルモードでSYSCALLを実行した場合もKRETを上書きする．SYSRETで戻る先を保ちたい場合は，SYSCALLの前にKRETの値を退避しておく
 - SYSCALLとSYSRETは，SPやほかのレジスタを切り替えない．実行ファイルが使っていたレジスタの退避は，OSが行う
 
