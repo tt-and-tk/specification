@@ -121,7 +121,7 @@ func1:
     ret                ; 呼び出し元へ復帰する(引数なし)
 
 handler:
-    sysret             ; KRETの番地(syscallの次の命令)へ戻る(引数なし)
+    sysret             ; ユーザーモードにしてKRETの番地へ飛ぶ(引数なし．事前に要る領域の設定はmode.mdを参照)
     ret                ; 全関数に必要なret
 ```
 
