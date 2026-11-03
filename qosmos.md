@@ -261,7 +261,7 @@ Pynesisでは，`qurge`の`mypc.srcs/pn/lib/syscall.pn`を取り込めば，次�
 
 | 関数 | 内容 |
 |:-|:-|
-| `syscall(number, a, b, c, d)` | 番号を指定して機能を呼び出す |
+| `syscall_by_number(number, a, b, c, d)` | 番号を指定して機能を呼び出す |
 | 各機能の名前の関数 | その機能を呼び出す(上記「機能」の表の「ライブラリの関数」の列を参照) |
 | `console_print(text)` | ヌル終端の文字列をコンソールへ出力する(文字数は渡さなくてよい．関数の中で数える) |
 

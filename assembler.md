@@ -114,20 +114,24 @@ func1:
     ret                ; 呼び出し元へ復帰する(引数なし)
 ```
 
-`syscall`/`sysret`は，動作状態(カーネルモード・ユーザーモード)を切り替えて飛ぶ．引数は取らない．飛び先と戻り先は，レジスタKENTRY(番地`6'h11`．アセンブリでは`r11h`)・KRET(番地`6'h12`．`r12h`)が持つ([register.md](register.md)を参照．動作と使う側の注意は[mode.md](mode.md)の「動作状態の切り替え」を参照)．
-- `syscall`: 次の命令のPCをKRETへ書き込み，カーネルモードにしてKENTRYの値の番地へ飛ぶ
-- `sysret`: ユーザーモードにしてKRETの値の番地へ飛ぶ．カーネルモードでだけ実行できる
+`syscall`/`sysret`は，動作状態(カーネルモード・ユーザーモード)を切り替え，同時にレジスタが持つ番地へジャンプする命令である．ジャンプ先の番地はレジスタKENTRY(`r11h`)・KRET(`r12h`)が持つため，引数は取らない([register.md](register.md)を参照．動作と使う側の注意は[mode.md](mode.md)の「動作状態の切り替え」を参照)．
+- `syscall`: 次の命令のPCをKRETへ書き込み，カーネルモードにして，KENTRYの値の番地へジャンプする．KRETへの書き込みは命令が行う．KENTRYへは，OSが事前にジャンプ先(システムコールハンドラ)の番地を書き込んでおく
+- `sysret`: ユーザーモードにして，KRETの値の番地へジャンプする．カーネルモードでだけ実行できる
 
 `sysret`は`ret`の代わりにならない．`sysret`で終わる関数にも，全関数に必要な`ret`を置く．
 
-次の例の`handler`は，OSがKENTRYへ番地を書き込んだシステムコールハンドラである．`user`は，OSがユーザーモードで動かすプログラムの中の関数である．
+次の例の`setup`と`handler`はOSの関数，`user`はOSがユーザーモードで動かすプログラムの中の関数である．
 ```
+setup:
+    mov fh r0 r11h handler ; KENTRYへhandlerの先頭のPCを書き込む(OSが事前に行う)
+    ret
+
 user:
-    syscall            ; カーネルモードにしてhandlerへ飛ぶ(次の命令のPCがKRETへ書き込まれる)
+    syscall            ; 次の命令(ret)のPCをKRETへ書き込み，カーネルモードにしてhandlerへジャンプする
     ret                ; handlerのsysretで，ここへ戻る
 
 handler:
-    sysret             ; ユーザーモードにしてKRETの番地(userのsyscallの次の命令)へ飛ぶ(引数なし)
+    sysret             ; ユーザーモードにして，KRETの番地(userのsyscallの次の命令)へジャンプする
     ret                ; 全関数に必要なret
 ```
 
