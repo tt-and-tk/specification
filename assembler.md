@@ -101,27 +101,33 @@ main:
   - ROM: `main`はプログラムの開始点で戻り先を持たない．アセンブラが`main`内のすべての`ret`を自分自身へ飛ぶ`jmp`に置き換えるため，CPUは停止せず同じ命令を実行し続ける(停止との違いは[halt.md](halt.md)を参照)
   - 実行ファイル: シェルが`main`をCALLで呼び出すため，`ret`のまま残り，シェルへ戻る
 
-`syscall`/`sysret`は，動作状態(カーネルモード・ユーザーモード)を切り替えて飛ぶ．引数は取らない．飛び先と戻り先は，レジスタKENTRY(番地`6'h11`．アセンブリでは`r11h`)・KRET(番地`6'h12`．`r12h`)が持つ([register.md](register.md)を参照．動作と使う側の注意は[mode.md](mode.md)の「動作状態の切り替え」を参照)．
-- `syscall`: 次の命令のPCをKRETへ書き込み，カーネルモードにしてKENTRYの値の番地へ飛ぶ
-- `sysret`: ユーザーモードにしてKRETの値の番地へ飛ぶ．カーネルモードでだけ実行できる
-
-`sysret`は`ret`の代わりにならない．`sysret`で終わる関数にも，全関数に必要な`ret`を置く．
 ```
 main:
     call func1         ; func1 を呼び出す(戻り先はハードウェアが保存)
     mov fh r0 r1 func1 ; r1 = func1の先頭のPC
     call r1            ; r1の値の番地(func1)を呼び出す
-    mov fh r0 r11h handler ; KENTRY = handlerの先頭のPC
-    syscall            ; handlerへ飛ぶ(戻り先はKRETへ書き込まれる)
     jmp .L0            ; 局所ラベル .L0 へジャンプ
 .L0:
     ret                ; プログラムを終了する(引数なし)
 
 func1:
     ret                ; 呼び出し元へ復帰する(引数なし)
+```
+
+`syscall`/`sysret`は，動作状態(カーネルモード・ユーザーモード)を切り替えて飛ぶ．引数は取らない．飛び先と戻り先は，レジスタKENTRY(番地`6'h11`．アセンブリでは`r11h`)・KRET(番地`6'h12`．`r12h`)が持つ([register.md](register.md)を参照．動作と使う側の注意は[mode.md](mode.md)の「動作状態の切り替え」を参照)．
+- `syscall`: 次の命令のPCをKRETへ書き込み，カーネルモードにしてKENTRYの値の番地へ飛ぶ
+- `sysret`: ユーザーモードにしてKRETの値の番地へ飛ぶ．カーネルモードでだけ実行できる
+
+`sysret`は`ret`の代わりにならない．`sysret`で終わる関数にも，全関数に必要な`ret`を置く．
+
+次の例の`handler`は，OSがKENTRYへ番地を書き込んだシステムコールハンドラである．`user`は，OSがユーザーモードで動かすプログラムの中の関数である．
+```
+user:
+    syscall            ; カーネルモードにしてhandlerへ飛ぶ(次の命令のPCがKRETへ書き込まれる)
+    ret                ; handlerのsysretで，ここへ戻る
 
 handler:
-    sysret             ; ユーザーモードにしてKRETの番地へ飛ぶ(引数なし．事前に要る領域の設定はmode.mdを参照)
+    sysret             ; ユーザーモードにしてKRETの番地(userのsyscallの次の命令)へ飛ぶ(引数なし)
     ret                ; 全関数に必要なret
 ```
 
