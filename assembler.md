@@ -120,7 +120,7 @@ func1:
 
 `sysret`は`ret`の代わりにならない．`sysret`で終わる関数にも，全関数に必要な`ret`を置く．
 
-次の例の`setup`と`handler`はOSの関数，`user`はOSがユーザーモードで動かすプログラムの中の関数である．
+次の例の`setup`と`handler`はOSの関数，`user`はOSがユーザーモードで動かすプログラムの中の関数とする．
 ```
 setup:
     mov fh r0 r11h handler ; KENTRYへhandlerの先頭のPCを書き込む(OSが事前に行う)
