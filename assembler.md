@@ -100,6 +100,7 @@ main:
 - `main`の`ret`: プログラムの終了を表す．終了時の動作は出力先によって異なる(後述「出力先」)
   - ROM: `main`はプログラムの開始点で戻り先を持たない．アセンブラが`main`内のすべての`ret`を自分自身へ飛ぶ`jmp`に置き換えるため，CPUは停止せず同じ命令を実行し続ける(停止との違いは[halt.md](halt.md)を参照)
   - 実行ファイル: シェルが`main`をCALLで呼び出すため，`ret`のまま残り，シェルへ戻る
+
 ```
 main:
     call func1         ; func1 を呼び出す(戻り先はハードウェアが保存)
@@ -111,6 +112,27 @@ main:
 
 func1:
     ret                ; 呼び出し元へ復帰する(引数なし)
+```
+
+`syscall`/`sysret`は，動作状態(カーネルモード・ユーザーモード)を切り替え，同時にレジスタが持つ番地へジャンプする命令である．ジャンプ先の番地はレジスタKENTRY(`r11h`)・KRET(`r12h`)が持つため，引数は取らない([register.md](register.md)を参照．動作と使う側の注意は[mode.md](mode.md)の「動作状態の切り替え」を参照)．
+- `syscall`: 次の命令のPCをKRETへ書き込み，カーネルモードにして，KENTRYの値の番地へジャンプする．KRETへの書き込みは命令が行う．KENTRYへは，OSが事前にジャンプ先(システムコールハンドラ)の番地を書き込んでおく
+- `sysret`: ユーザーモードにして，KRETの値の番地へジャンプする．カーネルモードでだけ実行できる
+
+`sysret`は`ret`の代わりにならない．`sysret`で終わる関数にも，全関数に必要な`ret`を置く．
+
+次の例の`setup`と`handler`はOSの関数，`user`はOSがユーザーモードで動かすプログラムの中の関数とする．
+```
+setup:
+    mov fh r0 r11h handler ; KENTRYへhandlerの先頭のPCを書き込む(OSが事前に行う)
+    ret
+
+user:
+    syscall            ; 次の命令(ret)のPCをKRETへ書き込み，カーネルモードにしてhandlerへジャンプする
+    ret                ; handlerのsysretで，ここへ戻る
+
+handler:
+    sysret             ; ユーザーモードにして，KRETの番地(userのsyscallの次の命令)へジャンプする
+    ret                ; 全関数に必要なret
 ```
 
 ## メモリ系(M系)
