@@ -9,7 +9,7 @@ Qosmosは，メインメモリ([qurge/memory.md](../../qurge/memory.md)を参照
 領域の位置と大きさは，メモリの容量の半分から決まる．容量を変える場合は，次のものも合わせて変える．
 
 - 領域の位置と大きさ
-- 領域の大きさから決まる，アセンブラの実行ファイルの命令数の上限([pyntaxis/assembler.md](../../pyntaxis/assembler.md)の「出力先」を参照)
+- 領域の大きさから決まる，アセンブラの実行ファイルの命令数の上限([pyntaxis/language/target.md](../../pyntaxis/language/target.md)の「命令数の上限」を参照)
 - 領域の大きさから決まる，コンパイラの検査の上限([pynesis/compiler.md](../../pynesis/compiler.md)の「量的制限」を参照)
 
 # 実行ファイルの領域

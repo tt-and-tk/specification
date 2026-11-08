@@ -44,8 +44,12 @@
 
 ### Pyntaxis(`pyntaxis/`)
 
-- [pyntaxis/language.md](pyntaxis/language.md) — アセンブリ言語Pyntaxisの言語仕様
-- [pyntaxis/assembler.md](pyntaxis/assembler.md) — アセンブラの出力先と起動引数
+- [pyntaxis/language/program.md](pyntaxis/language/program.md) — プログラムの書き方
+- [pyntaxis/language/instruction.md](pyntaxis/language/instruction.md) — 命令の書き方
+- [pyntaxis/language/label.md](pyntaxis/language/label.md) — 局所ラベル
+- [pyntaxis/language/target.md](pyntaxis/language/target.md) — 出力先(ROM・実行ファイル)による違い
+- [pyntaxis/assembler/usage.md](pyntaxis/assembler/usage.md) — アセンブラの使い方と起動引数
+- [pyntaxis/assembler/encoding.md](pyntaxis/assembler/encoding.md) — 機械語への変換と出力の形式
 
 ### Pynesis(`pynesis/`)
 

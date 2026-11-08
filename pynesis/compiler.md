@@ -12,7 +12,7 @@
 | | ROM | 実行ファイル |
 |:-|:-|:-|
 | `main`の形([pynesis/language.md](language.md)の「main関数」を参照) | `void main(void)` | `int main(int argc, char **argv)`・`int main(void)` |
-| `main`の終了([pynesis/language.md](language.md)の「main関数」を参照)時の動作 | 自分自身へのジャンプを繰り返し，その場で止まる(CPUの停止とは異なる．[pyntaxis/language.md](../pyntaxis/language.md)の「ジャンプ系(J系)」を参照) | 終了のシステムコールで，戻り値をシェルへ伝える |
+| `main`の終了([pynesis/language.md](language.md)の「main関数」を参照)時の動作 | 自分自身へのジャンプを繰り返し，その場で止まる(CPUの停止とは異なる．[pyntaxis/language/target.md](../pyntaxis/language/target.md)の「mainの終わり方」を参照) | 終了のシステムコールで，戻り値をシェルへ伝える |
 | グローバル変数・文字列リテラルの番地(「アドレッシング方式」を参照) | 0番地から上へ割り当てる | 命令列の直後(命令数×8の番地)から上へ割り当てる．番地はシェルが実行ファイルに割り振る領域の先頭を0とする番地である([qurge/cpu/mode.md](../qurge/cpu/mode.md)の「番地の変換」を参照) |
 | ハードウェア変数([pynesis/language.md](language.md)の「定義済みハードウェア変数」を参照) | 読み書きできる | 読み書きできない(コンパイルエラー．理由は[pynesis/language.md](language.md)の「定義済みハードウェア変数」を参照) |
 | `sysret()`([pynesis/language.md](language.md)の「組み込み関数」を参照) | 使える | 使えない(コンパイルエラー．ユーザーモードで実行すると例外になるため) |
@@ -68,7 +68,7 @@ OSはこのシステムコールから実行ファイルへ戻らない(番号�
 
 実行ファイルの`main`は，シェルからCALLされずに実行を始めるが，引数はこの規約のとおりに読む．シェルが置く`argc`・`argv`の位置(SP-8・SP-4．[qosmos/program/executable.md](../qosmos/program/executable.md)の「実行の仕方」を参照)は，この規約で2つの引数を渡してCALLした直後の引数の位置と一致するため，`int main(int argc, char **argv)`の引数として受け取れる．
 
-関数ポインタを通した呼び出しも，引数の受け渡し・戻り値の受け取りは同じである．呼び出す関数の番地(関数の先頭の命令を指すPCの値．関数ポインタの値)を引数より先にレジスタへ読み込み，引数を書き込んだ後に，そのレジスタを飛び先に指定した`call`(番地を`r1`に読み込んだ場合は`call r1`)で呼び出す([pyntaxis/language.md](../pyntaxis/language.md)の「ジャンプ系(J系)」を参照)．関数名による直接呼び出しは，`call add`のように飛び先に関数名を書く．関数の番地は，アセンブリの即値の位置に関数名を書いて求める．
+関数ポインタを通した呼び出しも，引数の受け渡し・戻り値の受け取りは同じである．呼び出す関数の番地(関数の先頭の命令を指すPCの値．関数ポインタの値)を引数より先にレジスタへ読み込み，引数を書き込んだ後に，そのレジスタを飛び先に指定した`call`(番地を`r1`に読み込んだ場合は`call r1`)で呼び出す([pyntaxis/language/instruction.md](../pyntaxis/language/instruction.md)の「ジャンプ系(J系)」を参照)．関数名による直接呼び出しは，`call add`のように飛び先に関数名を書く．関数の番地は，アセンブリの即値の位置に関数名を書いて求める．
 
 ## レジスタ使用規約
 
@@ -89,7 +89,7 @@ OSはこのシステムコールから実行ファイルへ戻らない(番号�
 次の「変数に使えるメモリ」に現れる値(メモリの前半の32768バイトとその上端の`0x8000`，実行ファイル用の32512バイト)は，メモリの容量([qurge/memory.md](../qurge/memory.md)を参照)から決まる．容量を変える場合は，これらの値で行う検査も合わせて変える．
 
 
-- 命令数: ROM用は16384命令([qurge/rom.md](../qurge/rom.md)の「容量と命令数の上限」を参照)，実行ファイル用は4064命令([pyntaxis/assembler.md](../pyntaxis/assembler.md)の「出力先」を参照)までで，超えるとエラーになる．実行ファイル用は，次の「変数に使えるメモリ」のとおりグローバル変数と合わせた大きさも検査する
+- 命令数: ROM用は16384命令([qurge/rom.md](../qurge/rom.md)の「容量と命令数の上限」を参照)，実行ファイル用は4064命令([pyntaxis/language/target.md](../pyntaxis/language/target.md)の「命令数の上限」を参照)までで，超えるとエラーになる．実行ファイル用は，次の「変数に使えるメモリ」のとおりグローバル変数と合わせた大きさも検査する
 - 変数に使えるメモリ: 出力先によって次のように異なる
   - ROM: グローバル変数は0番地から，スタックはメモリの前半の上端(`0x8000`)から伸びるため，両者の合計がメモリの前半(32768バイト)に収まる必要がある([qurge/cpu/mode.md](../qurge/cpu/mode.md)の「メモリを読み書きできる範囲」を参照)
   - 実行ファイル: 命令列は領域の先頭から，グローバル変数はその直後から上へ伸びるため，両者の合計が，領域のうち引数の置き場より手前の32512バイトに収まる必要がある．スタックは，シェルが引数の置き場の中に決めたSPから，グローバル変数の手前までを使える([qosmos/resource/memory.md](../qosmos/resource/memory.md)の「実行ファイルの領域」を参照)
@@ -114,7 +114,7 @@ OSはこのシステムコールから実行ファイルへ戻らない(番号�
 | 実行ファイル | 変換範囲 |
 |:-|:-|
 | `pn2asm.exe` | Pynesisソース(`.pn`) → アセンブリ(`.pt`) |
-| `asm2mc.exe`(アセンブラ．pyntaxisリポジトリで作る) | アセンブリ(`.pt`) → SystemVerilog ROM(`.sv`)またはQosmosの実行ファイル．起動引数は[pyntaxis/assembler.md](../pyntaxis/assembler.md)の「起動引数」を参照 |
+| `asm2mc.exe`(アセンブラ．pyntaxisリポジトリで作る) | アセンブリ(`.pt`) → SystemVerilog ROM(`.sv`)またはQosmosの実行ファイル．起動引数は[pyntaxis/assembler/usage.md](../pyntaxis/assembler/usage.md)の「起動引数」を参照 |
 | `pn2mc.exe` | Pynesisソース(`.pn`) → SystemVerilog ROM(`.sv`)またはQosmosの実行ファイルまで一貫変換．今後のコンパイラの入口 |
 
 `pn2mc.exe`は`pn2asm.exe`・アセンブラの本処理をそれぞれ`main`から分離した関数として直接リンクし，順に呼び出す(サブプロセス起動はしない)．  
@@ -144,7 +144,7 @@ OSはこのシステムコールから実行ファイルへ戻らない(番号�
 | `-pn` | 入力Pynesisソースファイル名(`.pn`) | 必須(省略不可) |
 | `-pt` | 中間生成物のアセンブリファイル名(`.pt`) | 必須(省略不可) |
 | `-sv` | 出力SystemVerilog ROMファイル名(`.sv`) | 表の下を参照 |
-| `-bin` | 出力するQosmosの実行ファイル名．名前の規則は`asm2mc.exe`の`-bin`と同じ([pyntaxis/assembler.md](../pyntaxis/assembler.md)の「起動引数」を参照)．実行ファイル用のアセンブリを生成してから，実行ファイルに変換する | 表の下を参照 |
+| `-bin` | 出力するQosmosの実行ファイル名．名前の規則は`asm2mc.exe`の`-bin`と同じ([pyntaxis/assembler/usage.md](../pyntaxis/assembler/usage.md)の「実行ファイルの名前」を参照)．実行ファイル用のアセンブリを生成してから，実行ファイルに変換する | 表の下を参照 |
 
 例: `pn2mc.exe -pn program.pn -pt program.pt -sv program.sv`，`pn2mc.exe -pn hello.pn -pt hello.pt -bin HELLO`
 
