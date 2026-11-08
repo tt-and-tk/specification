@@ -33,7 +33,7 @@ pn2mc.exe -pn hello.pn -pt hello.pt -bin HELLO            # 実行ファイルHE
 ## 出力先の指定
 - 出力先は，`-sv`と`-bin`のどちらか一方で指定する．両方指定した場合はエラーになる  
 - どちらも省略した場合は，`-pt`の拡張子を`.sv`に変えた名前の`.sv`ファイルを出力する．`asm2mc.exe`を単体で使う場合と同じ決め方である  
-- `-bin`に指定する名前の規則は，`asm2mc.exe`の`-bin`と同じである([pyntaxis/assembler/usage.md](../../pyntaxis/assembler/usage.md)の「実行ファイルの名前」を参照)  
+- `-bin`に指定する名前の規則は，`asm2mc.exe`の`-bin`と同じである([pyntaxis/assembler/usage.md](../../pyntaxis/assembler/usage.md)の「実行ファイルとして出力するファイル(-bin)」を参照)  
 
 ## 引数の検査
 引数は，変換を始める前にまとめて検査する．  

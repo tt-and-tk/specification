@@ -37,7 +37,7 @@ pn2mc.exe -pn hello.pn -pt hello.pt -bin HELLO
 
 - OSの機能は，システムコールで呼び出す([qosmos/program/syscall.md](syscall.md)を参照)  
 - 実行ファイルの名前は，拡張子を持たない8.3形式の名前にする([qosmos/user/file.md](../user/file.md)の「名前の規則」を参照)  
-- できた実行ファイルを，SDカードの`/bin`へ置く([operation.md](../../operation.md)の「実行ファイルを置く」を参照)  
+- できた実行ファイルを，SDカードの`/bin`へ置く([operation.md](../../operation.md)の「実行ファイルを置く方法」を参照)  
 
 # 置き場所と探し方
 - シェルは，ルートディレクトリ直下の`bin`ディレクトリから実行ファイルを探す．現在のディレクトリによらず同じ場所を探し，現在のディレクトリは変えない  

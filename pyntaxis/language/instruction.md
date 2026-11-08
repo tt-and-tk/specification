@@ -9,6 +9,7 @@ audience: Pyntaxisでプログラムを書く人
 各命令がCPUで行う動作の詳細は，[qurge/cpu/isa.md](../../qurge/cpu/isa.md)の同じ名前の節を参照．  
 
 引数に書くものは次のとおりである．  
+どれを書くかは命令によって異なり，各節の例に示す．  
 
 - `rs1`・`rs2`: 演算に使うレジスタ  
 - `rd`: 結果を格納するレジスタ  
@@ -86,8 +87,8 @@ main:
     jmp .L0             ; .L0へ飛ぶ
 .L0:
     call func1          ; func1を呼び出す
-    mov fh r0 r1 func1  ; r1 = func1の番地
-    call r1             ; r1の番地の関数(func1)を呼び出す
+    mov fh r0 r1 func1  ; r1 = func1のPC
+    call r1             ; r1のPCの関数(func1)を呼び出す
     ret                 ; mainを終える
 
 func1:
@@ -99,7 +100,7 @@ func1:
     - CPUの命令はレジスタの値の番地へも飛べるが，`jmp`にはその書き方を設けていない  
 - `call <関数名>`: 関数を呼び出す．呼び出された関数の`ret`で，`call`の次の命令へ戻る  
     - `main`は呼び出せない．`main`はプログラムの開始点であり，`main`の`ret`は呼び出し元へ戻る命令にならないためである  
-- `call <レジスタ>`: レジスタの値を番地とする関数を呼び出す．関数の番地は，イミディエイトデータの位置に関数名を書いて求める([pyntaxis/language/program.md](program.md)の「関数の番地」を参照)  
+- `call <レジスタ>`: レジスタの値をPCとする関数を呼び出す．関数のPCは，イミディエイトデータの位置に関数名を書いて求める([pyntaxis/language/program.md](program.md)の「関数のPC」を参照)  
 - `ret`: `main`以外の関数では，呼び出し元へ戻る．`main`の`ret`は，出力先ごとに決まった扱いになる([pyntaxis/language/target.md](target.md)の「mainの終わり方」を参照)  
 
 呼び出しを入れ子にできる段数に固定の上限はない．  
@@ -110,7 +111,7 @@ func1:
 引数は取らない．  
 動作と使う側の注意は，[qurge/cpu/mode.md](../../qurge/cpu/mode.md)の「動作状態の切り替え」を参照．  
 
-- `syscall`: 次の命令の番地をKRET(`r12h`)へ書き込み，カーネルモードにして，KENTRY(`r11h`)の値の番地へ飛ぶ  
+- `syscall`: 次の命令のPCをKRET(`r12h`)へ書き込み，カーネルモードにして，KENTRY(`r11h`)の値のPCへ飛ぶ．実行する前に，飛び先の関数のPCをKENTRYへ書き込んでおく  
 - `sysret`: ユーザーモードにして，KRETの値の番地へ飛ぶ．カーネルモードでだけ実行できる  
 
 `sysret`は`ret`の代わりにならない．  
@@ -120,11 +121,11 @@ func1:
 
 ```
 setup:
-    mov fh r0 r11h handler ; KENTRYへhandlerの番地を書き込んでおく
+    mov fh r0 r11h handler ; KENTRYへhandlerのPCを書き込んでおく
     ret
 
 user:
-    syscall             ; カーネルモードにしてhandlerへ飛ぶ
+    syscall             ; カーネルモードにしてhandlerへ飛ぶ(setupを実行した後であること)
     ret                 ; handlerのsysretで，ここへ戻る
 
 handler:

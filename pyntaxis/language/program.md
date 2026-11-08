@@ -23,7 +23,6 @@ get_num:
 ```
 
 各命令の書き方は[pyntaxis/language/instruction.md](instruction.md)，関数の中で飛ぶ先の書き方は[pyntaxis/language/label.md](label.md)を参照．  
-`main`の終わり方は出力先によって異なる([pyntaxis/language/target.md](target.md)を参照)．  
 
 # 行の書き方
 - 1行には，命令・ラベル・`.global`宣言のどれか1つを書く  
@@ -56,12 +55,13 @@ get_num:
 レジスタ番地の書き方は数値と同じで，とくに指定がなければ10進数，末尾に基数を表す文字があればその基数で扱う(例: `r10h`は`r16`と同じレジスタ)．  
 各レジスタ番地のレジスタの役割は[qurge/cpu/register.md](../../qurge/cpu/register.md)を参照．  
 
-# 関数の番地
-イミディエイトデータの位置に関数名を書くと，その関数の先頭の命令の番地(PC)を表す．  
-関数の番地をレジスタへ載せ，そのレジスタを使って関数を呼び出す場合に使う([pyntaxis/language/instruction.md](instruction.md)の「ジャンプ系(J系)」を参照)．  
+# 関数のPC
+イミディエイトデータの位置に関数名を書くと，その関数の先頭の命令のPCの値を表す．  
+PCは命令の位置を表す番号であり，プログラムの先頭の命令を0として数える．  
+メモリの番地とは異なる．  
+関数のPCをレジスタへ載せ，そのレジスタを使って関数を呼び出す場合に使う([pyntaxis/language/instruction.md](instruction.md)の「ジャンプ系(J系)」を参照)．  
 
-- 命令の番地は，プログラムの先頭の命令を0として数える  
-- `main`の番地は書けない  
+- `main`のPCは書けない  
 - `jmp`と分岐系の命令の飛び先には，関数名を書けない．局所ラベルだけを書ける  
 
 # 関数名にできない綴り
