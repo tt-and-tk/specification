@@ -1,5 +1,5 @@
 ---
-description: C言語にあってPynesisが対応しない機能
+description: C言語にあってPynesisが当面対応しない機能(未対応機能)
 audience: Pynesisでプログラムを書く人
 ---
 

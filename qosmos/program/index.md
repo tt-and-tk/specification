@@ -4,7 +4,7 @@ audience: Qosmosの実行ファイルを作る人
 ---
 
 # Qosmosの実行ファイルの文書
-次の順に読む．  
+このディレクトリの文書を，読む順に並べる．  
 
 1. [executable.md](executable.md): 実行ファイルの作り方と動かし方  
 2. [syscall.md](syscall.md): 実行ファイルからOSの機能を呼ぶ方法  

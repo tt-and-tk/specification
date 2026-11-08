@@ -4,7 +4,7 @@ audience: Pynesisでプログラムを書く人
 ---
 
 # Pynesisの言語仕様の文書
-次の順に読む．  
+このディレクトリの文書を，読む順に並べる．  
 
 1. [overview.md](overview.md): プログラムの例と，出力先で異なる点．最初に読む  
 2. [lexical.md](lexical.md): 識別子・リテラル・コメント  
@@ -20,4 +20,4 @@ audience: Pynesisでプログラムを書く人
 12. [builtin.md](builtin.md): 組み込み関数  
 13. [hardware.md](hardware.md): ハードウェア変数．OSを書く場合に読む  
 14. [limit.md](limit.md): 量的制限  
-15. [unsupported.md](unsupported.md): 対応しない機能  
+15. [unsupported.md](unsupported.md): 未対応機能  

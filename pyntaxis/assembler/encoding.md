@@ -8,8 +8,7 @@ audience: アセンブラの仕組みを知りたい・変えたい人
 
 # 引数と機械語のフィールド
 アセンブリの命令の名前は，同じ綴りの機械語の命令(大文字で表す)に対応する．  
-アセンブリに書いた引数は，命令の書き方([pyntaxis/language/instruction.md](../language/instruction.md)を参照)の例で同じ名前を付けたフィールドへ入れる．  
-例の名前と異なるのは，次の引数である．  
+アセンブリに書いた引数は，次の引数を除き，その引数の名前(rs1・rs2・rd・mask・imm．[pyntaxis/language/instruction.md](../language/instruction.md)の「命令」を参照)と同じ名前のフィールドへ入れる．  
 
 - `jmp`・F系の局所ラベルと，`call`の関数名: 「名前の解決」の値にして，immへ入れる  
 - `call`のレジスタ: rs1へ入れる  

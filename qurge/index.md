@@ -5,7 +5,7 @@ audience: CPUで動くプログラムを書く人と，CPUの回路を作る人
 
 # Qurgeの文書
 Qurgeは，PYNQ-Z2ボードの上に作るハードウェア一式である．  
-次の順に読む．  
+このディレクトリの文書を，読む順に並べる．  
 
 1. [board.md](board.md): ボードとシールドの組み合わせ方  
 2. [memory.md](memory.md): CPUが読み書きするメインメモリ  

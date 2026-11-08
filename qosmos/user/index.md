@@ -4,7 +4,7 @@ audience: Qosmosを使う人
 ---
 
 # Qosmosの利用者向けの文書
-次の順に読む．  
+このディレクトリの文書を，読む順に並べる．  
 
 1. [boot.md](boot.md): 起動時の表示と，失敗したときの対処  
 2. [console.md](console.md): 操作する端末のつなぎ方  

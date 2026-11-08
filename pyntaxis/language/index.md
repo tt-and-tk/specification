@@ -4,7 +4,7 @@ audience: Pyntaxisでプログラムを書く人
 ---
 
 # Pyntaxisの書き方の文書
-次の順に読む．  
+このディレクトリの文書を，読む順に並べる．  
 
 1. [program.md](program.md): プログラム全体の形．最初に読む  
 2. [instruction.md](instruction.md): 各命令の書き方  

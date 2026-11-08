@@ -4,7 +4,7 @@ audience: CPUで動くプログラムを書く人と，CPUの回路を作る人
 ---
 
 # QurgeのCPUの文書
-次の順に読む．  
+このディレクトリの文書を，読む順に並べる．  
 
 1. [isa.md](isa.md): 命令の形式と各命令の動作  
 2. [register.md](register.md): 命令で読み書きするレジスタ  

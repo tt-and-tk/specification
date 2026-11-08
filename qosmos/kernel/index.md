@@ -4,8 +4,8 @@ audience: Qosmosの仕組みを知りたい・変えたい人
 ---
 
 # Qosmosの仕組みの文書
-利用者向けの文書([qosmos/user/index.md](../user/index.md)を参照)と，実行ファイルを作る人向けの文書([qosmos/program/index.md](../program/index.md)を参照)を読んだ後に読む．  
-次の順に読む．  
+このディレクトリの文書は，Qosmosを使う人向けの文書([qosmos/user/index.md](../user/index.md)を参照)と，実行ファイルを作る人向けの文書([qosmos/program/index.md](../program/index.md)を参照)を読んだ後に読む．  
+このディレクトリの文書を，読む順に並べる．  
 
 1. [boot.md](boot.md): 起動の手順  
 2. [memory.md](memory.md): メインメモリの割り振り  

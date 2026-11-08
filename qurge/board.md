@@ -63,7 +63,7 @@ Arduinoのアナログピン A0〜A5は，ボード上のXADC(FPGA内蔵のA/D�
 # SRSTのボタン
 ボードのSRSTのボタンを押すと，ボードの電源を入れ直したときと同じように，Qosmosが起動からやり直す．ボードのSDカードスロットのすぐ隣にあり，基板に印刷された名前は`SRST`である．シールドを重ねたままで押せる．  
 
-SRSTは，PSをリセットするボタンである．CPUのリセット(CPUをプログラムの先頭から実行し直させる信号．[qurge/memory.md](memory.md)と[qurge/cpu/exception.md](cpu/exception.md)のリセットはこれを指す)とは別のものであり，CPUのリセットはPSから入る．SRSTを押すとPSが起動からやり直し，FSBLがボードのSDカードのBOOT.BINからPLを書き込み直して，CPUのリセットを解除する．書き込み直す間は，PLの書き込みの完了を示すDONEのLEDが消える．  
+SRSTは，PS(ボード上のZynqが内蔵するARMプロセッサ)をリセットするボタンである．CPUのリセット(CPUをプログラムの先頭から実行し直させる信号．[qurge/memory.md](memory.md)と[qurge/cpu/exception.md](cpu/exception.md)のリセットはこれを指す)とは別のものであり，CPUのリセットはPSから入る．SRSTを押すとPSが起動からやり直し，FSBL(PSが最初に実行するプログラム)が，ボードのSDカードのBOOT.BINからPL(Zynqの中のFPGAの部分．Qurgeの回路を置く)を書き込み直して，CPUのリセットを解除する．書き込み直す間は，PLの書き込みの完了を示すDONEのLEDが消える．  
 
 - TCPの接続は切れる  
-- PLを書き込み直すため，メモリの内容もビットストリームが持つ初期値に戻る(CPUのリセットだけではメモリの内容は残る)  
+- PLを書き込み直すため，メモリの内容も，BOOT.BINの中の回路のデータ(ビットストリーム)が持つ初期値に戻る(CPUのリセットだけではメモリの内容は残る)  
