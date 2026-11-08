@@ -9,7 +9,7 @@
 
 | 命令 | 引数が入るフィールド |
 |:-|:-|
-| P系(`not`を除く) | rs1，rs2，rd |
+| P系(`not`・`div`・`divu`を除く) | rs1，rs2，rd |
 | `not` | rs1，rd |
 | `div`・`divu` | rs1，rs2，rd，imm(省略できる) |
 | S系 | rs1，rs2，rd，imm(省略できる) |

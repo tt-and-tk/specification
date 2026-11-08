@@ -17,8 +17,8 @@
 # mainの終わり方
 ## ROM
 `main`の`ret`は，プログラムの終了を表す．  
-`main`の`ret`を実行すると，CPUはその場で止まり，以降の命令を実行しない．  
-CPUの停止([qurge/cpu/exception.md](../../qurge/cpu/exception.md)の「停止と復帰」を参照)とは異なり，同じ命令を実行し続けることで止まる．  
+`main`の`ret`を実行すると，その命令自身へ飛ぶことを繰り返し，以降の命令へ進まない．  
+CPUは動き続けており，CPUの停止([qurge/cpu/exception.md](../../qurge/cpu/exception.md)の「停止と復帰」を参照)とは異なる．  
 
 ## 実行ファイル
 `main`の`ret`で実行を終えることはできない．  
