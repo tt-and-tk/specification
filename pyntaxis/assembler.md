@@ -8,7 +8,7 @@
 |:-|:-|:-|
 | 出力する内容 | 受け取ったPCに格納されている機械語を返すROMのモジュール．読み出しポートを2つ(`rom_read1`・`rom_read2`)持ち，それぞれが受け取った互いに独立なPCの機械語を，クロック同期で同時に返す．各命令は機械語を作る関数(`machine.svh`)の呼び出しとして書く | 各命令の機械語を先頭から8バイトずつ並べたもの(形式は[qosmos/program/executable.md](../qosmos/program/executable.md)を参照) |
 | `main`の`ret` | 自分自身へ飛ぶ`jmp`に置き換える(プログラムの終了) | `ret`の命令にする([pyntaxis/language.md](language.md)の「ジャンプ系(J系)」を参照) |
-| 命令数の上限 | 16384([qurge/rom.md](../qurge/rom.md)の「容量と命令数の上限」を参照) | 4064(シェルが割り振る32768バイトの領域のうち，末尾の引数の置き場(シェルがコマンド名と引数を置く256バイト)より手前に収まる命令数．[qosmos/program/executable.md](../qosmos/program/executable.md)の「領域」を参照) |
+| 命令数の上限 | 16384([qurge/rom.md](../qurge/rom.md)の「容量と命令数の上限」を参照) | 4064(シェルが割り振る32768バイトの領域のうち，末尾の引数の置き場(シェルがコマンド名と引数を置く256バイト)より手前に収まる命令数．[qosmos/resource/memory.md](../qosmos/resource/memory.md)の「実行ファイルの領域」を参照) |
 
 命令数が上限を超える場合はエラーになる．\
 エラーになった場合は，出力ファイルを作らない．
