@@ -87,7 +87,7 @@ OSはこのシステムコールから実行ファイルへ戻らない(番号�
 | 実行ファイル | 変換範囲 |
 |:-|:-|
 | `pn2asm.exe` | Pynesisソース(`.pn`) → アセンブリ(`.pt`) |
-| `asm2mc.exe`(アセンブラ，`../assembler/`) | アセンブリ(`.pt`) → SystemVerilog ROM(`.sv`)またはQosmosの実行ファイル．起動引数は[pyntaxis/assembler.md](../pyntaxis/assembler.md)の「起動引数」を参照 |
+| `asm2mc.exe`(アセンブラ．pyntaxisリポジトリで作る) | アセンブリ(`.pt`) → SystemVerilog ROM(`.sv`)またはQosmosの実行ファイル．起動引数は[pyntaxis/assembler.md](../pyntaxis/assembler.md)の「起動引数」を参照 |
 | `pn2mc.exe` | Pynesisソース(`.pn`) → SystemVerilog ROM(`.sv`)またはQosmosの実行ファイルまで一貫変換．今後のコンパイラの入口 |
 
 `pn2mc.exe`は`pn2asm.exe`・アセンブラの本処理をそれぞれ`main`から分離した関数として直接リンクし，順に呼び出す(サブプロセス起動はしない)．  
