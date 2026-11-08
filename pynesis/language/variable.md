@@ -1,3 +1,8 @@
+---
+description: 変数の宣言・スコープ・寿命・初期化，const変数と定数式
+audience: Pynesisでプログラムを書く人
+---
+
 # 変数
 ```c
 const int CAP = 4;           // const変数(コンパイル時に決まる定数)

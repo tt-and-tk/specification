@@ -1,3 +1,8 @@
+---
+description: コンパイラの各ツールの起動の仕方と起動引数，エラーの出力
+audience: コンパイラを使う人
+---
+
 # コンパイラの使い方
 コンパイラは，Pynesisのソースファイル(`.pn`．[pynesis/language/overview.md](../language/overview.md)を参照)を，ROMとして埋め込むSystemVerilogのソース(`.sv`)，またはQosmosの実行ファイルへ変換する．  
 ふだんは`pn2mc.exe`を使う．  

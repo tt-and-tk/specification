@@ -1,5 +1,10 @@
+---
+description: FAT32ファイルシステムのマウントと書き込みの仕組み
+audience: Qosmosの仕組みを知りたい・変えたい人
+---
+
 # ファイルシステムの仕組み
-この文書は，QosmosがSDカード上のFAT32ファイルシステムを扱う仕組みのうち，利用者向けの文書([qosmos/user/file.md](../user/file.md)を参照)に書いていないものを説明する．  
+利用者から見えるファイルとディレクトリの規則は，[qosmos/user/file.md](../user/file.md)を参照．  
 
 # マウント
 起動時のストレージの項目([qosmos/kernel/boot.md](boot.md)の「ストレージの項目」を参照)の最後の段階で，カード上のFAT32ファイルシステムをマウントする．  

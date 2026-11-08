@@ -1,5 +1,9 @@
+---
+description: Qosmosが起動するときの手順と，ストレージ・ネットワークの各段階
+audience: Qosmosの仕組みを知りたい・変えたい人
+---
+
 # 起動の手順
-この文書は，Qosmosが起動するときの手順を説明する．  
 起動時に出力される行と，失敗したときの対処は，[qosmos/user/boot.md](../user/boot.md)を参照．  
 
 Qosmosは，電源を入れたとき(SRSTのボタンを押したときを含む)と，`reboot`を実行したときに，次の順に起動する．  

@@ -1,5 +1,10 @@
+---
+description: UARTの送受信，telnetの接続・送信・オプション交渉の仕組み
+audience: Qosmosの仕組みを知りたい・変えたい人
+---
+
 # コンソールの仕組み
-この文書は，Qosmosがコンソールの2つの端末([qosmos/user/console.md](../user/console.md)を参照)とやり取りする仕組みを説明する．  
+コンソールの2つの端末の使い方は，[qosmos/user/console.md](../user/console.md)を参照．  
 
 # UARTの送受信
 - UARTの送受信には，PSの回路を使う([qurge/cpu/register.md](../../qurge/cpu/register.md)の`6'h31`を参照)．通信速度などの設定は，起動時にFSBLが行う  

@@ -1,3 +1,8 @@
+---
+description: CALL・RETが戻り先を積むスタックの伸び方と，スタック上の領域の確保
+audience: CPUで動くプログラムを書く人と，CPUの回路を作る人
+---
+
 # スタック
 CALL/RETは，関数の戻り先をメモリ上のスタックへ積み下ろしする(命令の動作は[qurge/cpu/isa.md](isa.md)の「ジャンプ系(J系)」を参照)．  
 スタック専用の領域は設けず，SP(`6'h10`．[qurge/cpu/register.md](register.md)を参照)が指す番地から番地の小さい方へ伸ばす．  

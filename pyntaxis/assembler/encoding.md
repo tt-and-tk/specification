@@ -1,6 +1,10 @@
+---
+description: アセンブラが命令を機械語へ変換する方法と，出力するファイルの形式
+audience: アセンブラの仕組みを知りたい・変えたい人
+---
+
 # 機械語への変換
 アセンブラは，アセンブリの1つの命令を，QurgeのCPUの1つの命令([qurge/cpu/isa.md](../../qurge/cpu/isa.md)を参照)へ変換する．  
-この文書は，アセンブラの変換の方法と出力の形式を説明する．  
 アセンブリの書き方は[pyntaxis/language/program.md](../language/program.md)を参照．  
 
 # 引数と機械語のフィールド

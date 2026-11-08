@@ -1,3 +1,8 @@
+---
+description: 構造体の定義・変数の宣言・メンバの読み書き・大きさ
+audience: Pynesisでプログラムを書く人
+---
+
 # 構造体
 ```c
 struct Node {                 // 構造体の定義

@@ -1,3 +1,8 @@
+---
+description: データ型・型変換・キャスト
+audience: Pynesisでプログラムを書く人
+---
+
 # 型
 ```c
 int n = -1;                         // 32ビットの符号あり整数

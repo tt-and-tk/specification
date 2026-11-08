@@ -1,3 +1,8 @@
+---
+description: シェルの組み込みコマンドの使い方
+audience: Qosmosを使う人
+---
+
 # 組み込みコマンド
 シェル([qosmos/user/shell.md](shell.md)を参照)は，次の組み込みコマンドを持つ．  
 

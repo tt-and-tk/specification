@@ -1,3 +1,8 @@
+---
+description: 実行ファイルからOSの機能を呼ぶシステムコールの使い方
+audience: Qosmosの実行ファイルを作る人
+---
+
 # システムコール
 実行ファイルは，システムコールを通してOSの機能を呼び出す．  
 Pynesisでは，ライブラリ`lib/syscall.pn`(`qurge`の`mypc.srcs/pn/lib/syscall.pn`)を取り込めば，各機能を関数として呼べる．  

@@ -1,3 +1,8 @@
+---
+description: if・while・for・switchなどの制御構文
+audience: Pynesisでプログラムを書く人
+---
+
 # 制御構文
 ```c
 int classify(int n) {

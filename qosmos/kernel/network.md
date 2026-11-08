@@ -1,3 +1,8 @@
+---
+description: ネットワークの設定・pingへの応答・TCPの扱い
+audience: Qosmosの仕組みを知りたい・変えたい人
+---
+
 # ネットワーク
 Qosmosは，Ethernetモジュール(W5100S)を通してLANにつながる．  
 モジュールを制御するレジスタは，[qurge/cpu/register.md](../../qurge/cpu/register.md)の`6'h26`を参照．  

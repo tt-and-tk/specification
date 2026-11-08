@@ -1,3 +1,8 @@
+---
+description: 関数の定義・引数・戻り値・呼び出しと，main関数
+audience: Pynesisでプログラムを書く人
+---
+
 # 関数
 ```c
 int square(int x) {           // int型の引数を1つ取り，intを返す関数

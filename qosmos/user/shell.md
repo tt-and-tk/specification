@@ -1,3 +1,8 @@
+---
+description: シェルの入力の解析・現在のディレクトリ・終了状態
+audience: Qosmosを使う人
+---
+
 # シェル
 シェルは，プロンプト`> `を表示してコンソール([qosmos/user/console.md](console.md)を参照)から1行を受け取り，コマンドとして実行する．  
 

@@ -1,3 +1,8 @@
+---
+description: プログラム全体の形・行・関数・.global宣言・数値とレジスタの書き方
+audience: Pyntaxisでプログラムを書く人
+---
+
 # プログラムの書き方
 Pyntaxisは，QurgeのCPUの命令([qurge/cpu/isa.md](../../qurge/cpu/isa.md)を参照)を1行に1つずつ書くアセンブリ言語である．  
 プログラムは関数の並びとして書き，`main`から実行を始める．  

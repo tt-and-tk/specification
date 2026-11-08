@@ -1,5 +1,10 @@
+---
+description: PYNQ-Z2ボードとシールド・SDカード・Ethernetモジュールの物理的な構成と，ピンの割り当て
+audience: 実機を組み立てる人と，ピンの割り当てを変える人
+---
+
 # 実機の構成
-Pynthesisの実機は，PYNQ-Z2ボードに，Arduino Uno互換のピン配置を持つ拡張基板(シールド)を2枚重ねて構成する．このファイルは，ボードと各機器の物理的な構成を記録する．この構成で実機を使う手順は，[operation.md](../operation.md)を参照．  
+Pynthesisの実機は，PYNQ-Z2ボードに，Arduino Uno互換のピン配置を持つ拡張基板(シールド)を2枚重ねて構成する．この構成で実機を使う手順は，[operation.md](../operation.md)を参照．  
 
 ピンの割り当ては`qurge`の制約ファイル(`mypc.srcs/constrs_1/new/top.xdc`)が持ち，「SDカードのシールド」と「Ethernetモジュールのシールド」の表にある「制約ファイルの信号名」はそのファイルでの名前である．各機器を操作するレジスタのビットの割り当ては[qurge/cpu/register.md](cpu/register.md)を参照．  
 

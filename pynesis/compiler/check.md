@@ -1,5 +1,10 @@
+---
+description: コンパイラが量的制限を検査する方法と，検査に使う値
+audience: コンパイラの仕組みを知りたい・変えたい人
+---
+
 # 量的制限の検査
-この文書は，コンパイラが量的制限([pynesis/language/limit.md](../language/limit.md)を参照)をどのように検査するかを説明する．  
+検査する量的制限そのものは，[pynesis/language/limit.md](../language/limit.md)を参照．  
 
 # 検査に使う値
 検査に使う次の値は，メモリの容量([qurge/memory.md](../../qurge/memory.md)を参照)から決まる．  

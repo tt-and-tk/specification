@@ -1,3 +1,8 @@
+---
+description: アセンブラの起動の仕方と起動引数
+audience: アセンブラを使う人
+---
+
 # アセンブラの使い方
 アセンブラ`asm2mc.exe`は，アセンブリ言語Pyntaxis([pyntaxis/language/program.md](../language/program.md)を参照)で書いたファイル(`.pt`)を，次のどちらかへ変換する．  
 名前のmcは機械語(machine code)を表し，出力するファイルの種類によらず同じ名前を使う．  

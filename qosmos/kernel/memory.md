@@ -1,3 +1,8 @@
+---
+description: Qosmosがメインメモリを割り振る方法と，実行ファイルの領域
+audience: Qosmosの仕組みを知りたい・変えたい人
+---
+
 # メモリの割り振り
 Qosmosは，メインメモリ([qurge/memory.md](../../qurge/memory.md)を参照)を前半と後半に分けて，次のように割り振る．  
 前半・後半の範囲と，動作状態ごとにCPUが読み書きできる範囲は，[qurge/cpu/mode.md](../../qurge/cpu/mode.md)の「メモリを読み書きできる範囲」を参照．  

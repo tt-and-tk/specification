@@ -1,3 +1,8 @@
+---
+description: 配列と文字列の宣言・初期化・値としての扱い
+audience: Pynesisでプログラムを書く人
+---
+
 # 配列
 ```c
 int table[10];               // int型の要素10個の配列

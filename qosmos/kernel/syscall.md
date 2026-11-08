@@ -1,5 +1,9 @@
+---
+description: Qosmosがシステムコールを受け付けて機能へ振り分ける仕組み
+audience: Qosmosの仕組みを知りたい・変えたい人
+---
+
 # システムコールの受け付け
-この文書は，Qosmosがシステムコールを受け付けて機能へ振り分ける仕組みを説明する．  
 実行ファイルから使う方法は，[qosmos/program/syscall.md](../program/syscall.md)を参照．  
 
 # 受け付けの手順

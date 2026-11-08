@@ -1,3 +1,8 @@
+---
+description: Pynesisのプログラムの例と，出力先(ROMと実行ファイル)で異なる点
+audience: Pynesisでプログラムを書く人
+---
+
 # Pynesisの概要
 Pynesisは，C言語に似た書き方の自作プログラミング言語である．  
 ソースファイル(`.pn`)をコンパイラでアセンブリ言語Pyntaxisへ変換し，QurgeのCPUで動かす(コンパイラの使い方は[pynesis/compiler/usage.md](../compiler/usage.md)を参照)．  
@@ -28,26 +33,6 @@ void main(void) {                    // プログラムの開始点
     LED = (unsigned int)p.first;     // ボードのLEDへ書き込む
 }
 ```
-
-# 文書の構成
-言語の仕様は，話題ごとに次の文書に分ける．  
-
-| 文書 | 内容 |
-|:-|:-|
-| [lexical.md](lexical.md) | 識別子・リテラル・コメント |
-| [type.md](type.md) | データ型・型変換・キャスト |
-| [variable.md](variable.md) | 変数・const変数・定数式・スコープ |
-| [array.md](array.md) | 配列と文字列 |
-| [struct.md](struct.md) | 構造体 |
-| [pointer.md](pointer.md) | ポインタと関数ポインタ |
-| [operator.md](operator.md) | 演算子と`sizeof` |
-| [control.md](control.md) | 制御構文 |
-| [function.md](function.md) | 関数と`main` |
-| [include.md](include.md) | ソースファイルの取り込み |
-| [builtin.md](builtin.md) | 組み込み関数 |
-| [hardware.md](hardware.md) | ハードウェア変数 |
-| [limit.md](limit.md) | 量的制限 |
-| [unsupported.md](unsupported.md) | 未対応機能 |
 
 # 出力先
 プログラムは，次のどちらかの形に変換する．  

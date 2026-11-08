@@ -1,3 +1,8 @@
+---
+description: 演算子の種類・優先順位・評価の規則と，sizeof
+audience: Pynesisでプログラムを書く人
+---
+
 # 演算子
 | 分類 | 演算子 |
 |:-|:-|

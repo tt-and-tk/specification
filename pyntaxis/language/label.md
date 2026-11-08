@@ -1,3 +1,8 @@
+---
+description: 関数の中で飛ぶ先を表す局所ラベルの書き方
+audience: Pyntaxisでプログラムを書く人
+---
+
 # 局所ラベル
 局所ラベルは，関数の中で飛ぶ先を表す名前である．  
 `jmp`と分岐系の命令の飛び先に書く([pyntaxis/language/instruction.md](instruction.md)を参照)．  

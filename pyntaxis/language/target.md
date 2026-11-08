@@ -1,3 +1,8 @@
+---
+description: ROMと実行ファイルの出力先で異なる点(mainの終わり方と命令数の上限)
+audience: Pyntaxisでプログラムを書く人
+---
+
 # 出力先による違い
 アセンブリは，次のどちらかの出力先へ変換する．  
 どちらにするかはアセンブラの起動引数で指定する([pyntaxis/assembler/usage.md](../assembler/usage.md)を参照)．  
