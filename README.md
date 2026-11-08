@@ -34,7 +34,7 @@
 - [qurge/cpu/exception.md](qurge/cpu/exception.md) — CPUが例外として検出する条件と，例外の種類と番号，停止・例外ハンドラへ飛ぶ処理への振り分け，停止後・リセット後の挙動
 - [qurge/cpu/pipeline.md](qurge/cpu/pipeline.md) — 命令を処理する段の構成と，2命令を同時に実行する条件(実行結果ではなくサイクル数に関わる仕様)
 - [qurge/memory.md](qurge/memory.md) — メインメモリ(記憶装置)のインターフェース・アドレス空間・マスクの仕様
-- [qurge/rom.md](qurge/rom.md) — 命令を格納するROMの仕様
+- [qurge/rom.md](qurge/rom.md) — 命令を格納するROMの仕様と，命令数の上限
 - [qurge/board.md](qurge/board.md) — PYNQ-Z2を中心とする実機の物理的な構成と，そこから生じる操作上の制約
 
 ### Pyntaxis(`pyntaxis/`)
@@ -45,7 +45,7 @@
 ### Pynesis(`pynesis/`)
 
 - [pynesis/language.md](pynesis/language.md) — 独自言語Pynesisの言語仕様
-- [pynesis/compiler.md](pynesis/compiler.md) — コンパイラの出力先・メモリ配置・規約・起動引数
+- [pynesis/compiler.md](pynesis/compiler.md) — コンパイラの出力先・メモリ配置・規約・量的制限・起動引数
 
 ### Qosmos(`qosmos/`)
 
@@ -56,7 +56,3 @@
 - [qosmos/program/syscall.md](qosmos/program/syscall.md) — システムコール
 - [qosmos/resource/filesystem.md](qosmos/resource/filesystem.md) — ファイルシステム
 - [qosmos/resource/network.md](qosmos/resource/network.md) — ネットワーク
-
-### その他
-
-- [limitations.md](limitations.md) — 一般的なCPUとの差分・非対応事項一覧
