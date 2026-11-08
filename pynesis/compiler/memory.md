@@ -36,7 +36,7 @@ ROMのプログラムは，常に0番地から置かれる．
 スタックは，次の番地から下へ伸びる．  
 
 - ROM用: メモリの前半の上端([qurge/cpu/mode.md](../../qurge/cpu/mode.md)の「メモリを読み書きできる範囲」を参照)  
-- 実行ファイル用: シェルが引数の置き場の中に決めたSP([qosmos/resource/memory.md](../../qosmos/resource/memory.md)の「実行ファイルの領域」を参照)  
+- 実行ファイル用: シェルが引数の置き場の中に決めたSP([qosmos/kernel/memory.md](../../qosmos/kernel/memory.md)の「実行ファイルの領域」を参照)  
 
 ローカル変数・引数の番地を`&`で取ると，SPにフレームの中の位置を足した，実行時の番地になる．  
 

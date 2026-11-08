@@ -45,7 +45,7 @@ CALLが戻り先を`SP-4`番地へ積み，呼び出し先がフレームを確�
 # 実行ファイルのmain
 ## 引数の受け取り
 実行ファイルの`main`は，シェルから`call`されずに実行を始めるが，引数はこの規約のとおりに読む．  
-シェルが置く`argc`・`argv`の位置(SP-8・SP-4．[qosmos/program/executable.md](../../qosmos/program/executable.md)の「実行の仕方」を参照)は，この規約で2つの引数を渡して`call`した直後の引数の位置と一致する．  
+シェルが置く`argc`・`argv`の位置(SP-8・SP-4．[qosmos/kernel/exec.md](../../qosmos/kernel/exec.md)の「引数の置き方」を参照)は，この規約で2つの引数を渡して`call`した直後の引数の位置と一致する．  
 このため，`int main(int argc, char **argv)`の引数として受け取れる．  
 
 ## 終了

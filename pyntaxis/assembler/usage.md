@@ -27,7 +27,7 @@ asm2mc.exe -pt hello.pt -bin HELLO          # 実行ファイルHELLOを出力�
 `-bin`に指定する名前のうち，ディレクトリを除いたファイル名の部分は，次の両方を満たす必要がある．  
 満たさない名前はエラーになる．  
 
-- Qosmosの名前の規則([qosmos/resource/filesystem.md](../../qosmos/resource/filesystem.md)の「ファイル・ディレクトリの名前」を参照)に従う  
+- Qosmosの名前の規則([qosmos/user/file.md](../../qosmos/user/file.md)の「名前の規則」を参照)に従う  
 - 拡張子を持たない．Qosmosは拡張子の無いファイルだけを実行ファイルとして探すため  
 
 # エラー

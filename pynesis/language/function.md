@@ -77,7 +77,7 @@ int fact(int n) {             // 再帰呼び出しもできる
 終了したときの動作は，出力先によって異なる．  
 
 - ROM: その場で止まる．CPUの停止とは異なり，同じ命令を実行し続けることで止まる([pyntaxis/language/target.md](../../pyntaxis/language/target.md)の「mainの終わり方」を参照)  
-- 実行ファイル: 戻り値を終了状態としてシェルへ伝えて終わる([qosmos/user/command.md](../../qosmos/user/command.md)の「終了状態」を参照)．`return`文を通らずに本体の終わりへ達した場合は，シェルへ伝わる終了状態は不定になる  
+- 実行ファイル: 戻り値を終了状態としてシェルへ伝えて終わる([qosmos/user/shell.md](../../qosmos/user/shell.md)の「終了状態」を参照)．`return`文を通らずに本体の終わりへ達した場合は，シェルへ伝わる終了状態は不定になる  
 
 ## mainより前に行う書き込み
 次の書き込みは，`main`の本体を実行する前に1回だけ行う．  

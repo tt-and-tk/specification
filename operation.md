@@ -8,7 +8,7 @@ SDカードは2枚使う．PYNQのイメージ(Linux)が入ったカードは使
 | 挿す場所 | 置くもの | 用意の仕方 |
 |:-|:-|:-|
 | ボードのSDカードスロット | BOOT.BIN | FAT32でフォーマットし，第1パーティションのルートにBOOT.BINを置く．BOOT.BINは，FSBL(電源投入時にPS(ボード上のZynqが内蔵するARMプロセッサ)が最初に実行し，ビットストリームをPL(Zynqの中のFPGAの部分)へ書き込むプログラム)とビットストリームをまとめた起動用のファイルである |
-| SDカードのシールドのスロット([qurge/board.md](qurge/board.md)の「SDカードのシールド」を参照) | Qosmosのファイルシステム | パソコンでFAT32にフォーマットする(扱えるカードは[qosmos/resource/filesystem.md](qosmos/resource/filesystem.md)の「扱えるカード」を参照) |
+| SDカードのシールドのスロット([qurge/board.md](qurge/board.md)の「SDカードのシールド」を参照) | Qosmosのファイルシステム | パソコンでFAT32にフォーマットする(扱えるカードは[qosmos/user/file.md](qosmos/user/file.md)の「扱えるカード」を参照) |
 
 ## ジャンパ
 | ジャンパ | 設定 | 意味 |
@@ -27,10 +27,10 @@ Ethernetモジュールに給電した状態で，ボードの起動に失敗す
 | 端末 | つなぎ方 |
 |:-|:-|
 | UARTで接続した端末 | ボードの電源用のUSB(PROG/UART)をパソコンにつなぎ，現れたシリアルポートを端末のソフトウェアで開く．TeraTermでは，「シリアル」を選んでポートを指定し，「シリアルポートの設定」で通信の設定([qosmos/user/console.md](qosmos/user/console.md)の「UARTの接続」を参照)の値にする．起動時の行を読むには，電源を入れる前に開いておく |
-| telnetで接続した端末 | ボードと同じLANにつないだパソコンから，IPアドレス([qosmos/resource/network.md](qosmos/resource/network.md)の「設定」を参照)のポート`23`へtelnetで接続する．TeraTermでは，サービスに「Telnet」を選び，TCPポートに`23`を指定する．接続はQosmosが起動してプロンプトを表示した後に受け付ける |
+| telnetで接続した端末 | ボードと同じLANにつないだパソコンから，IPアドレス([qosmos/kernel/network.md](qosmos/kernel/network.md)の「設定」を参照)のポート`23`へtelnetで接続する．TeraTermでは，サービスに「Telnet」を選び，TCPポートに`23`を指定する．接続はQosmosが起動してプロンプトを表示した後に受け付ける |
 
 # 起動とやり直し
-電源を入れると，FSBLがBOOT.BINからPLを書き込み，Qosmosが起動する(起動時の動作は[qosmos/boot.md](qosmos/boot.md)を参照)．  
+電源を入れると，FSBLがBOOT.BINからPLを書き込み，Qosmosが起動する(起動時の表示は[qosmos/user/boot.md](qosmos/user/boot.md)を参照)．  
 
 起動をやり直す方法は次の3つで，状況に応じて使い分ける．  
 
