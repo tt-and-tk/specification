@@ -52,7 +52,22 @@ specification/
 │       ├── usage.md        使い方
 │       └── encoding.md     機械語への変換
 ├── pynesis/                プログラミング言語Pynesis
-│   ├── language/           言語の仕様(overview.mdが入口)
+│   ├── language/           言語の仕様
+│   │   ├── overview.md     概要と文書の構成
+│   │   ├── lexical.md      識別子・リテラル・コメント
+│   │   ├── type.md         データ型・型変換・キャスト
+│   │   ├── variable.md     変数・const変数・定数式
+│   │   ├── array.md        配列と文字列
+│   │   ├── struct.md       構造体
+│   │   ├── pointer.md      ポインタと関数ポインタ
+│   │   ├── operator.md     演算子とsizeof
+│   │   ├── control.md      制御構文
+│   │   ├── function.md     関数とmain
+│   │   ├── include.md      ソースファイルの取り込み
+│   │   ├── builtin.md      組み込み関数
+│   │   ├── hardware.md     ハードウェア変数
+│   │   ├── limit.md        量的制限
+│   │   └── unsupported.md  未対応機能
 │   └── compiler/           コンパイラ
 │       ├── usage.md        使い方
 │       ├── memory.md       変数の配置
@@ -117,8 +132,8 @@ Qosmosは，CPUのROM上で動き，起動時にハードウェアを初期化�
 - [qosmos/user/console.md](qosmos/user/console.md) — コンソール(telnet・UARTで接続した端末)と1行の入力  
 - [qosmos/user/shell.md](qosmos/user/shell.md) — 入力の解析・現在のディレクトリ・終了状態  
 - [qosmos/user/command.md](qosmos/user/command.md) — 組み込みコマンド  
-- [qosmos/user/file.md](qosmos/user/file.md) — 扱えるカード・名前の規則・名前の表示  
-- [qosmos/program/executable.md](qosmos/program/executable.md) — 実行ファイルの作り方・置き場所・引数と終了状態  
+- [qosmos/user/file.md](qosmos/user/file.md) — 扱えるカード・ディレクトリ・名前の規則と表示・ファイルの内容・書き込みについて  
+- [qosmos/program/executable.md](qosmos/program/executable.md) — 実行ファイルの作り方・置き場所・引数と終了状態・使えるメモリ・実行できない場合・形式  
 - [qosmos/program/syscall.md](qosmos/program/syscall.md) — システムコールの使い方  
 - [qosmos/kernel/boot.md](qosmos/kernel/boot.md) — 起動の手順と各段階  
 - [qosmos/kernel/console.md](qosmos/kernel/console.md) — UARTの送受信・telnetの接続と送信・telnetのオプション  
