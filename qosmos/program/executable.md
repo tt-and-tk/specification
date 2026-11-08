@@ -89,7 +89,7 @@ Pynesisで書く場合の量的制限は，[pynesis/language/limit.md](../../pyn
 - 読み込みの途中で読み出しに失敗した場合は，実行しない  
 
 # 例外を起こした場合
-実行ファイルが例外([qurge/cpu/exception.md](../../qurge/cpu/exception.md)を参照)を起こすと，CPUが停止する．  
+実行ファイルが例外([qurge/cpu/exception.md](../../qurge/cpu/exception.md)を参照)を起こすと，Qosmosの例外ハンドラがCPUを停止させる([qosmos/kernel/exec.md](../kernel/exec.md)の「例外を起こした場合」を参照)．  
 シェルには戻れないため，SRSTのボタンで起動し直す([qurge/board.md](../../qurge/board.md)の「SRSTのボタン」を参照)．  
 
 # 形式
