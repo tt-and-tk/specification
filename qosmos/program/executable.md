@@ -21,7 +21,7 @@ SDカード上に置いた機械語のプログラム(実行ファイル)を，�
 3. 領域の先頭の命令(領域の中のPC 0)から，ユーザーモードで実行する
 4. 実行ファイルが終了のシステムコール([qosmos/program/syscall.md](syscall.md)を参照)を実行すると，渡された値を終了状態とし([qosmos/user/command.md](../user/command.md)の「終了状態」を参照)，プロンプトを表示して次の入力を待つ
 
-コマンド名と引数は[qosmos/user/command.md](../user/command.md)と同じく半角空白で区切り，区切りの空白は文字列に含めない．実行ファイルが始まる時点の引数の置き場は，次のとおりである(Pynesisの`main`での受け取り方は，[pynesis/compiler.md](../../pynesis/compiler.md)の「呼び出し規約」を参照)．
+コマンド名と引数は[qosmos/user/command.md](../user/command.md)と同じく半角空白で区切り，区切りの空白は文字列に含めない．実行ファイルが始まる時点の引数の置き場は，次のとおりである(Pynesisの`main`での受け取り方は，[pynesis/compiler/call.md](../../pynesis/compiler/call.md)の「実行ファイルのmain」を参照)．
 
 | 位置 | 内容 |
 |:-|:-|
@@ -40,7 +40,7 @@ SDカード上に置いた機械語のプログラム(実行ファイル)を，�
 - OSの機能は，システムコール([qosmos/program/syscall.md](syscall.md)を参照)を通して呼び出す
 - SPは，スタックの確保・参照にだけ使う
 
-Pynesisのコンパイラがこれらの取り決めに従って実行ファイルを生成する方法は，[pynesis/compiler.md](../../pynesis/compiler.md)の「出力先」を参照．
+Pynesisのコンパイラがこれらの取り決めに従って実行ファイルを生成する方法は，[pynesis/compiler/call.md](../../pynesis/compiler/call.md)の「実行ファイルのmain」を参照．
 
 実行ファイルが例外([qurge/cpu/exception.md](../../qurge/cpu/exception.md)を参照)を起こすと，例外ハンドラはCPUを停止させる．シェルには戻れないため，SRSTのボタンで起動し直す必要がある([qurge/board.md](../../qurge/board.md)の「SRSTのボタン」を参照)．
 

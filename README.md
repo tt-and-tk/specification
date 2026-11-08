@@ -53,8 +53,11 @@
 
 ### Pynesis(`pynesis/`)
 
-- [pynesis/language.md](pynesis/language.md) — 独自言語Pynesisの言語仕様
-- [pynesis/compiler.md](pynesis/compiler.md) — コンパイラの出力先・メモリ配置・規約・量的制限・起動引数
+- [pynesis/language/overview.md](pynesis/language/overview.md) — 言語の概要・文書の構成・出力先による違い(言語仕様の各文書はここから辿る)
+- [pynesis/compiler/usage.md](pynesis/compiler/usage.md) — コンパイラの使い方と起動引数
+- [pynesis/compiler/memory.md](pynesis/compiler/memory.md) — 変数の配置
+- [pynesis/compiler/call.md](pynesis/compiler/call.md) — 関数呼び出しの命令とスタックの使い方
+- [pynesis/compiler/check.md](pynesis/compiler/check.md) — 量的制限の検査
 
 ### Qosmos(`qosmos/`)
 

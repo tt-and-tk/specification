@@ -46,6 +46,6 @@ telnetで接続していた場合は，`reboot`とSRSTのボタンのどちら�
 Qosmos用のSDカードは，SDカードのシールドの上にEthernetモジュールのシールドがあるため([qurge/board.md](qurge/board.md)の「シールドの重ね方」を参照)，電源を入れたまま抜き差しできない．カードを替えるときは，電源を切り，上段のシールドを外してから行う．差し替えた後は，電源を入れて起動からやり直す．
 
 # 実行ファイルを置く
-1. Pynesisのソースを，コンパイラで実行ファイルにする([pynesis/compiler.md](pynesis/compiler.md)の「実行ファイル構成と起動引数」を参照)．実行ファイルの名前は，拡張子を持たない8.3形式の名前にする
+1. Pynesisのソースを，コンパイラで実行ファイルにする([pynesis/compiler/usage.md](pynesis/compiler/usage.md)の「実行ファイルの構成」を参照)．実行ファイルの名前は，拡張子を持たない8.3形式の名前にする
 2. Qosmos用のSDカードをパソコンへ差し，ルートディレクトリ直下の`bin`ディレクトリへ実行ファイルを置く
 3. カードをSDカードのシールドへ戻し，電源を入れて起動する．実行ファイルは，名前をコマンド名として入力すれば実行できる([qosmos/program/executable.md](qosmos/program/executable.md)を参照)
