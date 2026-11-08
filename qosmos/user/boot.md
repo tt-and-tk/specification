@@ -4,7 +4,7 @@ audience: Qosmosを使う人
 ---
 
 # 起動時の表示
-Qosmosは，電源を入れたとき(SRSTのボタンを押したときを含む．[qurge/board.md](../../qurge/board.md)の「SRSTのボタン」を参照)と，`reboot`を実行したときに起動する．  
+Qosmosは，電源を入れたとき(SRSTのボタンを押したときを含む．[board.md](../../board.md)の「SRSTのボタン」を参照)と，`reboot`を実行したときに起動する．  
 起動では，ストレージの項目(SDカードとファイルシステム)と，ネットワークの項目(Ethernetモジュール)を順に行う．  
 各項目は，機器とやり取りする段階から成る．段階ごとの成否を，1行ずつコンソールへ出力する．  
 起動の手順の詳細は，[qosmos/kernel/boot.md](../kernel/boot.md)を参照．  
@@ -55,7 +55,7 @@ Storage is not available. Insert a card and run reboot.
 | 表示 | 原因 | 対処 |
 |:-|:-|:-|
 | `SD card: reset (CMD0): no response` | SDカードが差さっていない | SDカードを差して`reboot`する |
-| `SD card: reset (CMD0): busy`・`unexpected response` | カードがコマンドを受け付けない | カードを差し直して`reboot`する．直らなければ，シールドの配線を確かめる([qurge/board.md](../../qurge/board.md)の「SDカードのシールド」を参照) |
+| `SD card: reset (CMD0): busy`・`unexpected response` | カードがコマンドを受け付けない | カードを差し直して`reboot`する．直らなければ，シールドの配線を確かめる([board.md](../../board.md)の「SDカードのシールド」を参照) |
 | `SD card: voltage check (CMD8): SD v1, unsupported` | 対応しない古い規格のカード(SD v1)である | SDHC/SDXCのカードに替える |
 | `SD card: voltage check (CMD8): no response`・`failed`・`check pattern mismatch` | 電圧の確認に応答しない．配線か電圧に問題がある | カードを差し直して`reboot`する．直らなければ，シールドの配線を確かめる |
 | `SD card: initialize (ACMD41): CMD55 rejected`・`failed`・`not ready` | カードの初期化が終わらない | カードを差し直して`reboot`する．直らなければ，別のカードを試す |
@@ -73,7 +73,7 @@ Storage is not available. Insert a card and run reboot.
 ## Ethernetモジュールの失敗
 | 表示 | 原因 | 対処 |
 |:-|:-|:-|
-| `Ethernet: reset: no response` | モジュールが応答しない．モジュールが接続されていない場合を含む | モジュールのシールドの接続を確かめる([qurge/board.md](../../qurge/board.md)の「Ethernetモジュールのシールド」を参照)．Qosmosがやり直すため，接続し直せば`reboot`しなくてもよい |
+| `Ethernet: reset: no response` | モジュールが応答しない．モジュールが接続されていない場合を含む | モジュールのシールドの接続を確かめる([board.md](../../board.md)の「Ethernetモジュールのシールド」を参照)．Qosmosがやり直すため，接続し直せば`reboot`しなくてもよい |
 | `Ethernet: reset: unexpected version` | 応答したモジュールがW5100Sではない | W5100Sを載せたモジュールを接続する |
 | `Ethernet: network settings: mismatch` | 書き込んだ設定を読み戻した値が異なる | Qosmosがやり直すのを待つ．直らなければ，シールドの配線を確かめる |
 

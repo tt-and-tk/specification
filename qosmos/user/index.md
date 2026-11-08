@@ -1,13 +1,14 @@
 ---
-description: Qosmosの利用者向けの文書の一覧と読む順番
+description: Qosmosの利用者向けの文書の一覧
 audience: Qosmosを使う人
 ---
 
 # Qosmosの利用者向けの文書
-このディレクトリの文書を，読む順に並べる．  
-
-1. [boot.md](boot.md): 起動時の表示と，失敗したときの対処  
-2. [console.md](console.md): 操作する端末のつなぎ方  
-3. [shell.md](shell.md): コマンドの入力の仕方  
-4. [command.md](command.md): 組み込みコマンドの一覧と使い方  
-5. [file.md](file.md): 扱えるファイルとディレクトリ  
+```
+user/
+├── boot.md     起動時の表示と，失敗したときの原因と対処
+├── console.md  UARTとtelnetの端末のつなぎ方と，1行の入力
+├── shell.md    コマンドの入力の解析・現在のディレクトリ・終了状態
+├── command.md  組み込みコマンドの使い方
+└── file.md     扱えるSDカードと，ファイル・ディレクトリの名前の規則と内容
+```

@@ -7,7 +7,7 @@ audience: Qosmosの仕組みを知りたい・変えたい人
 コンソールの2つの端末の使い方は，[qosmos/user/console.md](../user/console.md)を参照．  
 
 # UARTの送受信
-- UARTの送受信には，PSの回路を使う([qurge/cpu/register.md](../../qurge/cpu/register.md)の`6'h31`を参照)．通信速度などの設定は，起動時にFSBLが行う(PSとFSBLは[qurge/board.md](../../qurge/board.md)の「SRSTのボタン」を参照)  
+- UARTの送受信には，PSの回路を使う([qurge/cpu/register.md](../../qurge/cpu/register.md)の`6'h31`を参照)．通信速度などの設定は，起動時にFSBLが行う  
 - 受け取ったバイトは，2KBの受信バッファにためておく．シェルや実行ファイルが入力を待つときに読み出して処理する．このため，コマンドの実行中に入力された文字の表示は，読み出すときまで遅れる  
 - 流量制御を行わないため，ためた分が2KBを超えると，超えた分の文字は失われる  
 - 送るバイトは2KBの送信バッファへ入れ，入れた順にすぐ送る．送る速さは通信速度(1秒あたり約11.5KB)で決まる．このため，大量に出力すると，telnetで接続した端末への出力も，UARTで接続した端末への送信を待って遅れる  

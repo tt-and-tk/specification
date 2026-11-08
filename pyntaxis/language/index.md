@@ -1,12 +1,13 @@
 ---
-description: アセンブリ言語Pyntaxisの書き方の文書の一覧と読む順番
+description: Pyntaxisの書き方の文書の一覧
 audience: Pyntaxisでプログラムを書く人
 ---
 
 # Pyntaxisの書き方の文書
-このディレクトリの文書を，読む順に並べる．  
-
-1. [program.md](program.md): プログラム全体の形．最初に読む  
-2. [instruction.md](instruction.md): 各命令の書き方  
-3. [label.md](label.md): 関数の中で飛ぶ先の書き方  
-4. [target.md](target.md): ROMと実行ファイルで異なる点  
+```
+language/
+├── program.md      プログラム全体の形・行・関数・数値とレジスタの書き方．最初に読む
+├── instruction.md  各命令の書き方と引数の並び
+├── label.md        関数の中で飛ぶ先を表す局所ラベルの書き方
+└── target.md       ROMと実行ファイルの出力先で異なる点
+```

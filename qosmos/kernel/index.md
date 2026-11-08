@@ -1,16 +1,16 @@
 ---
-description: Qosmosの仕組みの文書の一覧と読む順番
+description: Qosmosの仕組みの文書の一覧
 audience: Qosmosの仕組みを知りたい・変えたい人
 ---
 
 # Qosmosの仕組みの文書
-このディレクトリの文書は，Qosmosを使う人向けの文書([qosmos/user/index.md](../user/index.md)を参照)と，実行ファイルを作る人向けの文書([qosmos/program/index.md](../program/index.md)を参照)を読んだ後に読む．  
-このディレクトリの文書を，読む順に並べる．  
-
-1. [boot.md](boot.md): 起動の手順  
-2. [memory.md](memory.md): メインメモリの割り振り  
-3. [console.md](console.md): コンソールの端末とのやり取り  
-4. [filesystem.md](filesystem.md): ファイルシステムのマウントと書き込み  
-5. [network.md](network.md): ネットワークの設定とTCP  
-6. [exec.md](exec.md): 実行ファイルを動かす仕組み  
-7. [syscall.md](syscall.md): システムコールの受け付け  
+```
+kernel/
+├── boot.md        起動の手順と，ストレージ・ネットワークの各段階
+├── memory.md      メインメモリの割り振りと，実行ファイルの領域
+├── console.md     UARTの送受信と，telnetの接続・送信・オプション交渉
+├── filesystem.md  FAT32ファイルシステムのマウントと書き込み
+├── network.md     ネットワークの設定・pingへの応答・TCPの扱い
+├── exec.md        実行ファイルを読み込んで動かし，終わらせる仕組み
+└── syscall.md     システムコールを受け付けて機能へ振り分ける仕組み
+```
