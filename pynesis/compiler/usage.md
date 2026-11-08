@@ -7,15 +7,15 @@ pn2mc.exe -pn program.pn -pt program.pt -sv program.sv    # ROMを出力する
 pn2mc.exe -pn hello.pn -pt hello.pt -bin HELLO            # 実行ファイルHELLOを出力する
 ```
 
-# 実行ファイルの構成
-| 実行ファイル | 変換する範囲 |
+# ツールの構成
+| ツール | 変換する範囲 |
 |:-|:-|
 | `pn2mc.exe` | Pynesisのソース(`.pn`) → SystemVerilogのROM(`.sv`)またはQosmosの実行ファイル．途中でアセンブリ(`.pt`)も出力する |
 | `pn2asm.exe` | Pynesisのソース(`.pn`) → アセンブリ(`.pt`) |
 | `asm2mc.exe`(アセンブラ．pyntaxisリポジトリで作る) | アセンブリ(`.pt`) → SystemVerilogのROM(`.sv`)またはQosmosの実行ファイル．起動引数は[pyntaxis/assembler/usage.md](../../pyntaxis/assembler/usage.md)の「起動引数」を参照 |
 
 - `pn2mc.exe`は，`pn2asm.exe`とアセンブラの本処理を，それぞれ`main`から分けた関数として直接リンクし，順に呼び出す．別のプロセスは起動しない  
-- `pn2asm.exe`・`asm2mc.exe`は，単体の実行ファイルとしても動く  
+- `pn2asm.exe`・`asm2mc.exe`は，単体のツールとしても動く  
 
 # pn2mc.exeの起動引数
 | フラグ | 内容 | 省略時 |

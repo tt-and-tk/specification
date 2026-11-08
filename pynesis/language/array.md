@@ -40,7 +40,7 @@ struct Entry {
 struct Entry entries[4];
 char buf[16];
 
-void main(void) {                  // fillは前の例の関数
+void main(void) {                  // fillは，この文書の冒頭の例で定義した関数
     fill(buf, 16);                 // bufの先頭要素の番地を渡す
     fill(entries[1].name, 8);      // 構造体の配列の要素のメンバの配列も渡せる
 }
