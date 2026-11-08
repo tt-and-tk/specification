@@ -24,16 +24,39 @@
 
 ## 各仕様
 
-1. [メモリ](memory.md) — メインメモリのインターフェース・アドレス空間・マスク・領域の配置等の仕様
-1. [レジスタ](register.md) — CPUレジスタ・I/Oマップされた周辺レジスタ・フラグの仕様
-1. [ROM](rom.md) — 命令を格納するROMの仕様
-1. [ISA](isa.md) — 機械語命令セットの仕様
-1. [動作状態](mode.md) — カーネルモードとユーザーモードの違いと，その切り替え
-1. [パイプライン](pipeline.md) — 命令を処理する段の構成と，2命令を同時に実行する条件(実行結果ではなくサイクル数に関わる仕様)
-1. [例外の検出](halt.md) — CPUが例外として検出する条件と，例外の種類と番号，停止・例外ハンドラへ飛ぶ処理への振り分け，停止後・リセット後の挙動
-1. [アセンブラ](assembler.md) — アセンブリ言語Pyntaxisの言語仕様とアセンブラツールの仕様
-1. [コンパイラ](compiler.md) — 独自言語Pynesisの言語仕様とコンパイラツールの仕様
-1. [OS](qosmos.md) — 自作OS Qosmosの機能
-1. [一般的なCPUとの差分・非対応事項](limitations.md) — 一般的なCPUとの差分・非対応事項一覧
-1. [回路](circuit.md) — ハードウェア実装(SystemVerilog)のファイル構成・階層構造・命名規則
-1. [実機の構成](board.md) — PYNQ-Z2を中心とする実機の物理的な構成と，そこから生じる操作上の制約
+仕様は，構成要素ごとのディレクトリに分けて置く．
+
+### Qurge(`qurge/`)
+
+- [qurge/cpu/isa.md](qurge/cpu/isa.md) — 機械語命令セットの仕様
+- [qurge/cpu/register.md](qurge/cpu/register.md) — CPUレジスタ・I/Oマップされた周辺レジスタ・フラグの仕様
+- [qurge/cpu/mode.md](qurge/cpu/mode.md) — カーネルモードとユーザーモードの違いと，その切り替え
+- [qurge/cpu/exception.md](qurge/cpu/exception.md) — CPUが例外として検出する条件と，例外の種類と番号，停止・例外ハンドラへ飛ぶ処理への振り分け，停止後・リセット後の挙動
+- [qurge/cpu/pipeline.md](qurge/cpu/pipeline.md) — 命令を処理する段の構成と，2命令を同時に実行する条件(実行結果ではなくサイクル数に関わる仕様)
+- [qurge/memory.md](qurge/memory.md) — メインメモリのインターフェース・アドレス空間・マスク・領域の配置等の仕様
+- [qurge/rom.md](qurge/rom.md) — 命令を格納するROMの仕様
+- [qurge/board.md](qurge/board.md) — PYNQ-Z2を中心とする実機の物理的な構成と，そこから生じる操作上の制約
+
+### Pyntaxis(`pyntaxis/`)
+
+- [pyntaxis/language.md](pyntaxis/language.md) — アセンブリ言語Pyntaxisの言語仕様
+- [pyntaxis/assembler.md](pyntaxis/assembler.md) — アセンブラの出力先と起動引数
+
+### Pynesis(`pynesis/`)
+
+- [pynesis/language.md](pynesis/language.md) — 独自言語Pynesisの言語仕様
+- [pynesis/compiler.md](pynesis/compiler.md) — コンパイラの出力先・メモリ配置・規約・起動引数
+
+### Qosmos(`qosmos/`)
+
+- [qosmos/boot.md](qosmos/boot.md) — 起動時の動作
+- [qosmos/user/console.md](qosmos/user/console.md) — コンソール(telnet・UARTで接続した端末)と1行の入力
+- [qosmos/user/command.md](qosmos/user/command.md) — 入力の解析・コマンド一覧・終了状態
+- [qosmos/program/executable.md](qosmos/program/executable.md) — 実行ファイルの探し方・形式・実行の仕方
+- [qosmos/program/syscall.md](qosmos/program/syscall.md) — システムコール
+- [qosmos/resource/filesystem.md](qosmos/resource/filesystem.md) — ファイルシステム
+- [qosmos/resource/network.md](qosmos/resource/network.md) — ネットワーク
+
+### その他
+
+- [limitations.md](limitations.md) — 一般的なCPUとの差分・非対応事項一覧
