@@ -28,12 +28,12 @@
 
 ### Qurge(`qurge/`)
 
-- [qurge/cpu/isa.md](qurge/cpu/isa.md) — 機械語命令セットの仕様
+- [qurge/cpu/isa.md](qurge/cpu/isa.md) — 機械語命令セットの仕様(命令の形式，各命令の動作，スタック)
 - [qurge/cpu/register.md](qurge/cpu/register.md) — CPUレジスタ・I/Oマップされた周辺レジスタ・フラグの仕様
-- [qurge/cpu/mode.md](qurge/cpu/mode.md) — カーネルモードとユーザーモードの違いと，その切り替え
+- [qurge/cpu/mode.md](qurge/cpu/mode.md) — カーネルモードとユーザーモードの違い(命令を取り出す場所，メモリを読み書きできる範囲，番地の変換)と，その切り替え
 - [qurge/cpu/exception.md](qurge/cpu/exception.md) — CPUが例外として検出する条件と，例外の種類と番号，停止・例外ハンドラへ飛ぶ処理への振り分け，停止後・リセット後の挙動
 - [qurge/cpu/pipeline.md](qurge/cpu/pipeline.md) — 命令を処理する段の構成と，2命令を同時に実行する条件(実行結果ではなくサイクル数に関わる仕様)
-- [qurge/memory.md](qurge/memory.md) — メインメモリのインターフェース・アドレス空間・マスク・領域の配置等の仕様
+- [qurge/memory.md](qurge/memory.md) — メインメモリ(記憶装置)のインターフェース・アドレス空間・マスクの仕様
 - [qurge/rom.md](qurge/rom.md) — 命令を格納するROMの仕様
 - [qurge/board.md](qurge/board.md) — PYNQ-Z2を中心とする実機の物理的な構成と，そこから生じる操作上の制約
 
