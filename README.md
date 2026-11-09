@@ -14,7 +14,7 @@
 | Pyntaxis(ピンタクシス) | 自作アセンブリ言語 | pynq + 「順序立てて並べる」を意味するギリシャ語(syntaxis) |
 | Qosmos(コスモス) | 自作OS．シェルやファイルシステムなど，ROM上で動くソフトウェアの一式 | pynq + 「秩序ある世界」を意味するギリシャ語(kosmos)．Demiurgeが混沌から秩序ある世界を形作ることにちなみ，Qurgeが動かす世界として同じくpynqのqを冠する |
 
-各名称に対応するリポジトリ:  
+各名称に対応するリポジトリは，次のとおりである．  
 
 - Pynthesis: 自作パソコンのプロジェクト全体を表す用語のため対応するリポジトリなし  
 - Pynesis: [pynesis](https://github.com/tt-and-tk/pynesis)  

@@ -1,5 +1,5 @@
 ---
-description: 演算子の種類・優先順位・評価の規則と，sizeof
+description: 演算子の種類と，sizeof
 audience: Pynesisでプログラムを書く人
 ---
 
@@ -15,10 +15,11 @@ audience: Pynesisでプログラムを書く人
 | メンバ | `.`，`->` |
 | その他 | `?:`(三項演算子)，`sizeof` |
 
-- 演算の結果の型と，符号によって結果が変わる演算は，[pynesis/language/type.md](type.md)の「型変換」を参照  
-- ポインタに使える演算子とその意味は，[pynesis/language/pointer.md](pointer.md)の「演算」を参照  
-- 1つの式の複雑さには上限があり，超えるとコンパイルエラーになる([pynesis/language/limit.md](limit.md)の「式の複雑さ」を参照)  
-- カンマ演算子には対応しない([pynesis/language/unsupported.md](unsupported.md)を参照)  
+演算の結果の型と，符号によって結果が変わる演算は，[pynesis/language/type.md](type.md)の「型変換」を参照．  
+ポインタに使える演算子とその意味は，[pynesis/language/pointer.md](pointer.md)の「演算」を参照．  
+
+1つの式の複雑さには上限があり，超えるとコンパイルエラーになる([pynesis/language/limit.md](limit.md)の「式の複雑さ」を参照)．  
+カンマ演算子には対応しない([pynesis/language/unsupported.md](unsupported.md)を参照)．  
 
 # sizeof
 ```c
@@ -34,7 +35,6 @@ int c = sizeof(char *);       // 4
 - `sizeof(変数名)`: スカラー変数・配列変数・構造体変数(構造体の配列を含む)  
 
 結果は常に`int`型の，コンパイル時に決まる定数である．  
-実行時の命令は生成しない．  
 
 ## 返す値
 | 対象 | 返す値 |
@@ -44,10 +44,12 @@ int c = sizeof(char *);       // 4
 | 構造体変数 | 実際に占める大きさ(構造体1個分のワード数×4．構造体の配列はさらに×要素数．[pynesis/language/struct.md](struct.md)の「メモリ上の大きさ」を参照)．`struct Tag { int x; char c; };`の変数は`5`ではなく`8` |
 | ポインタ | 指す先の型によらず`4` |
 
-- スカラー変数と配列は，ワード境界を考慮しない論理的な大きさを返す  
-- 引数で受け取ったポインタから，指す先の配列のサイズは求められない  
+スカラー変数と配列は，ワード境界を考慮しない論理的な大きさを返す．  
+引数で受け取ったポインタから，指す先の配列のサイズは求められない．  
 
 ## 対応しない形
+次の形には対応しない．  
+
 - `sizeof(1 + 2)`のような任意の式: 型名・変数名だけに対応する．将来対応する予定である  
 - `sizeof(構造体変数.member)`(構造体のメンバ単体の大きさ)  
 - `sizeof(struct Tag)`・`sizeof(struct Tag *)`(型名としての構造体名)  

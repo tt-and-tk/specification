@@ -20,7 +20,6 @@ CPUは動き続けており，CPUの停止([qurge/cpu/exception.md](../../qurge/
 
 ## 実行ファイル
 実行ファイルは，Qosmosの終了のシステムコールで終える([qosmos/program/syscall.md](../../qosmos/program/syscall.md)を参照)．  
-OSはこのシステムコールから実行ファイルへ戻らず，シェルへ戻る．  
 シェルは`main`を呼び出さずに実行し始めるため，`main`の`ret`では終えられない．  
 
 # 命令数の上限

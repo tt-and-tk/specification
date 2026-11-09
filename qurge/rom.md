@@ -9,12 +9,11 @@ ROMは，カーネルモードのCPUが実行する命令を格納し，受け�
 
 # 容量と命令数の上限
 ROMに置けるプログラムの命令数の上限は，16384命令に固定されている．  
-上限と容量は，次のように扱う．  
+ハードウェアは，32ビットのプログラムカウンタのうち，上限をちょうど表現できる下位14ビットをROMへ渡す．  
+上限を超えるPC(`0x4000`以上)は，折り返して有効な番地とみなさず，不正な番地として扱う(そのときの挙動は[qurge/cpu/exception.md](cpu/exception.md)を参照)．  
 
-- ROMへ渡すPC: ハードウェアは，32ビットのプログラムカウンタのうち，上限をちょうど表現できる下位14ビットをROMへ渡す  
-- 上限を超えるPC(`0x4000`以上): 折り返して有効な番地とみなさず，不正な番地として扱う(そのときの挙動は[qurge/cpu/exception.md](cpu/exception.md)を参照)  
-- アセンブラ・コンパイラの検査: 同じ値を安全上限として検査し，超過するとエラーにする([pyntaxis/language/target.md](../pyntaxis/language/target.md)の「命令数の上限」，[pynesis/language/limit.md](../pynesis/language/limit.md)の「命令数」を参照)  
-- ROMに実際に確保される容量: プログラムの命令数に応じて，アセンブラが自動算出する  
+ROMに実際に確保される容量は，プログラムの命令数に応じてアセンブラが自動算出する．  
+アセンブラとコンパイラは，同じ値を安全上限として検査し，超過するとエラーにする([pyntaxis/language/target.md](../pyntaxis/language/target.md)の「命令数の上限」，[pynesis/language/limit.md](../pynesis/language/limit.md)の「命令数」を参照)．  
 
 上限を増やす場合は，次のものを合わせて変更する．  
 

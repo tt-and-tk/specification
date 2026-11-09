@@ -38,7 +38,7 @@ void main(void) {                    // プログラムの開始点
 プログラムは，次のどちらかの形に変換する．  
 どちらにするかはコンパイラの起動引数で指定する([pynesis/compiler/usage.md](../compiler/usage.md)を参照)．  
 
-- ROM: CPUに組み込むROMとして置き，リセット後に`main`から実行する．Qosmos自身がこの形で動く  
+- ROM: CPUに組み込むROMとして置き，リセット後に`main`から実行する．カーネルモードで動く([qurge/cpu/mode.md](../../qurge/cpu/mode.md)を参照)．Qosmos自身がこの形で動く  
 - 実行ファイル: Qosmosの実行ファイルとしてSDカードに置き，シェルから実行する([qosmos/program/executable.md](../../qosmos/program/executable.md)を参照)．ユーザーモードで動く([qurge/cpu/mode.md](../../qurge/cpu/mode.md)を参照)  
 
 言語の仕様は出力先によらず同じであり，次の点だけが異なる．  

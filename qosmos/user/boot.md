@@ -28,9 +28,9 @@ Qosmosは，電源を入れたとき(SRSTのボタンを押したときを含む
 > 
 ```
 
-- `[ OK ]`の行は，その段階が成功したことを表す  
-- 最後にOS名Qosmosを大きな文字で出力し，プロンプト`> `を表示してコマンドを受け付け始める  
-- プロンプトを表示した後，telnetでの接続を受け付ける([qosmos/user/console.md](console.md)を参照)  
+`[ OK ]`の行は，その段階が成功したことを表す．  
+最後にOS名Qosmosを大きな文字で出力し，プロンプト`> `を表示してコマンドを受け付け始める．  
+プロンプトを表示した後は，telnetでの接続も受け付ける([qosmos/user/console.md](console.md)を参照)．  
 
 # 失敗した場合
 失敗した段階は，`[FAIL]`で始まる行に理由を添えて出力する．  
@@ -47,9 +47,11 @@ Storage is not available. Insert a card and run reboot.
 > 
 ```
 
-- 理由の後の`(0x??)`は，判定に使った機器の応答の値である  
-- ストレージの項目が失敗した場合は，OS名の後に`Storage is not available. Insert a card and run reboot.`を出力する．このとき，ファイルを扱うコマンドと実行ファイルは使えない  
-- ネットワークの項目が失敗した場合は，Qosmosがネットワークの設定を自動でやり直す．やり直しが成功すれば，telnetで接続できるようになる([qosmos/kernel/console.md](../kernel/console.md)の「接続の待ち受け」を参照)  
+理由の後の`(0x??)`は，判定に使った機器の応答の値である．  
+失敗した後の扱いは，項目ごとに次のとおりである．  
+
+- ストレージの項目: OS名の後に`Storage is not available. Insert a card and run reboot.`を出力する．このとき，ファイルを扱うコマンドと実行ファイルは使えない  
+- ネットワークの項目: Qosmosがネットワークの設定を自動でやり直す．やり直しが成功すれば，telnetで接続できるようになる([qosmos/kernel/console.md](../kernel/console.md)の「接続の待ち受け」を参照)  
 
 ## SDカードの失敗
 | 表示 | 原因 | 対処 |
@@ -81,6 +83,8 @@ Storage is not available. Insert a card and run reboot.
 LANのケーブルの接続やリンクの確立は確かめない．  
 
 # 起動の行が届く端末
+起動の行が届く端末は，起動したきっかけによって次のように異なる．  
+
 - 電源を入れたとき: telnetで接続した端末はまだ無いため，起動の行はUARTで接続した端末にだけ届く  
 - `reboot`したとき: SDカードとファイルシステムの行は，両方の端末に届く．Ethernetモジュールの行とその後のOS名は，UARTで接続した端末にだけ届く．Ethernetモジュールをリセットする前に，telnetでの接続を閉じるためである  
 

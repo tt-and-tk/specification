@@ -19,7 +19,7 @@ pn2mc.exe -pn hello.pn -pt hello.pt -bin HELLO          # 実行ファイルHELL
 | `pn2asm.exe` | Pynesisのソース(`.pn`) → アセンブリ(`.pt`) |
 | `pn2mc.exe` | Pynesisのソース(`.pn`) → SystemVerilogのROM(`.sv`)またはQosmosの実行ファイル．途中でアセンブリ(`.pt`)も出力する |
 
-`pn2mc.exe`は，`pn2asm.exe`の本処理と，アセンブラ`asm2mc.exe`([pyntaxis/assembler/usage.md](../../pyntaxis/assembler/usage.md)を参照)の本処理を，順に呼び出す．  
+`pn2mc.exe`は，`pn2asm.exe`が行うアセンブリへの変換と，アセンブラ`asm2mc.exe`([pyntaxis/assembler/usage.md](../../pyntaxis/assembler/usage.md)を参照)が行う変換を，1つのプログラムの中で順に行う．  
 
 # 共通事項
 ## 入力と出力
@@ -29,7 +29,7 @@ pn2mc.exe -pn hello.pn -pt hello.pt -bin HELLO          # 実行ファイルHELL
 エラーになった場合に残るファイルは，次のとおりである．  
 
 - 起動引数の誤りとコンパイルエラー: どのファイルも作らない  
-- `pn2mc.exe`で，アセンブラの本処理がエラーになった場合: 途中で出力したアセンブリだけが残り，ROMと実行ファイルは作らない  
+- `pn2mc.exe`で，アセンブリからの変換がエラーになった場合: 途中で出力したアセンブリだけが残り，ROMと実行ファイルは作らない  
 
 ## コンパイルエラー
 ソース上の位置を特定できるコンパイルエラーは，次の形で出力する．  
@@ -93,7 +93,7 @@ Pynesisのソースを，SystemVerilogのROMまたはQosmosの実行ファイル
 次の引数は誤りとして，変換を始める前に，どのファイルも作らずにエラーにする．  
 
 - `-sv`と`-bin`の両方: 出力先を1つに決められないため  
-- `-pn`などのフラグを付けない引数: `pn2asm.exe`は入力するPynesisのソース，`asm2mc.exe`は入力するアセンブリと解釈が異なり，どちらに合わせても紛らわしいため  
+- `-pn`などのフラグを付けない引数: 単体の`pn2asm.exe`と`asm2mc.exe`とで，入力するファイルとしての解釈が異なるため  
 - `-pn`・`-pt`・`-sv`・`-bin`以外のフラグと，値の無いフラグ: 打ち間違いに気づけるようにするため  
 
 ## 同じ引数を複数回指定した場合
