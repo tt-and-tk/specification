@@ -28,6 +28,7 @@
 各ディレクトリの`index.md`に，そのディレクトリのファイルとディレクトリの一覧を置く．  
 各文書の先頭のフロントマターには，その文書に書いてあること(`description`)を書く．  
 読者を限る文書には，想定する読者(`audience`)も書く．  
+番地の上下は，番地の大きい側を上，小さい側を下と呼ぶ([qurge/memory.md](qurge/memory.md)の「容量と番地」を参照)．  
 
 ```
 specification/
@@ -36,13 +37,13 @@ specification/
 ├── qurge/             ハードウェアQurgeの仕様．メインメモリとROM
 │   └── cpu/           CPUの命令・レジスタ・スタック・動作状態・例外・パイプライン
 ├── pyntaxis/          アセンブリ言語Pyntaxis
-│   ├── language/      言語の書き方
+│   ├── language/      言語自体の仕様
 │   └── assembler/     アセンブラの使い方と，命令を機械語へ変換する方法
 ├── pynesis/           プログラミング言語Pynesis
-│   ├── language/      言語仕様
+│   ├── language/      言語自体の仕様
 │   └── compiler/      コンパイラの使い方と，コンパイラが生成する命令
 └── qosmos/            OS Qosmos
-    ├── user/          起動時の表示・コンソール・シェル・組み込みコマンド・ファイル
-    ├── program/       実行ファイルの作り方と，システムコールの使い方
-    └── kernel/        Qosmosの各機能を実現する仕組み
+    ├── user/          利用者から見たQosmosの動作．起動時の表示・コンソール・シェル・組み込みコマンド・ファイル
+    ├── program/       実行ファイルから見たQosmos．実行ファイルの作り方と，システムコールの使い方
+    └── kernel/        Qosmosの内部で，各機能を実現する仕組み
 ```
