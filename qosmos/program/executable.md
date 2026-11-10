@@ -76,7 +76,7 @@ Pynesisでは，`main`の`argc`・`argv`で受け取る([pynesis/language/functi
 渡した値が，シェルの終了状態になる([qosmos/user/shell.md](../user/shell.md)の「終了状態」を参照)．  
 
 Pynesisでは，`main`の戻り値が終了状態になる．  
-`main`が`return`文を通らずに終わりへ進んだ場合，終了状態は不定になる．  
+`main`が`return`文を通らずに本体を閉じる`}`まで進んだ場合，終了状態は不定になる．  
 
 # 使えるメモリ
 実行ファイルは，シェルが割り振る32768バイトの領域の中で動く．  
