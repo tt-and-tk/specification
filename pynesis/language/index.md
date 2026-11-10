@@ -16,7 +16,7 @@ language/
 ├── operator.md     演算子とsizeof
 ├── control.md      制御構文
 ├── function.md     関数とmain
-├── include.md      ソースファイルの取り込み
+├── preprocessor.md #include・#pragma onceなどの指令
 ├── builtin.md      組み込み関数
 ├── hardware.md     ハードウェア変数
 ├── limit.md        量的制限

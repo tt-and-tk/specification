@@ -4,6 +4,8 @@ audience: Pynesisでプログラムを書く人
 ---
 
 # 制御構文
+制御構文の書き方と動作は，C言語と同じである．  
+
 ```c
 int classify(int n) {
     if (n < 0) {
@@ -25,6 +27,8 @@ int classify(int n) {
     return count;
 }
 ```
+
+対応する構文は，次のとおりである．  
 
 | 構文 | 備考 |
 |:-|:-|

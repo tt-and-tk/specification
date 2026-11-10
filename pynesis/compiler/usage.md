@@ -23,7 +23,7 @@ pn2mc.exe -pn hello.pn -pt hello.pt -bin HELLO          # 実行ファイルHELL
 
 # 共通事項
 ## 入力と出力
-- 入力: ソースファイル(`.pn`)．`#include`で取り込んだファイル([pynesis/language/include.md](../language/include.md)を参照)と合わせて，1つのプログラムとしてコンパイルする  
+- 入力: ソースファイル(`.pn`)．`#include`で取り込んだファイル([pynesis/language/preprocessor.md](../language/preprocessor.md)の「#include」を参照)と合わせて，1つのプログラムとしてコンパイルする  
 - 出力: 起動引数で指定したファイル  
 
 エラーになった場合に残るファイルは，次のとおりである．  

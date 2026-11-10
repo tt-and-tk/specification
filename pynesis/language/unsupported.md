@@ -8,7 +8,7 @@ audience: Pynesisでプログラムを書く人
 
 | 機能 | 備考 |
 |:-|:-|
-| `#define`・`#ifdef`などのプリプロセッサ指令 | [pynesis/language/include.md](include.md)に書いた指令以外には対応しない．定数の定義にはconst変数を使う([pynesis/language/variable.md](variable.md)の「const変数」を参照) |
+| `#include`・`#pragma once`以外の指令(`#define`・`#ifdef`など) | [pynesis/language/preprocessor.md](preprocessor.md)の「対応しない指令」を参照 |
 | `sizeof(計算式)` | `sizeof(1 + 2)`のような任意の式には対応せず，型名・変数名だけに対応する．将来対応する予定である([pynesis/language/operator.md](operator.md)の「sizeof」を参照) |
 | `void *`・配列へのポインタ(`int (*p)[4]`)・関数ポインタの配列・関数ポインタへのポインタ・関数ポインタを返す関数・`const`とポインタの組み合わせ | ポインタ([pynesis/language/pointer.md](pointer.md)を参照)のうち，これらの型は宣言できない |
 | `long` | 将来対応する予定である |
@@ -24,5 +24,6 @@ audience: Pynesisでプログラムを書く人
 | 動的なメモリ管理(`malloc`など) | |
 | 標準ライブラリ全般(`printf`，`scanf`など) | 代わりに組み込み関数を提供する([pynesis/language/builtin.md](builtin.md)を参照) |
 | 配列の添字の範囲外の検査 | コンパイル時・実行時とも検査しない．C言語と同じく，未定義動作として扱う |
+| 多次元配列(`int a[2][3]`) | 宣言できるのは1次元の配列だけである([pynesis/language/array.md](array.md)を参照) |
 | 配列の初期化子(初期値リスト) | 文字列リテラルによる`char`の配列の初期化だけに対応する([pynesis/language/array.md](array.md)を参照) |
 | 入れ子の構造体・構造体のメンバの初期化子 | 将来対応する予定もない([pynesis/language/struct.md](struct.md)の「対応しない書き方」を参照) |
