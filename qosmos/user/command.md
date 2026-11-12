@@ -55,7 +55,8 @@ help
 status
 ```
 
-直前のコマンドの終了状態を，10進数で出力する([qosmos/user/shell.md](shell.md)の「終了状態」を参照)．  
+直前のコマンドの終了状態を出力する．  
+終了状態が整数なら10進数を，実行ファイルが例外で終わったことを表すなら`exception <例外の番号>`を出力する([qosmos/user/shell.md](shell.md)の「終了状態」を参照)．  
 `status`自身は終了状態を変えない．  
 
 # ls

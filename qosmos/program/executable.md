@@ -108,8 +108,38 @@ Pynesisで書く場合の量的制限は，[pynesis/language/limit.md](../../pyn
 読み込みの途中で読み出しに失敗した場合も，実行しない．  
 
 # 例外を起こした場合
-実行ファイルが例外([qurge/cpu/exception.md](../../qurge/cpu/exception.md)を参照)を起こすと，Qosmosの例外ハンドラがCPUを停止させる([qosmos/kernel/exec.md](../kernel/exec.md)の「例外を起こした場合」を参照)．  
-シェルには戻れないため，SRSTのボタンで起動し直す([board.md](../../board.md)の「SRSTのボタン」を参照)．  
+実行ファイルが例外([qurge/cpu/exception.md](../../qurge/cpu/exception.md)を参照)を起こすと，シェルはその実行ファイルを終わらせ，プロンプトを表示して次の入力を待つ(仕組みは[qosmos/kernel/exec.md](../kernel/exec.md)の「例外を起こした場合」を参照)．  
+実行ファイルが例外を起こすまでに行ったファイルの書き込みやコンソールへの出力は，そのまま残る．  
+
+終わらせる際に，次の形のエラーメッセージを1行出力する．  
+
+```
+<コマンド名>: <原因のメッセージ> (pc 0x<PC>)
+```
+
+PCは，例外を起こした命令のPC(領域の先頭の命令を0として数える．[qurge/cpu/mode.md](../../qurge/cpu/mode.md)の「番地の変換」を参照)を，16進数8桁で表したものである．  
+命令を取り出す番地が範囲外の場合は，取り出そうとした命令のPCになる．  
+原因のメッセージは，例外の番号([qurge/cpu/exception.md](../../qurge/cpu/exception.md)の「例外の種類」を参照)ごとに次のとおりである．  
+
+| 番号 | メッセージ |
+|:-|:-|
+| 1 | `instruction fetch out of range` |
+| 2 | `invalid instruction` |
+| 3 | `privileged operation` |
+| 4 | `division by zero` |
+| 5 | `memory access out of range` |
+
+例外で終わったことは，`status`で確かめられる([qosmos/user/shell.md](../user/shell.md)の「終了状態」を参照)．  
+
+```
+> crash
+crash: memory access out of range (pc 0x0000002a)
+> status
+exception 5
+```
+
+エラーメッセージは，実行ファイルが最後に出力した内容の直後に続く．  
+実行ファイルが改行で終わらない出力をしていた場合は，同じ行に続けて出力される．  
 
 # 形式
 実行ファイルは，ヘッダを持たず，命令を先頭から8バイトずつ並べたものである．  
