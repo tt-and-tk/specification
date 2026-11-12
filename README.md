@@ -1,10 +1,10 @@
 # Pynthesis 仕様書
 
-自作パソコンのプロジェクトPynthesisの仕様をまとめたものであり，各リポジトリの実装が参照する唯一の一次情報源である．
+自作パソコンのプロジェクトPynthesisの仕様をまとめたものであり，各リポジトリの実装が参照する唯一の一次情報源である．  
 
 ## 名称について
 
-このプロジェクト全体および構成要素には，PYNQ-Z2ボードを使うことにちなみ「pynq」を共通の要素として組み込んだ，ギリシャ語由来の造語を付けている．
+このプロジェクト全体および構成要素には，PYNQ-Z2ボードを使うことにちなみ「pynq」を共通の要素として組み込んだ，ギリシャ語由来の造語を付けている．  
 
 | 名称 | 対象 | 由来 |
 |:-|:-|:-|
@@ -14,26 +14,36 @@
 | Pyntaxis(ピンタクシス) | 自作アセンブリ言語 | pynq + 「順序立てて並べる」を意味するギリシャ語(syntaxis) |
 | Qosmos(コスモス) | 自作OS．シェルやファイルシステムなど，ROM上で動くソフトウェアの一式 | pynq + 「秩序ある世界」を意味するギリシャ語(kosmos)．Demiurgeが混沌から秩序ある世界を形作ることにちなみ，Qurgeが動かす世界として同じくpynqのqを冠する |
 
-各名称に対応するリポジトリ:
+各名称に対応するリポジトリは，次のとおりである．  
 
-- Pynthesis: 自作パソコンのプロジェクト全体を表す用語のため対応するリポジトリなし
-- Pynesis: [pynesis](https://github.com/tt-and-tk/pynesis)
-- Pyntaxis: [pyntaxis](https://github.com/tt-and-tk/pyntaxis)
-- Qurge: [qurge](https://github.com/tt-and-tk/qurge)
-- Qosmos: 専用のリポジトリはなく，[qurge](https://github.com/tt-and-tk/qurge)の`mypc.srcs/pn/`に置く
+- Pynthesis: 自作パソコンのプロジェクト全体を表す用語のため対応するリポジトリなし  
+- Pynesis: [pynesis](https://github.com/tt-and-tk/pynesis)  
+- Pyntaxis: [pyntaxis](https://github.com/tt-and-tk/pyntaxis)  
+- Qurge: [qurge](https://github.com/tt-and-tk/qurge)  
+- Qosmos: 専用のリポジトリはなく，[qurge](https://github.com/tt-and-tk/qurge)の`mypc.srcs/pn/`に置く  
 
 ## 各仕様
 
-1. [メモリ](memory.md) — メインメモリのインターフェース・アドレス空間・マスク・領域の配置等の仕様
-1. [レジスタ](register.md) — CPUレジスタ・I/Oマップされた周辺レジスタ・フラグの仕様
-1. [ROM](rom.md) — 命令を格納するROMの仕様
-1. [ISA](isa.md) — 機械語命令セットの仕様
-1. [動作状態](mode.md) — カーネルモードとユーザーモードの違いと，その切り替え
-1. [パイプライン](pipeline.md) — 命令を処理する段の構成と，2命令を同時に実行する条件(実行結果ではなくサイクル数に関わる仕様)
-1. [例外の検出](halt.md) — CPUが例外として検出する条件と，例外の種類と番号，停止・例外ハンドラへ飛ぶ処理への振り分け，停止後・リセット後の挙動
-1. [アセンブラ](assembler.md) — アセンブリ言語Pyntaxisの言語仕様とアセンブラツールの仕様
-1. [コンパイラ](compiler.md) — 独自言語Pynesisの言語仕様とコンパイラツールの仕様
-1. [OS](qosmos.md) — 自作OS Qosmosの機能
-1. [一般的なCPUとの差分・非対応事項](limitations.md) — 一般的なCPUとの差分・非対応事項一覧
-1. [回路](circuit.md) — ハードウェア実装(SystemVerilog)のファイル構成・階層構造・命名規則
-1. [実機の構成](board.md) — PYNQ-Z2を中心とする実機の物理的な構成と，そこから生じる操作上の制約
+仕様は，構成要素ごとのディレクトリに分けて置く．  
+各ディレクトリの`index.md`に，そのディレクトリのファイルとディレクトリの一覧を置く．  
+各文書の先頭のフロントマターには，その文書に書いてあること(`description`)を書く．  
+読者を限る文書には，想定する読者(`audience`)も書く．  
+番地の上下は，番地の大きい側を上，小さい側を下と呼ぶ([qurge/memory.md](qurge/memory.md)の「容量と番地」を参照)．  
+
+```
+specification/
+├── operation.md       実機の準備・接続・起動のやり直し・実行ファイルを置く方法の手順
+├── board.md           ボードとシールドの物理的な構成と，ピンの割り当て
+├── qurge/             ハードウェアQurgeの仕様．メインメモリとROM
+│   └── cpu/           CPUの命令・レジスタ・スタック・動作状態・例外・パイプライン
+├── pyntaxis/          アセンブリ言語Pyntaxis
+│   ├── language/      言語自体の仕様
+│   └── assembler/     アセンブラの使い方と，命令を機械語へ変換する方法
+├── pynesis/           プログラミング言語Pynesis
+│   ├── language/      言語自体の仕様
+│   └── compiler/      コンパイラの使い方と，コンパイラが生成する命令
+└── qosmos/            OS Qosmos
+    ├── user/          利用者から見たQosmosの動作．起動時の表示・コンソール・シェル・組み込みコマンド・ファイル
+    ├── program/       実行ファイルから見たQosmos．実行ファイルの作り方と，システムコールの使い方
+    └── kernel/        Qosmosの内部で，各機能を実現する仕組み
+```
