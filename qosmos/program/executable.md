@@ -108,7 +108,7 @@ Pynesisで書く場合の量的制限は，[pynesis/language/limit.md](../../pyn
 読み込みの途中で読み出しに失敗した場合も，実行しない．  
 
 # 例外を起こした場合
-実行ファイルは，CPUが実行できない命令や不正な操作(0で割る，領域の外を読み書きする，など)を行うと，例外を起こす．  
+実行ファイルは，CPUが実行できない命令や不正な操作(0で割るなど)を行うと，例外を起こす．  
 例外の種類と番号は，[qurge/cpu/exception.md](../../qurge/cpu/exception.md)の「例外の種類」を参照．  
 
 実行ファイルが例外を起こすと，シェルはその実行ファイルを終わらせる．  
@@ -142,11 +142,11 @@ exception 5
 
 | 番号 | 例外 | メッセージ |
 |:-|:-|:-|
-| 1 | 命令を取り出す番地が範囲外である | `instruction fetch out of range` |
-| 2 | 不正な命令である | `invalid instruction` |
-| 3 | カーネルモードでだけ許される操作を行おうとした | `privileged operation` |
-| 4 | 割り算の除数が0である | `division by zero` |
-| 5 | メモリを読み書きする番地が範囲外である | `memory access out of range` |
+| 1 | 範囲外の番地からの命令の取り出し | `instruction fetch out of range` |
+| 2 | 不正な命令 | `invalid instruction` |
+| 3 | カーネルモードでだけ許される操作 | `privileged operation` |
+| 4 | 除数が0の割り算 | `division by zero` |
+| 5 | 範囲外の番地の読み書き | `memory access out of range` |
 
 PCは，例外を起こした命令のPCを，16進数8桁で表したものである．  
 PCは，実行ファイルの先頭の命令を0として数える([qurge/cpu/mode.md](../../qurge/cpu/mode.md)の「番地の変換」を参照)．  
