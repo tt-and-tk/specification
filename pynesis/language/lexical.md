@@ -14,10 +14,7 @@ char msg[] = "hello";      // 文字列リテラル
 
 # 識別子
 変数名・関数名などの識別子は，アルファベットまたは`_`で始まり，以降はアルファベット・数字・`_`だけで構成する．  
-数値やレジスタとして読める綴り(`fh`・`r5`など)を関数名に使えるかどうかは，`static`の有無によって次のとおり決まる．  
-
-- `static`を付けていない関数: 使えない．アセンブラが受け付けないため([pyntaxis/language/program.md](../../pyntaxis/language/program.md)の「関数名にできない綴り」を参照)  
-- `static`を付けた関数: 使える．コンパイラが関数名の後ろに番号を付けて出力するため([pynesis/compiler/call.md](../compiler/call.md)の「関数ラベル」を参照)  
+ただし，数値やレジスタとして読める綴り(`fh`・`r5`など)の関数名は，アセンブラが受け付けない([pyntaxis/language/program.md](../../pyntaxis/language/program.md)の「関数名にできない綴り」を参照)．  
 
 # 数値
 ## 整数リテラル
