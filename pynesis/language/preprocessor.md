@@ -51,9 +51,10 @@ void put_line(char *s) {
 パスは，`#include`を書いたファイルがあるディレクトリからの相対パス，または絶対パスで書く．  
 取り込むファイルの拡張子は`.pn`に限る．  
 
-取り込んだファイルの宣言は，取り込み元の宣言と区別なく，プログラム全体から参照できる([pynesis/language/variable.md](variable.md)の「グローバルスコープ」を参照)．  
-ただし，`static`を付けた宣言は，宣言したファイルの中からだけ参照できる．  
-取り込み元からも参照できない([pynesis/language/variable.md](variable.md)の「static」を参照)．  
+取り込んだファイルの宣言を参照できる範囲は，`static`の有無によって次のとおり決まる([pynesis/language/variable.md](variable.md)の「グローバルスコープ」を参照)．  
+
+- `static`を付けていない宣言: 取り込み元の宣言と区別なく，プログラム全体から参照できる  
+- `static`を付けた宣言: 宣言したファイルの中からだけ参照でき，取り込み元からは参照できない([pynesis/language/variable.md](variable.md)の「static」を参照)  
 
 ## ファイルの終わり
 どのファイルも，宣言の途中で終わるとコンパイルエラーになる．  
