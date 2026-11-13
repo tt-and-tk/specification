@@ -52,6 +52,8 @@ void put_line(char *s) {
 取り込むファイルの拡張子は`.pn`に限る．  
 
 取り込んだファイルの宣言は，取り込み元の宣言と区別なく，プログラム全体から参照できる([pynesis/language/variable.md](variable.md)の「グローバルスコープ」を参照)．  
+ただし，`static`を付けた宣言は，宣言したファイルの中からだけ参照できる．  
+取り込み元からも参照できない([pynesis/language/variable.md](variable.md)の「static」を参照)．  
 
 ## ファイルの終わり
 どのファイルも，宣言の途中で終わるとコンパイルエラーになる．  
