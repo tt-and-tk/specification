@@ -1,5 +1,5 @@
 ---
-description: アセンブラのテストの方針・入力と期待値の置き場所・実行の仕方
+description: アセンブラのテストの方針・期待値の書き方・実行の仕方
 audience: アセンブラのソースを変更する人
 ---
 
@@ -27,4 +27,4 @@ audience: アセンブラのソースを変更する人
     - 起動引数の誤りが，エラーになる  
 
 これらのスクリプトは，コンパイラの`pn2mc.exe`をビルドしない．  
-`pn2mc.exe`が取り込む`asm2mc.cpp`の本処理([pyntaxis/develop/source.md](source.md)を参照)を変えたときは，コンパイラ側でビルドできることも確かめる([pynesis/develop/test.md](../../pynesis/develop/test.md)を参照)．  
+アセンブラのソースを変えたときは，コンパイラ側で`pn2mc.exe`をビルドできることも確かめる([pynesis/develop/test.md](../../pynesis/develop/test.md)を参照)．  
