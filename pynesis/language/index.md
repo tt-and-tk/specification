@@ -18,6 +18,7 @@ language/
 ├── function.md     関数・main関数・static関数
 ├── preprocessor.md #include・#pragma onceなどの指令
 ├── builtin.md      組み込み関数
+├── asm.md          アセンブリの命令を直接書くasm文
 ├── hardware.md     ハードウェア変数
 ├── limit.md        量的制限
 └── unsupported.md  未対応機能
