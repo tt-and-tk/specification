@@ -8,6 +8,12 @@ audience: コンパイラのソースを変更する人
 `pn2mc.exe`は，ビルドできることだけを確かめ，自動テストの対象にしない．  
 アセンブリから先の変換は，アセンブラのテスト([pyntaxis/develop/test.md](../../pyntaxis/develop/test.md)を参照)で確かめるためである．  
 
+テストのスクリプトは`pn2mc.exe`をビルドしない．  
+次のどちらかを変えたときは，[pynesis/develop/source.md](source.md)の「pn2mc.exe」のコマンドを実行し，ビルドできることを確かめる．  
+
+- `pn2mc.cpp`  
+- `pn2mc.exe`が呼び出す本処理の関数(`compile_pn_to_asm`・アセンブラの`assemble_asm_to_mc`)と，`main`を無効にするマクロの周り  
+
 # 期待値
 - 正常系: 期待値のアセンブリを手で用意する．コンパイラの出力に合わせてLFとし，改行コードも含めて比較する  
 - 異常系: 期待するエラーメッセージを，ソースの1行目に`// expect: <メッセージ>`の形で書く  

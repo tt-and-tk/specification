@@ -25,3 +25,6 @@ audience: アセンブラのソースを変更する人
     - `test/asm_bin/`の全`.pt`を`test/bin/`へ出力し，期待値と一致する  
     - `test/asm_bin_err/`の全`.pt`が，期待どおりのエラーになる  
     - 起動引数の誤りが，エラーになる  
+
+これらのスクリプトは，コンパイラの`pn2mc.exe`をビルドしない．  
+`pn2mc.exe`が取り込む本処理を変えたときは，コンパイラ側でビルドできることも確かめる([pynesis/develop/test.md](../../pynesis/develop/test.md)を参照)．  

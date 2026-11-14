@@ -25,3 +25,7 @@ BOOT.BINを置いたカードで一度起動した後に，VivadoのHardware Man
 
 先にBOOT.BINで起動しておくのは，JTAGではPSを初期化しないためである．  
 CPUのクロックとリセットは，FSBLがPSを初期化して初めて供給される．  
+
+JTAGで書き込んだ回路は，SRSTのボタンを押すか電源を入れ直すと，BOOT.BINの回路に戻る．  
+どちらもFSBLがBOOT.BINからPLを書き込み直すためである([qurge/boot.md](../boot.md)の「SRSTによる起動のやり直し」を参照)．  
+JTAGで書き込んだ回路を確かめる間に起動し直す場合は，`reboot`コマンドを使う．  
