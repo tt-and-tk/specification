@@ -15,7 +15,7 @@ language/
 ├── pointer.md      ポインタと関数ポインタ
 ├── operator.md     演算子とsizeof
 ├── control.md      制御構文
-├── function.md     関数とmain
+├── function.md     関数・main関数・static関数
 ├── preprocessor.md #include・#pragma onceなどの指令
 ├── builtin.md      組み込み関数
 ├── hardware.md     ハードウェア変数
