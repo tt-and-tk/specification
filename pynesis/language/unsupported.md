@@ -22,7 +22,7 @@ audience: Pynesisでプログラムを書く人
 | `goto`・ラベル文 | |
 | カンマ演算子 | 対応する予定はない．カンマは，関数の引数の宣言と，関数呼び出しで渡す引数(組み込み関数を含む)の区切りとしてだけ使う |
 | 動的なメモリ管理(`malloc`など) | |
-| GCCのasmのうち，出力・破壊するもの・`volatile`・関数の外のasmなど | asm文で対応する範囲と理由は，[pynesis/language/asm.md](asm.md)の「GCCのasmと異なる点」を参照 |
+| GCCのasmのうち，asm文で対応しない書き方 | 対応しない書き方と理由は，[pynesis/language/asm.md](asm.md)の「GCCのasmと異なる点」を参照 |
 | 標準ライブラリ全般(`printf`，`scanf`など) | 代わりに組み込み関数を提供する([pynesis/language/builtin.md](builtin.md)を参照) |
 | 配列の添字の範囲外の検査 | コンパイル時・実行時とも検査しない．C言語と同じく，未定義動作として扱う |
 | 多次元配列(`int a[2][3]`) | 宣言できるのは1次元の配列だけである([pynesis/language/array.md](array.md)を参照) |
