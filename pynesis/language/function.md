@@ -79,6 +79,8 @@ int fact(int n) {             // 再帰呼び出しもできる
 
 関数ポインタを通して呼び出すこともできる([pynesis/language/pointer.md](pointer.md)の「関数ポインタ」を参照)．  
 
+関数の定義の先頭に`static`を付けると，その関数は，定義したファイルの中からだけ呼び出せる([pynesis/language/variable.md](variable.md)の「static」を参照)．  
+
 # 関数に関する制限
 次の機能には対応しない．  
 
@@ -88,6 +90,7 @@ int fact(int n) {             // 再帰呼び出しもできる
 # main関数
 `main`は，プログラムの開始点となる関数である．  
 定義は必須であり，定義がない場合はコンパイルエラーになる．  
+`static`は付けられない([pynesis/language/variable.md](variable.md)の「static」を参照)．  
 
 定義できる形は，出力先([pynesis/language/overview.md](overview.md)の「出力先」を参照)によって次のとおり決まる．  
 これ以外の定義(ROMでの`int main(void)`，実行ファイルでの`void main(void)`・`int main(unsigned int argc, char **argv)`など)は，コンパイルエラーになる．  
