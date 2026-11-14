@@ -1,0 +1,47 @@
+---
+description: 電源を入れてからCPUが動き出すまでの流れと，動き出した後もPSが受け持つ役割
+---
+
+# 起動の仕組み
+PYNQ-Z2のZynqは，ARMのCPUを持つPS(Processing System)と，回路を書き込めるPL(Programmable Logic)から成る．  
+QurgeのCPUはPLに書き込んだ回路であり，PSはQurgeを起動するために使う．  
+
+# 電源を入れたときの流れ
+電源を入れると，ボードのSDカードスロットに挿したカードのBOOT.BINから起動する．  
+BOOT.BINには，次の2つだけを入れる．  
+
+- FSBL(First Stage Boot Loader): PSが最初に実行するプログラム  
+- ビットストリーム: PLに書き込む回路の情報  
+
+1. PSが，BOOT.BINのFSBLを実行する  
+2. FSBLが，PSを初期化する．通信速度などのUART0の設定も，このときに行う  
+3. FSBLが，BOOT.BINのビットストリームをPLへ書き込む  
+4. CPUがクロックとリセットを受け取り，ROMの先頭から実行を始める  
+
+PLへ書き込んだ後にプログラムを実行するのは，PL上のCPUだけである．  
+PSのCPUは何も実行しない．  
+
+# 動き出した後もPSが受け持つ役割
+PLへ書き込んだ後もPSが受け持つのは，次の2つである．  
+
+- CPUへのクロックとリセットの供給: PSを初期化して初めて供給される  
+- UART0: USBのシリアル通信を行うPSの回路  
+
+## UARTの橋渡し回路
+ボードの電源用のUSBは，PSのUART0にだけつながっている．  
+このため，PL上のUARTの橋渡し回路が，PSのS_AXI_GP0ポートを通してUART0のレジスタを読み書きする．  
+S_AXI_GP0ポートは，PLの回路がPS内の周辺回路のレジスタを読み書きするための入口である．  
+CPUは，橋渡し回路をレジスタ`6'h31`で操作する([qurge/cpu/register.md](cpu/register.md)を参照)．  
+
+# SRSTによる起動のやり直し
+ボードのSRSTのボタン([board.md](../board.md)の「SRSTのボタン」を参照)は，PSをリセットするボタンであり，CPUのリセットとは別のものである．  
+CPUのリセットは，CPUをプログラムの先頭から実行し直させる信号であり，PSから入る．  
+[qurge/memory.md](memory.md)と[qurge/cpu/exception.md](cpu/exception.md)のリセットは，CPUのリセットを指す．  
+
+SRSTを押すと，PSが起動からやり直し，「電源を入れたときの流れ」と同じ手順でPLを書き込み直す．  
+書き込み直す間は，PLの書き込みの完了を示すDONEのLEDが消える．  
+
+SRSTを押すと，CPUのリセットとは異なり，次のものも起動時の状態に戻る．  
+
+- TCPの接続: 切れる  
+- メモリの内容: PLを書き込み直すため，ビットストリームが持つ初期値に戻る．CPUのリセットだけではメモリの内容は残る  

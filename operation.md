@@ -11,7 +11,7 @@ SDカードは2枚使う．PYNQのLinuxのイメージが入ったカードは�
 
 | 挿す場所 | 置くもの | 用意の仕方 |
 |:-|:-|:-|
-| ボードのSDカードスロット | BOOT.BIN | FAT32でフォーマットし，第1パーティションのルートにBOOT.BINを置く．BOOT.BINは，Qurgeの回路をボードへ書き込む起動用のファイルである |
+| ボードのSDカードスロット | BOOT.BIN | FAT32でフォーマットし，第1パーティションのルートにBOOT.BINを置く．BOOT.BINは，Qurgeの回路をボードへ書き込む起動用のファイルである([qurge/boot.md](qurge/boot.md)を参照)．作り方は[qurge/develop/bitstream.md](qurge/develop/bitstream.md)の「BOOT.BINの作成」を参照 |
 | SDカードのシールドのスロット([board.md](board.md)の「SDカードのシールド」を参照) | Qosmosのファイルシステム | パソコンでFAT32にフォーマットする(扱えるカードは[qosmos/user/file.md](qosmos/user/file.md)の「扱えるカード」を参照) |
 
 ## ジャンパ

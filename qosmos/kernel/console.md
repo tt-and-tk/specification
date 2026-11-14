@@ -8,7 +8,7 @@ audience: Qosmosの仕組みを知りたい・変えたい人
 
 # UARTの送受信
 UARTの送受信には，PSの回路を使う([qurge/cpu/register.md](../../qurge/cpu/register.md)の`6'h31`を参照)．  
-通信速度などの設定は，起動時にFSBLが行う．  
+通信速度などの設定は，起動時にFSBLが行う([qurge/boot.md](../../qurge/boot.md)の「電源を入れたときの流れ」を参照)．  
 
 ## UARTの受信
 受け取ったバイトは，2KBの受信バッファにためておく．  
