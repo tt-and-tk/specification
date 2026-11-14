@@ -18,10 +18,12 @@ Qosmosの変更は，`rom_sv.sv`ではなく`.pn`に対して行う．
 ただし，`.pn`から生成し直すと上書きされるため，コミットしない．  
 
 Vivadoはこの変換を行わず，生成済みの`rom_sv.sv`を，他のHDLのソースと同じく読み込むだけである．  
-このため，次の場合は，合成の前にリポジトリ直下で次のコマンドを実行し，`rom_sv.sv`を生成し直す．  
+このため，`rom_sv.sv`を生成し直してから合成する必要があるのは，次のときである．  
 
 - `mypc.srcs/pn/`の下を変更したとき  
 - コンパイラ・アセンブラを更新して，生成結果が変わりうるとき  
+
+`rom_sv.sv`は，リポジトリ直下で次のコマンドを実行して生成する．  
 
 ```
 pn2mc.exe -pn mypc.srcs/pn/qosmos.pn -pt mypc.srcs/pn/qosmos.pt -sv mypc.srcs/sources_1/new/rom_sv.sv

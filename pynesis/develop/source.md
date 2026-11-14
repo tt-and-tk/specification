@@ -8,7 +8,7 @@ audience: コンパイラのソースを変更する人
 `pn2mc.exe`はアセンブラのソースも使うため，`pynesis`リポジトリ(`compiler/`)と`pyntaxis`リポジトリ(`assembler/`)を同じディレクトリの下に並べて置く．  
 
 ## pn2asm.exe
-Pynesisのソースをアセンブリへ変換する処理は，`lexer.cpp`・`parser.cpp`・`analyzer.cpp`・`generator.cpp`と，入口の`pn2asm.cpp`から成る．  
+Pynesisのソースをアセンブリへ変換する処理は，処理の段階ごとのソースと，入口の`pn2asm.cpp`から成る．  
 
 ```
 g++ -Wall -Wextra -std=c++17 -o pn2asm.exe lexer.cpp parser.cpp analyzer.cpp generator.cpp pn2asm.cpp
