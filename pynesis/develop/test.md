@@ -12,7 +12,7 @@ audience: コンパイラのソースを変更する人
 次のどちらかを変えたときは，[pynesis/develop/source.md](source.md)の「pn2mc.exe」のコマンドを実行し，ビルドできることを確かめる．  
 
 - `pn2mc.cpp`  
-- `pn2mc.exe`が呼び出す本処理の関数(`compile_pn_to_asm`・アセンブラの`assemble_asm_to_mc`)と，`main`を無効にするマクロの周り  
+- `pn2mc.exe`が呼び出す本処理の関数(`compile_pn_to_asm`・アセンブラの`assemble_asm_to_mc`)と，`main`を無効にするマクロ(`PN2ASM_NO_MAIN`・`ASM2MC_NO_MAIN`)で囲んだ部分  
 
 # 期待値
 - 正常系: 期待値のアセンブリを手で用意する．コンパイラの出力に合わせてLFとし，改行コードも含めて比較する  

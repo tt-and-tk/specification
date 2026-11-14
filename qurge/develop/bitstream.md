@@ -28,4 +28,5 @@ CPUのクロックとリセットは，FSBLがPSを初期化して初めて供�
 
 JTAGで書き込んだ回路は，SRSTのボタンを押すか電源を入れ直すと，BOOT.BINの回路に戻る．  
 どちらもFSBLがBOOT.BINからPLを書き込み直すためである([qurge/boot.md](../boot.md)の「SRSTによる起動のやり直し」を参照)．  
-JTAGで書き込んだ回路を確かめる間に起動し直す場合は，`reboot`コマンドを使う．  
+Qosmosの`reboot`コマンド([qosmos/user/command.md](../../qosmos/user/command.md)の「reboot」を参照)はPSをリセットしないため，PLは書き込み直されない．  
+このため，JTAGで書き込んだ回路のままQosmosを起動し直すには，`reboot`コマンドを使う．  
