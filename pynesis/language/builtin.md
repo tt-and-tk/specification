@@ -86,4 +86,4 @@ OSが戻ると，OSが書き込んだ戻り値を`syscall`の値として，次�
 実行ファイルが組み込み関数`syscall`でカーネルモードへ入った後なら，KRETは，その`syscall`の呼び出しの直後を指している．  
 
 ユーザーモードで実行すると例外になるため，実行ファイルでは使えない(コンパイルエラー)．  
-asm文([pynesis/language/asm.md](asm.md)を参照)に書いたPyntaxisの`sysret`は，実行ファイルに書いてもコンパイルエラーにならない．  
+asm文([pynesis/language/asm.md](asm.md)を参照)に書いたPyntaxisの`sysret`は，実行ファイルに書いてもコンパイルエラーにならず，実行時に例外になる．  

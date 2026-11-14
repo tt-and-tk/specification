@@ -37,7 +37,7 @@ main:
 
 Pynesisのコンパイラが出力するアセンブリでは，局所ラベルに連番(`.L0`，`.L1`，…)を付けて一意にする．  
 Pynesisの識別子は`.`で始まらないため，関数名と局所ラベルは衝突しない([pynesis/language/lexical.md](../../pynesis/language/lexical.md)の「識別子」を参照)．  
-Pynesisのasm文に書いた局所ラベルは，`%=`を番号に置き換えた名前で出力する([pynesis/language/asm.md](../../pynesis/language/asm.md)の「置き換え」を参照)．  
+Pynesisのasm文に書いた局所ラベルは，名前の中の`%=`をasm文ごとに異なる番号に置き換えた名前で出力する([pynesis/language/asm.md](../../pynesis/language/asm.md)の「置き換え」を参照)．  
 asm文には，連番と同じ形の名前を書けない．  
 asm文を書く人は，名前の一部に`%=`を書いて，名前をプログラム全体で一意にする([pynesis/language/asm.md](../../pynesis/language/asm.md)の「%=の番号」を参照)．  
 
