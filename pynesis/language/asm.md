@@ -122,7 +122,7 @@ void wait(void) {
 グローバル変数の番地は，ROM用・実行ファイル用のどちらでもコンパイル時に決まるため，入力に書ける([pynesis/compiler/memory.md](../compiler/memory.md)の「グローバル変数の番地」を参照)．  
 番地を表す式は，次のとおりである．  
 
-- グローバル変数・その配列の要素(添字は定数式)・メンバの番地(`&g`・`&table[2]`・`&pairs[1].second`)  
+- 関数ポインタ以外の，グローバル変数・その配列の要素(添字は定数式)・メンバの番地(`&g`・`&table[2]`・`&pairs[1].second`．関数ポインタは[pynesis/language/pointer.md](pointer.md)の「番地を取れないもの」を参照)  
 - 関数ポインタの配列以外の，グローバルの配列の名前・メンバの配列の名前(先頭要素の番地．関数ポインタの配列は値として使えない．[pynesis/language/pointer.md](pointer.md)の「関数ポインタの配列」を参照)  
 - この一覧の式に整数の定数式を足し引きした式(`table + 1`・`&table[3] - 1`・`table + N * 2`)  
 
