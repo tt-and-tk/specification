@@ -124,6 +124,7 @@ void wait(void) {
 
 - グローバル変数・その配列の要素(添字は定数式)・メンバの番地(`&g`・`&table[2]`・`&pairs[1].second`)  
 - グローバルの配列の名前・メンバの配列の名前(先頭要素の番地)  
+    - 関数ポインタの配列の名前は，値として使えないため書けない([pynesis/language/pointer.md](pointer.md)の「関数ポインタの配列」を参照)  
 - この一覧の式に整数の定数式を足し引きした式(`table + 1`・`&table[3] - 1`・`table + N * 2`)  
 
 足し引きする整数は，ポインタの演算と同じく，指す先1個分のバイト数を単位にする([pynesis/language/pointer.md](pointer.md)の「演算」を参照)．  
