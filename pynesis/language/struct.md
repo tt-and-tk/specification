@@ -52,7 +52,8 @@ struct { int x; } v2;                // 無名の構造体．再利用できな�
 | `p->scalar`・`p->array[i]`・`p[i].scalar` | 構造体へのポインタ`p`が指す先のメンバ([pynesis/language/pointer.md](pointer.md)を参照) |
 
 メンバは，どの形でも関数の引数に渡せる．  
-スカラーのメンバはその値を，配列のメンバは先頭要素へのポインタを渡す(組み込み関数に渡す場合は[pynesis/language/builtin.md](builtin.md)を参照)．  
+スカラーのメンバはその値を，配列のメンバ(`v.array`など)は配列変数と同じく先頭要素へのポインタを渡す([pynesis/language/array.md](array.md)の「値として使う配列」を参照)．  
+組み込み関数に渡す場合は，[pynesis/language/builtin.md](builtin.md)を参照．  
 
 構造体の変数・構造体の配列の要素そのもの(`v`・`arr[i]`)は，メンバを通してだけ読み書きできる．  
 `&v`・`&arr[i]`で番地を取ることはできる．  
