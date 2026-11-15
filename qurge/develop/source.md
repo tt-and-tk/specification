@@ -16,17 +16,17 @@ audience: Qurgeのソースを変更する人
 ```
 mypc.srcs/
 ├── boot/              BOOT.BINを作るスクリプトと，BOOT.BINの構成(boot.bif)
+│                      使い方: qurge/develop/bitstream.md
 ├── constrs_1/new/     PYNQ-Z2のピンの制約(top.xdc)
+│                      ピンの割り当て: board.md
 ├── pn/                QosmosのPynesisのソース
+│                      構成: qosmos/develop/source.md
 ├── sim_1/             テストベンチ(new/)と，それをコンパイル・実行するスクリプト
+│                      使い方: qurge/develop/simulation.md
 └── sources_1/new/     CPUのHDLのソース(主な作業対象)
+                       ROMの内容(rom_sv.sv)は手で編集せず，Qosmosのソースから生成する
+                       生成の仕方: qosmos/develop/source.mdの「ROMの生成」
 ```
-
-- `boot/`: 使い方は[qurge/develop/bitstream.md](bitstream.md)を参照  
-- `constrs_1/new/`: ピンの割り当ては[board.md](../../board.md)を参照  
-- `pn/`: 構成は[qosmos/develop/source.md](../../qosmos/develop/source.md)を参照  
-- `sim_1/`: 使い方は[qurge/develop/simulation.md](simulation.md)を参照  
-- `sources_1/new/`: このうちROMの内容(`rom_sv.sv`)は手で編集せず，Qosmosのソースから生成する([qosmos/develop/source.md](../../qosmos/develop/source.md)の「ROMの生成」を参照)  
 
 `boot/`と`pn/`は，Vivadoの標準の構成には無く，独自に加えたディレクトリである．  
 

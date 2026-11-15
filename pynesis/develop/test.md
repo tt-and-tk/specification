@@ -27,19 +27,16 @@ test/
 │   └── include/        正常系のソースが#includeで取り込むファイル(NN_<役割>.pn)．単独ではコンパイルしない
 ├── asm/                コンパイラが出力したアセンブリ(NN.pt)．テストで自動生成する
 ├── asm_ans/            期待値のアセンブリ(NN.pt)．手で作る
-├── src_bin/            Qosmosの実行ファイル用の，正常系の入力のソース
-├── asm_bin/            Qosmosの実行ファイル用の，コンパイラが出力したアセンブリ
-├── asm_bin_ans/        Qosmosの実行ファイル用の，期待値のアセンブリ
+├── src_bin/            Qosmosの実行ファイル用(--bin-mode)の，正常系の入力のソース
+├── asm_bin/            Qosmosの実行ファイル用(--bin-mode)の，コンパイラが出力したアセンブリ
+├── asm_bin_ans/        Qosmosの実行ファイル用(--bin-mode)の，期待値のアセンブリ
 ├── src_err/            異常系の入力のソース(NN.pn)．1行目に書いたメッセージのコンパイルエラーになることを確かめる
 │   └── include/        異常系のソースが#includeで取り込むファイル(NN_<役割>.pn)．単独ではコンパイルしない
-├── src_err_bin/        Qosmosの実行ファイル用の，異常系の入力のソース
+├── src_err_bin/        Qosmosの実行ファイル用(--bin-mode)の，異常系の入力のソース
 ├── test.py             正常系のテストスクリプト
 ├── test_err.py         異常系のテストスクリプト
 └── compiler_build.py   正常系・異常系のテストスクリプトが共通で使う，pn2asm.exeのビルドの処理
 ```
-
-- Qosmosの実行ファイル用のディレクトリ(名前に`_bin`を含むもの): `--bin-mode`を付けてコンパイルするテストに使う．`src_bin/`は`src/`と，`asm_bin/`は`asm/`と，`asm_bin_ans/`は`asm_ans/`と，`src_err_bin/`は`src_err/`と役割が同じで，連番はそれぞれ独立している  
-- `src_err/`: 連番は，正常系の`src/`と独立している  
 
 # 実行の仕方
 `test/`で，次のスクリプトを実行する．  
