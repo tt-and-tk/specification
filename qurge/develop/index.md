@@ -9,7 +9,7 @@ Qurgeのソースは，`qurge`リポジトリにあるVivadoのプロジェク�
 
 ```
 develop/
-├── source.md      ディレクトリの構成・編集の範囲・Vivadoでの合成
+├── source.md      ディレクトリごとの編集の範囲・Vivadoでの合成
 ├── simulation.md  合成せずにCPUとUARTの橋渡し回路を検証する方法
 └── bitstream.md   BOOT.BINの作成と，開発中にJTAGで書き込む方法
 ```

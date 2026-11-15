@@ -1,5 +1,5 @@
 ---
-description: qurgeリポジトリのディレクトリの構成と編集の範囲，Vivadoでの合成，Vivadoが書き換えるファイルの扱い
+description: qurgeリポジトリのディレクトリごとの編集の範囲，Vivadoでの合成，Vivadoが書き換えるファイルの扱い
 audience: Qurgeのソースを変更する人
 ---
 
@@ -7,45 +7,40 @@ audience: Qurgeのソースを変更する人
 `qurge`リポジトリは，リポジトリ直下をルートとするVivadoのプロジェクトである．  
 合成・実装はコマンドラインのビルドを持たず，Vivadoで操作する．  
 
-# ディレクトリの構成
-```
-qurge/                                 リポジトリ直下(Vivadoのプロジェクトのルート)
-├── mypc.xpr                           Vivadoのプロジェクトファイル
-└── mypc.srcs/
-    ├── boot/                          BOOT.BINを作るスクリプト
-    ├── constrs_1/new/top.xdc          PYNQ-Z2のピンの制約
-    ├── pn/                            QosmosのPynesisのソース
-    ├── sim_1/                         テストベンチ
-    ├── sources_1/
-    │   ├── bd/                        ブロックダイアグラム
-    │   ├── imports/                   ブロックダイアグラムから生成したトップのラッパー
-    │   └── new/                       CPUのHDLのソース
-    └── utils_1/                       デザインチェックポイント
-```
-
-`boot/`と`pn/`は，Vivadoの標準の構成には無く，独自に加えたディレクトリである．  
-
 # 編集の範囲
+ソースは`mypc.srcs/`の下にあり，その下のディレクトリは編集の仕方によって次の2つに分かれる．  
+
 ## 直接編集するディレクトリ
 次のディレクトリのファイルは，エディタなどで直接編集する．  
 
-| ディレクトリ | 内容 |
-|:-|:-|
-| `mypc.srcs/sources_1/new/` | CPUのHDLのソース(主な作業対象)．このうちROMの内容(`rom_sv.sv`)は手で編集せず，Qosmosのソースから生成する([qosmos/develop/source.md](../../qosmos/develop/source.md)の「ROMの生成」を参照) |
-| `mypc.srcs/constrs_1/new/` | PYNQ-Z2のピンの制約(`top.xdc`)．ピンの割り当ては[board.md](../../board.md)を参照 |
-| `mypc.srcs/boot/` | BOOT.BINを作るスクリプトと，BOOT.BINの構成(`boot.bif`)．使い方は[qurge/develop/bitstream.md](bitstream.md)を参照 |
-| `mypc.srcs/pn/` | QosmosのPynesisのソース．構成は[qosmos/develop/source.md](../../qosmos/develop/source.md)を参照 |
-| `mypc.srcs/sim_1/` | テストベンチ(`new/`)と，それをコンパイル・実行するスクリプト．使い方は[qurge/develop/simulation.md](simulation.md)を参照 |
+```
+mypc.srcs/
+├── boot/              BOOT.BINを作るスクリプトと，BOOT.BINの構成(boot.bif)
+├── constrs_1/new/     PYNQ-Z2のピンの制約(top.xdc)
+├── pn/                QosmosのPynesisのソース
+├── sim_1/             テストベンチ(new/)と，それをコンパイル・実行するスクリプト
+└── sources_1/new/     CPUのHDLのソース(主な作業対象)
+```
+
+- `boot/`: 使い方は[qurge/develop/bitstream.md](bitstream.md)を参照  
+- `constrs_1/new/`: ピンの割り当ては[board.md](../../board.md)を参照  
+- `pn/`: 構成は[qosmos/develop/source.md](../../qosmos/develop/source.md)を参照  
+- `sim_1/`: 使い方は[qurge/develop/simulation.md](simulation.md)を参照  
+- `sources_1/new/`: このうちROMの内容(`rom_sv.sv`)は手で編集せず，Qosmosのソースから生成する([qosmos/develop/source.md](../../qosmos/develop/source.md)の「ROMの生成」を参照)  
+
+`boot/`と`pn/`は，Vivadoの標準の構成には無く，独自に加えたディレクトリである．  
 
 ## Vivadoを介してだけ変更するディレクトリ
 次のディレクトリは，Vivadoが生成・管理する．  
 中のファイルは，Vivadoを介した操作(GUIかTclかは問わない)でだけ変更し，エディタなどVivadoを介さない手段で書き換えない．  
 
-| ディレクトリ | 内容 | Git管理 |
-|:-|:-|:-|
-| `mypc.srcs/sources_1/bd/` | ブロックダイアグラム(GUIの操作で変更する) | 対象 |
-| `mypc.srcs/sources_1/imports/` | ブロックダイアグラムから生成したトップのラッパー | 対象 |
-| `mypc.srcs/utils_1/` | デザインチェックポイント(`.dcp`) | 対象外 |
+```
+mypc.srcs/
+├── sources_1/
+│   ├── bd/            ブロックダイアグラム(GUIの操作で変更する)．Git管理の対象
+│   └── imports/       ブロックダイアグラムから生成したトップのラッパー．Git管理の対象
+└── utils_1/           デザインチェックポイント(.dcp)．Git管理の対象外
+```
 
 ブロックダイアグラムとトップのラッパーは，チェックアウトしたディレクトリでプロジェクトを開いて合成するために実体が要るため，Git管理の対象とする．  
 デザインチェックポイントは，合成・実装をやり直せば生成し直されるため，Git管理の対象外とし，削除してもよい．  

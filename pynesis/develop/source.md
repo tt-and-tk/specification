@@ -30,4 +30,3 @@ g++ -std=c++17 -DPN2ASM_NO_MAIN -DASM2MC_NO_MAIN -o pn2mc.exe pn2mc.cpp pn2asm.c
 # 実装の決まり
 - コーディング規約: for-pynthesis-skillsプラグインのコーディング規約に従う．本文は`for-pynthesis-skills`リポジトリの`coding-conventions.md`にある  
 - エラー: `throw std::string("compiler error: <メッセージ>")`で投げる  
-- 参考にするコード: アセンブラ(`../assembler/`)のコードを，実装の参考にする  
