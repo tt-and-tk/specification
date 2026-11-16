@@ -24,7 +24,7 @@ int *p = &n;                        // intを指すポインタ
 | ポインタ(`int *`など) | 32ビット | 番地 | 型名の後ろに`*`を付ける([pynesis/language/pointer.md](pointer.md)を参照) |
 | `void` | - | - | 戻り値のない関数(関数ポインタを含む)の戻り値型と，引数なしの宣言`(void)`([pynesis/language/function.md](function.md)を参照)にだけ使う |
 
-`char`/`short`/`int`をまとめて，その符号なしの型と列挙型も含めて整数型と呼ぶ．  
+`char`/`short`/`int`とその符号なしの型，および列挙型をまとめて，整数型と呼ぶ．  
 整数型とポインタをまとめて，スカラー型と呼ぶ．  
 
 `long`は将来対応する予定である．  
