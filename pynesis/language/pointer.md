@@ -10,7 +10,6 @@ audience: Pynesisでプログラムを書く人
 ```c
 int x = 1;
 int *p = &x;                  // xの番地
-*p = 2;                       // pが指す先(x)へ書き込む
 
 int add(int a, int b) {
     return a + b;
@@ -20,7 +19,7 @@ int (*op)(int, int) = add;    // 関数ポインタ(addの番地)
 void main(void) {
     int y = op(1, 2);         // opが指す関数を呼び出す
     if (p != nullptr) {       // どこも指していないかを調べる
-        *p = y;
+        *p = y;               // pが指す先(x)へ書き込む
     }
 }
 ```
