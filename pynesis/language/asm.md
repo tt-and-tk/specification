@@ -120,7 +120,9 @@ void wait(void) {
 足し引きする整数は，ポインタの演算と同じく，指す先1個分のバイト数を単位にする([pynesis/language/pointer.md](pointer.md)の「演算」を参照)．  
 
 ## 関数名
-入力に書いた関数名は，その関数の関数ラベルの名前に置き換える([pynesis/compiler/call.md](../compiler/call.md)の「関数ラベル」を参照)．関数ラベルの名前は，`call`の飛び先と，関数のPCを表すイミディエイトデータに書ける([pyntaxis/language/program.md](../../pyntaxis/language/program.md)の「関数のPC」を参照)．`static`を付けた関数は，関数ラベルの名前が関数名と異なる(`step.0`など)．このため，雛形から関数を呼ぶ場合や関数のPCを使う場合は，雛形に関数名を直接書かずに入力に書く．入力に書いた関数は，asm文を書いた関数から呼ばれうるものとして，スタックの量の見積もりに含める．このため，関数の中のasm文の入力にその関数自身を書くと，再帰呼び出しと同じく見積もりを行わなくなる([pynesis/compiler/check.md](../compiler/check.md)の「asm文の入力に書いた関数」を参照)．`main`は，番地を取れないため書けない([pynesis/language/function.md](function.md)の「main関数」を参照)．  
+入力に書いた関数名は，その関数の関数ラベルの名前に置き換える([pynesis/compiler/call.md](../compiler/call.md)の「関数ラベル」を参照)．関数ラベルの名前は，`call`の飛び先と，関数のPCを表すイミディエイトデータに書ける([pyntaxis/language/program.md](../../pyntaxis/language/program.md)の「関数のPC」を参照)．`static`を付けた関数は，関数ラベルの名前が関数名と異なる(`step.0`など)．このため，雛形から関数を呼ぶ場合や関数のPCを使う場合は，雛形に関数名を直接書かずに入力に書く．  
+入力に書いた関数は，asm文を書いた関数から呼ばれうるものとして，スタックの量の見積もりに含める．このため，関数の中のasm文の入力にその関数自身を書くと，再帰呼び出しと同じく見積もりを行わなくなる([pynesis/compiler/check.md](../compiler/check.md)の「asm文の入力に書いた関数」を参照)．  
+`main`は，番地を取れないため書けない([pynesis/language/function.md](function.md)の「main関数」を参照)．  
 
 ```c
 static void step(void) {
