@@ -20,6 +20,7 @@ int *p = &n;                        // intを指すポインタ
 | `unsigned char` | 8ビット | 0〜255 | |
 | `unsigned short` | 16ビット | 0〜65535 | |
 | `unsigned int` | 32ビット | 0〜4294967295 | |
+| 列挙型(`enum 列挙型名`) | 32ビット | -2147483648〜2147483647 | `int`と同じ型([pynesis/language/enum.md](enum.md)を参照) |
 | ポインタ(`int *`など) | 32ビット | 番地 | 型名の後ろに`*`を付ける([pynesis/language/pointer.md](pointer.md)を参照) |
 | `void` | - | - | 戻り値のない関数(関数ポインタを含む)の戻り値型と，引数なしの宣言`(void)`([pynesis/language/function.md](function.md)を参照)にだけ使う |
 
@@ -32,7 +33,7 @@ int *p = &n;                        // intを指すポインタ
 ## 符号修飾子
 `char`/`short`/`int`の直前にだけ，符号修飾子`signed`(符号あり)または`unsigned`(符号なし)を書ける．  
 省略すると`signed`になる．  
-単独(`unsigned x`)・重ね書き(`signed unsigned int`)・`void`や構造体型への付与は，コンパイルエラーになる．  
+単独(`unsigned x`)・重ね書き(`signed unsigned int`)・`void`や構造体型・列挙型への付与は，コンパイルエラーになる．  
 `const`と組み合わせる場合は，`const unsigned int`の順に書く([pynesis/language/variable.md](variable.md)の「const変数」を参照)．  
 
 # 型変換

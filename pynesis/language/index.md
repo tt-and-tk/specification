@@ -12,6 +12,7 @@ language/
 ├── variable.md     変数・const変数・定数式・スコープ・static
 ├── array.md        配列と文字列
 ├── struct.md       構造体
+├── enum.md         列挙型
 ├── pointer.md      ポインタと関数ポインタ
 ├── operator.md     演算子とsizeof
 ├── control.md      制御構文
