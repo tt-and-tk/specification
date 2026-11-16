@@ -4,8 +4,7 @@ audience: Qurgeのソースを変更する人
 ---
 
 # Qurgeの開発の文書
-Qurgeのソースは，`qurge`リポジトリにあるVivadoのプロジェクトである．  
-作業する前に，[qurge/develop/source.md](source.md)の「編集の範囲」を読む．  
+Qurgeのソースは，`qurge`リポジトリにあるVivadoのプロジェクトである．作業する前に，[qurge/develop/source.md](source.md)の「編集の範囲」を読む．  
 
 ```
 develop/
