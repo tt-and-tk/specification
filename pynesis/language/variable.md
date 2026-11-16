@@ -191,6 +191,7 @@ const変数は，グローバル・ローカル(for文の初期化部を含む)�
 - 配列のサイズ(構造体のメンバの配列・構造体の配列を含む)  
 - `case`の値  
 - const変数の初期化子  
+- 列挙子の値([pynesis/language/enum.md](enum.md)を参照)  
 - asm文の整数の入力([pynesis/language/asm.md](asm.md)の「入力」を参照)  
 
 ## 定数式の値
