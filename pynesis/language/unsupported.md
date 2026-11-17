@@ -28,4 +28,4 @@ audience: Pynesisでプログラムを書く人
 | 多次元配列(`int a[2][3]`) | 宣言できるのは1次元の配列だけである([pynesis/language/array.md](array.md)を参照) |
 | 配列の初期化子(初期値リスト) | 文字列リテラルによる`char`の配列の初期化だけに対応する([pynesis/language/array.md](array.md)を参照) |
 | 入れ子の構造体・構造体のメンバの初期化子 | 将来対応する予定もない([pynesis/language/struct.md](struct.md)の「対応しない書き方」を参照) |
-| 関数の中での列挙型の定義・列挙型の定義と同時の変数の宣言・列挙子を持たない列挙型の宣言(`enum Tag;`) | [pynesis/language/enum.md](enum.md)の「対応しない書き方」を参照 |
+| 列挙型の一部の書き方(関数の中での定義など) | [pynesis/language/enum.md](enum.md)の「対応しない書き方」を参照 |
