@@ -71,8 +71,8 @@ maskのビットの位置は，メモリの番地とレジスタのバイトの�
 - `char`/`short`: 読み出した後に，シフト系の命令で符号拡張する  
 
 # nullptrの値
-ヌルポインタ`nullptr`の値`0x80000000`は，アドレスバスの幅を超える番地である．  
-このため，どの変数の番地とも一致しない([pynesis/language/pointer.md](../language/pointer.md)の「nullptrの値」を参照)．  
+ヌルポインタ`nullptr`の値は`0x80000000`である．  
+この値は，どの変数の番地とも関数の番地とも一致しない(根拠は[pynesis/language/pointer.md](../language/pointer.md)の「nullptrの値」を参照)．  
 
 # グローバル変数の初期値
 初期化子のあるグローバル変数と，式の中の文字列リテラルの内容は，`main`の本体を実行する前に書き込む命令を生成する([pynesis/language/function.md](../language/function.md)の「mainより前に行う書き込み」を参照)．  
