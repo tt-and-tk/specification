@@ -4,8 +4,7 @@ audience: Pynesisでプログラムを書く人
 ---
 
 # Pynesisの概要
-Pynesisは，C言語に似た書き方の自作プログラミング言語である．  
-ソースファイル(`.pn`)をコンパイラでアセンブリ言語Pyntaxisへ変換し，QurgeのCPUで動かす(コンパイラの使い方は[pynesis/compiler/usage.md](../compiler/usage.md)を参照)．  
+Pynesisは，C言語に似た書き方の自作プログラミング言語である．ソースファイル(`.pn`)をコンパイラでアセンブリ言語Pyntaxisへ変換し，QurgeのCPUで動かす(コンパイラの使い方は[pynesis/compiler/usage.md](../compiler/usage.md)を参照)．  
 
 ```c
 const int CAP = 4;                   // 定数
@@ -35,8 +34,7 @@ void main(void) {                    // プログラムの開始点
 ```
 
 # 出力先
-プログラムは，次のどちらかの形に変換する．  
-どちらにするかはコンパイラの起動引数で指定する([pynesis/compiler/usage.md](../compiler/usage.md)を参照)．  
+プログラムは，次のどちらかの形に変換する．どちらにするかはコンパイラの起動引数で指定する([pynesis/compiler/usage.md](../compiler/usage.md)を参照)．  
 
 - ROM: CPUに組み込むROMとして置き，リセット後に`main`から実行する．カーネルモードで動く([qurge/cpu/mode.md](../../qurge/cpu/mode.md)を参照)．Qosmos自身がこの形で動く  
 - 実行ファイル: Qosmosの実行ファイルとしてSDカードに置き，シェルから実行する([qosmos/program/executable.md](../../qosmos/program/executable.md)を参照)．ユーザーモードで動く([qurge/cpu/mode.md](../../qurge/cpu/mode.md)を参照)  
