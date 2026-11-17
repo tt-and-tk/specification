@@ -34,6 +34,8 @@ struct Tag2 { int x; } v1;           // 定義と同時に変数v1を宣言す�
 struct { int x; } v2;                // 無名の構造体．再利用できないため，変数の宣言は必須
 ```
 
+構造体名の名前空間と参照できる範囲は，[pynesis/language/scope.md](scope.md)を参照．  
+
 # 変数の宣言
 `struct Tag v;`(1つの変数)と`struct Tag arr[N];`(配列．要素数は定数式で書く)の両方に対応する．  
 グローバル・ローカルのどちらでも，1つの`struct`文で宣言できる変数は1つである．  

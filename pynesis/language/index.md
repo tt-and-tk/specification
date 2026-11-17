@@ -9,7 +9,8 @@ language/
 ├── overview.md     プログラムの例と，出力先で異なる点．最初に読む
 ├── lexical.md      識別子・リテラル・コメント
 ├── type.md         データ型・型変換・キャスト
-├── variable.md     変数・const変数・定数式・スコープ・static
+├── variable.md     変数・const変数・定数式
+├── scope.md        名前空間・スコープ・static
 ├── array.md        配列と文字列
 ├── struct.md       構造体
 ├── enum.md         列挙型
