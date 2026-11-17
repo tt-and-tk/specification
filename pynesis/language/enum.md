@@ -62,7 +62,7 @@ enum { D, E };               // 無名の列挙型．列挙子だけを定義す
 - 値を書き換える操作・`&`による番地の取得は，コンパイルエラーになる  
 - `sizeof(列挙子)`は`4`である  
 
-エラーメッセージでは，列挙子をconst変数と呼ぶ(`value of const variable 'A' is out of range for its type`)．  
+列挙子についてのエラーメッセージでは，列挙子を`const variable`と表示する(`value of const variable 'A' is out of range for its type`)．  
 
 # 列挙型の変数
 `enum 列挙型名`は，`int`と同じ型の型名であり，変数の宣言やキャストのように`int`を書けるすべての場所に書ける．  
