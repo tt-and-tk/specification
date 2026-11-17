@@ -9,7 +9,7 @@ audience: Pynesisでプログラムを書く人
 | 機能 | 備考 |
 |:-|:-|
 | `#include`・`#pragma once`以外の指令(`#define`・`#ifdef`など) | [pynesis/language/preprocessor.md](preprocessor.md)の「対応しない指令」を参照 |
-| `sizeof(計算式)` | `sizeof(1 + 2)`のような任意の式には対応せず，型名・変数名だけに対応する．将来対応する予定である([pynesis/language/operator.md](operator.md)の「sizeof」を参照) |
+| `sizeof(計算式)` | `sizeof(1 + 2)`のような任意の式には対応せず，型名と，変数・列挙子の名前だけに対応する．将来対応する予定である([pynesis/language/operator.md](operator.md)の「sizeof」を参照) |
 | `void *`・配列へのポインタ(`int (*p)[4]`)・関数ポインタへのポインタ・関数ポインタを返す関数・`const`とポインタの組み合わせ | ポインタ([pynesis/language/pointer.md](pointer.md)を参照)のうち，これらの型は宣言できない |
 | `long` | 将来対応する予定である |
 | `float`・`double` | CPUに浮動小数点の命令がないため |
@@ -28,3 +28,4 @@ audience: Pynesisでプログラムを書く人
 | 多次元配列(`int a[2][3]`) | 宣言できるのは1次元の配列だけである([pynesis/language/array.md](array.md)を参照) |
 | 配列の初期化子(初期値リスト) | 文字列リテラルによる`char`の配列の初期化だけに対応する([pynesis/language/array.md](array.md)を参照) |
 | 入れ子の構造体・構造体のメンバの初期化子 | 将来対応する予定もない([pynesis/language/struct.md](struct.md)の「対応しない書き方」を参照) |
+| 関数の中での列挙型の定義・列挙型の定義と同時の変数の宣言・列挙子を持たない列挙型の宣言(`enum Tag;`) | [pynesis/language/enum.md](enum.md)の「対応しない書き方」を参照 |
