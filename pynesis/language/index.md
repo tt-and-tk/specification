@@ -10,7 +10,7 @@ language/
 ├── lexical.md      識別子・リテラル・コメント
 ├── type.md         データ型・型変換・キャスト
 ├── variable.md     変数・const変数・定数式
-├── scope.md        名前空間・スコープ・static
+├── scope.md        スコープ・名前空間・static
 ├── array.md        配列と文字列
 ├── struct.md       構造体
 ├── enum.md         列挙型
