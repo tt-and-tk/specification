@@ -9,7 +9,7 @@ audience: Pynesisでプログラムを書く人
 | 機能 | 備考 |
 |:-|:-|
 | `#include`・`#pragma once`以外の指令(`#define`・`#ifdef`など) | [pynesis/language/preprocessor.md](preprocessor.md)の「対応しない指令」を参照 |
-| `sizeof(計算式)` | `sizeof(1 + 2)`のような任意の式には対応せず，型名・変数名だけに対応する．将来対応する予定である([pynesis/language/operator.md](operator.md)の「sizeof」を参照) |
+| `sizeof(計算式)` | `sizeof(1 + 2)`のような任意の式には対応せず，型名と，変数・列挙子の名前だけに対応する．将来対応する予定である([pynesis/language/operator.md](operator.md)の「sizeof」を参照) |
 | `void *`・配列へのポインタ(`int (*p)[4]`)・関数ポインタへのポインタ・関数ポインタを返す関数・`const`とポインタの組み合わせ | ポインタ([pynesis/language/pointer.md](pointer.md)を参照)のうち，これらの型は宣言できない |
 | `long` | 将来対応する予定である |
 | `float`・`double` | CPUに浮動小数点の命令がないため |
@@ -18,7 +18,7 @@ audience: Pynesisでプログラムを書く人
 | カンマ区切りの複数変数宣言 | 個別に対応を検討する予定である(pynesisリポジトリ issue #15) |
 | `typedef` | 個別に対応を検討する予定である(pynesisリポジトリ issue #16) |
 | 構造体を関数の引数・戻り値にすること | 構造体へのポインタを引数・戻り値にして受け渡せる([pynesis/language/struct.md](struct.md)の「構造体そのものの値」を参照)．個別に対応を検討する予定である(pynesisリポジトリ issue #17) |
-| `static`を付けたローカル変数(呼び出しをまたいで値を保つ変数) | `static`は，グローバル変数の宣言と関数の定義にだけ付けられる([pynesis/language/variable.md](variable.md)の「static」を参照) |
+| `static`を付けたローカル変数(呼び出しをまたいで値を保つ変数) | `static`は，グローバル変数の宣言と関数の定義にだけ付けられる([pynesis/language/scope.md](scope.md)の「static」を参照) |
 | `goto`・ラベル文 | |
 | カンマ演算子 | 対応する予定はない．カンマは，関数の引数の宣言と，関数呼び出しで渡す引数(組み込み関数を含む)の区切りとしてだけ使う |
 | 動的なメモリ管理(`malloc`など) | |

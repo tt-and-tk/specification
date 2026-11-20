@@ -1,5 +1,5 @@
 ---
-description: 変数の宣言・スコープ・寿命・初期化，宣言したファイルの中に閉じるstatic，const変数と定数式
+description: 変数の宣言・寿命・初期化，const変数と定数式
 audience: Pynesisでプログラムを書く人
 ---
 
@@ -17,7 +17,7 @@ void main(void) {
 }
 ```
 
-グローバル変数・ローカル変数の両方に対応する．配列は[pynesis/language/array.md](array.md)，構造体は[pynesis/language/struct.md](struct.md)，ポインタは[pynesis/language/pointer.md](pointer.md)を参照．  
+グローバル変数・ローカル変数の両方に対応する．配列は[pynesis/language/array.md](array.md)，構造体は[pynesis/language/struct.md](struct.md)，ポインタは[pynesis/language/pointer.md](pointer.md)を参照．変数の名前空間と参照できる範囲(スコープ)は，[pynesis/language/scope.md](scope.md)を参照．  
 
 変数は，メモリ上に置く．const変数とハードウェア変数([pynesis/language/hardware.md](hardware.md)を参照)は例外で，メモリ上に置かない．  
 スカラー変数は，宣言した場所と型によらず1ワード(4バイト)を占める．`char`/`short`も，値をワードの下位バイトに置き，ほかの変数と1ワードを共有しない．  
@@ -33,75 +33,6 @@ void main(void) {
 - ポインタ: 番地がコンパイル時に確定する式を書く([pynesis/language/pointer.md](pointer.md)の「グローバル変数の初期化子」を参照)  
 
 グローバル変数の初期化子の値は，`main`の本体を実行する前に書き込む([pynesis/language/function.md](function.md)の「main関数」を参照)．  
-
-# スコープ
-ブロックスコープに対応する．スコープが異なれば，同じ名前の変数を別の変数として扱う(シャドーイング)．  
-
-グローバル変数(const変数を含む)・関数・ハードウェア変数([pynesis/language/hardware.md](hardware.md)を参照)は同じ名前空間にある．これらは，互いに同じ名前にできない(コンパイルエラー)．例外は，別のファイルで宣言し，少なくとも一方に`static`を付けた組み合わせの一部である．同じ名前にできる組み合わせは「static」で定める．ここでのファイルは，`#include`で取り込んだファイルを含めない，1つのソースファイルを指す．構造体名はこれらと別の名前空間にあり，同じ名前にできる．  
-
-## ローカル変数に付けられない名前
-次のものと同じ名前のローカル変数・関数の引数は，宣言できない(コンパイルエラー)．  
-
-- ハードウェア変数: レジスタを誤って上書きしないため  
-- そのファイルから参照できる関数: 呼び出し`f(...)`の名前が，関数と関数ポインタの変数のどちらを指すかを一意にするため([pynesis/language/pointer.md](pointer.md)の「関数ポインタ」を参照)  
-
-## グローバルスコープ
-ファイルの直下(グローバルスコープ)に置いた宣言は，順序を問わず参照できる．名前がローカル変数・引数を指さない場合，その名前が指す宣言は次の順に探して決まる．  
-
-1. 参照したファイルで宣言した，`static`を付けた宣言(「static」を参照)  
-2. いずれかのファイルで宣言した，`static`を付けていない宣言．取り込んだファイル([pynesis/language/preprocessor.md](preprocessor.md)の「#include」を参照)の宣言も含む  
-
-このため，`static`を付けた宣言は，宣言したファイルの中からだけ参照できる．  
-
-関数定義とグローバル変数宣言(const変数を含む)の両方に当てはまり，定数式から参照する場合も同じである．  
-
-ただし，宣言の値やサイズを求めるためにその宣言自身へ戻ってくる循環した依存は，コンパイルエラーになる(`const int A = B; const int B = A;`，`int buf[sizeof(buf)];`)．  
-
-## static
-グローバル変数(const変数を含む)の宣言または関数の定義の先頭に`static`を付けると，その宣言は，宣言したファイルの中からだけ参照できる．  
-
-```c
-// lib/counter.pn
-#pragma once
-static int count = 0;            // lib/counter.pnの中からだけ参照できる
-static void step(void) {         // lib/counter.pnの中からだけ呼び出せる
-    count++;
-}
-int next(void) {                 // どのファイルからも呼び出せる
-    step();
-    return count;
-}
-```
-
-```c
-// main.pn
-#include "lib/counter.pn"
-int count;                       // lib/counter.pnのcountとは別の変数
-void main(void) {
-    count = next();              // stepとlib/counter.pnのcountは参照できない
-}
-```
-
-`static`を付けた宣言と同じ名前にできるかどうかは，相手によって次のとおり決まる．  
-
-- 同じファイルの宣言: 同じ名前にできない(コンパイルエラー)  
-- ハードウェア変数: 同じ名前にできない(コンパイルエラー)  
-- 取り込んだファイルにある，`static`を付けていない宣言: 同じ名前にできない(コンパイルエラー)  
-- ここまでの項目に当たらない，ほかのファイルの宣言: 同じ名前にできる．`static`を付けた宣言のファイルの中では，`static`を付けた宣言を参照する  
-
-取り込んだファイルには，別のファイルを経由して取り込んだファイルと，`#pragma once`で2回目の取り込みを無視したファイルも含める．  
-
-例えば，`main.pn`が`lib/counter.pn`を取り込む場合，`lib/counter.pn`の`static int count`と`main.pn`の`int count`は，同じ名前にできる．逆に，`main.pn`の`static int count`と`lib/counter.pn`の`int count`は，コンパイルエラーになる．  
-
-`static`を書ける位置は，次のとおりである．これ以外の位置に書くと，コンパイルエラーになる．  
-
-- グローバル変数の宣言または関数の定義の先頭(`const`・型名より前)にだけ書ける．`const static int`とは書けない  
-- 構造体の定義には書けない．構造体名はプログラム全体で共有する．定義と同時に宣言する変数に付ける場合は，定義と変数の宣言を分ける(`struct S {...}; static struct S v;`)  
-- `main`には付けられない．`main`はプログラムの開始点であり，どのファイルに書いても見つけられる必要があるため  
-
-### C言語と異なる点
-- `static`が閉じる範囲は，1つのファイルである．C言語はヘッダファイルの内容を取り込み元へそのまま展開するため，ヘッダファイルの`static`は取り込み元からも参照できる．Pynesisでは，取り込んだファイルの`static`は取り込み元から参照できない  
-- ローカル変数には付けられない([pynesis/language/unsupported.md](unsupported.md)を参照)  
 
 # ローカル変数の寿命
 ローカル変数と引数は，関数の呼び出しごとに確保し，関数から戻るときに解放する．同じ関数が呼び出しの途中で再び呼ばれても，それぞれの呼び出しの値は別に保たれる．  
@@ -121,9 +52,9 @@ void main(void) {
 }
 ```
 
-const変数は，グローバル・ローカル(for文の初期化部を含む)のどちらでも宣言でき，初期化子は必須である．`const`は，符号修飾子・型名より前にだけ書ける(`int const x`・`unsigned const int x`は不可)．名前の重複・シャドーイング・ハードウェア変数や関数と同じ名前の禁止は，通常の変数と同じ規則に従う．  
+const変数は，グローバル・ローカル(for文の初期化部を含む)のどちらでも宣言でき，初期化子は必須である．`const`は，符号修飾子・型名より前にだけ書ける(`int const x`・`unsigned const int x`は不可)．名前の規則は，通常の変数と同じである([pynesis/language/scope.md](scope.md)を参照)．  
 
-初期化子では，後で宣言したconst変数の参照や，後で宣言した変数の`sizeof`も使える(循環する場合は「グローバルスコープ」を参照)．  
+初期化子では，後で宣言したconst変数の参照や，後で宣言した変数の`sizeof`も使える(循環する場合は[pynesis/language/scope.md](scope.md)の「グローバルスコープ」を参照)．  
 値を書き換える操作(代入・`++`/`--`・組み込み関数の書き込み先への指定など)の対象にすると，コンパイルエラーになる．  
 
 式の中では，宣言した型の値として扱う(`const unsigned int U = 1;`の`U`は`unsigned int`)．`sizeof(const変数)`は，宣言した型のバイト数を返す．  
@@ -149,7 +80,7 @@ const変数は，グローバル・ローカル(for文の初期化部を含む)�
 コンパイル時に値を計算する式である．次のものだけで構成する．  
 
 - 整数リテラル・文字リテラル([pynesis/language/lexical.md](lexical.md)を参照)  
-- const変数  
+- const変数・列挙子([pynesis/language/enum.md](enum.md)を参照)  
 - `sizeof`  
 - 算術・ビット・論理・比較の演算子と，三項演算子`?:`  
 - 整数から整数へのキャスト([pynesis/language/type.md](type.md)の「キャスト」を参照)  
@@ -162,6 +93,7 @@ const変数は，グローバル・ローカル(for文の初期化部を含む)�
 - 配列のサイズ(構造体のメンバの配列・構造体の配列を含む)  
 - `case`の値  
 - const変数の初期化子  
+- 列挙子の値([pynesis/language/enum.md](enum.md)を参照)  
 - asm文の整数の入力([pynesis/language/asm.md](asm.md)の「入力」を参照)  
 
 ## 定数式の値

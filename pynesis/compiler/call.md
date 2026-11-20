@@ -14,7 +14,7 @@ audience: コンパイラの仕組みを知りたい・変えたい人
 - スタックフレーム: 呼び出された関数が確保する(「スタックフレーム」を参照)  
 
 # 関数ラベル
-コンパイラは，関数ごとにPyntaxisの関数ラベルを出力し，`call`の飛び先と関数の番地にその名前を書く．関数ラベルの名前は，`static`([pynesis/language/variable.md](../language/variable.md)の「static」を参照)の有無によって次のとおり決まる．  
+コンパイラは，関数ごとにPyntaxisの関数ラベルを出力し，`call`の飛び先と関数の番地にその名前を書く．関数ラベルの名前は，`static`([pynesis/language/scope.md](../language/scope.md)の「static」を参照)の有無によって次のとおり決まる．  
 
 - `static`を付けていない関数: 関数名をそのまま使う  
 - `static`を付けた関数: 関数名の後ろに`.`とファイルの番号を付ける(例: `step.0`)  
