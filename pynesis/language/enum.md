@@ -35,7 +35,7 @@ enum { D, E };               // 無名の列挙型．列挙子だけを定義す
 
 列挙子はカンマで区切り，最後の列挙子の後ろにもカンマを書ける．列挙子を1つも持たない定義は，コンパイルエラーになる．  
 
-列挙型名・列挙子の名前空間と参照できる範囲は，[pynesis/language/scope.md](scope.md)の「グローバルスコープ」を参照．  
+列挙型名・列挙子をほかの名前と同じ名前にできるかどうかと，参照できる範囲は，[pynesis/language/scope.md](scope.md)の「グローバルスコープ」を参照．  
 
 # 列挙子の値
 列挙子の値は，次のとおり決まる．  
@@ -57,7 +57,7 @@ enum { D, E };               // 無名の列挙型．列挙子だけを定義す
 - 値を書き換える操作・`&`による番地の取得は，コンパイルエラーになる  
 - `sizeof(列挙子)`は`4`である  
 
-列挙子についてのエラーメッセージでは，列挙子を`const variable`と表示する(`value of const variable 'A' is out of range for its type`)．  
+列挙子の値や書き換えについてのエラーメッセージでは，列挙子を`const variable`と表示する(`value of const variable 'A' is out of range for its type`)．名前の重複についてのエラーメッセージでは，`enumerator`と表示する(`'A' is already declared as an enumerator`)．  
 
 # 列挙型の変数
 `enum 列挙型名`は，`int`と同じ型の型名であり，変数の宣言やキャストのように`int`を書けるすべての場所に書ける．定義されていない列挙型名を書くと，コンパイルエラーになる．  
