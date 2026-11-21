@@ -17,7 +17,7 @@ void main(void) {
 }
 ```
 
-グローバル変数・ローカル変数の両方に対応する．配列は[pynesis/language/array.md](array.md)，構造体は[pynesis/language/struct.md](struct.md)，ポインタは[pynesis/language/pointer.md](pointer.md)を参照．変数の名前空間と参照できる範囲(スコープ)は，[pynesis/language/scope.md](scope.md)を参照．  
+グローバル変数・ローカル変数の両方に対応する．配列は[pynesis/language/array.md](array.md)，構造体は[pynesis/language/struct.md](struct.md)，ポインタは[pynesis/language/pointer.md](pointer.md)を参照．変数をほかの名前と同じ名前にできるかどうかと，参照できる範囲(スコープ)は，[pynesis/language/scope.md](scope.md)を参照．  
 
 変数は，メモリ上に置く．const変数とハードウェア変数([pynesis/language/hardware.md](hardware.md)を参照)は例外で，メモリ上に置かない．  
 スカラー変数は，宣言した場所と型によらず1ワード(4バイト)を占める．`char`/`short`も，値をワードの下位バイトに置き，ほかの変数と1ワードを共有しない．  
