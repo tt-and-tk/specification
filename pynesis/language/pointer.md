@@ -47,6 +47,8 @@ int (*handlers[8])(int, int);  // handlerと同じ型の関数ポインタを8�
 - 引数なしは，`(void)`・`()`のどちらでもよい  
 - 引数の型には関数ポインタの宣言子も書け，名前を省ける(`int (*runner)(int (*)(int), int)`)  
 
+関数ポインタの型にtypedefで別名を付けると，宣言子を書かずに宣言できる(`typedef int (*binop_t)(int, int);`のとき`binop_t handlers[8];`．[pynesis/language/typedef.md](typedef.md)を参照)．  
+
 # nullptr
 `nullptr`は，どこも指していないことを表す組み込みの定数である．予約語であり，同じ名前の変数・関数は宣言できない．  
 
