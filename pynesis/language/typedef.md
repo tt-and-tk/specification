@@ -45,7 +45,7 @@ typedefは，次の形で宣言する．
 typedef名は，型名を書けるすべての場所に書ける．変数・配列・関数の引数と戻り値・構造体のメンバ・キャスト・関数ポインタの引数と戻り値の型のいずれにも使える．  
 
 - `T *p`のように`*`を付けると，別名の型を指すポインタになる  
-- `const T x = 1;`のように`const`を前に付けると，const変数になる([pynesis/language/variable.md](variable.md)の「const変数」を参照)  
+- 整数型の別名に`const T x = 1;`のように`const`を前に付けると，const変数になる([pynesis/language/variable.md](variable.md)の「const変数」を参照)．const変数にできない型(ポインタ・構造体)の別名には，`const`を付けられない  
 - `sizeof(T)`は，`sizeof`に書ける型名(整数型とそのポインタ)の別名にだけ書ける([pynesis/language/operator.md](operator.md)の「sizeof」を参照)  
 
 別名の型と元の型は，区別しない．このため，typedef名の変数と元の型の変数の間で，代入・比較・構造体の代入ができる．エラーメッセージでは，型を元の型で表示する．ただし，typedef名を付けた無名構造体は，typedef名で表示する．  
