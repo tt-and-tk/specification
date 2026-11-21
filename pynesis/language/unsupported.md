@@ -27,5 +27,5 @@ audience: Pynesisでプログラムを書く人
 | 関数呼び出しの結果などに付ける添字(`f()[i]`) | 添字を付けられる式は，[pynesis/language/pointer.md](pointer.md)の「添字を付けられる式」を参照．ほかの式が指す要素は，`*`・`->`で読み書きできる(`*(f() + i)`) |
 | 多次元配列(`int a[2][3]`) | 宣言できるのは1次元の配列だけである([pynesis/language/array.md](array.md)を参照) |
 | 配列の初期化子(初期値リスト) | 文字列リテラルによる`char`の配列の初期化だけに対応する([pynesis/language/array.md](array.md)を参照) |
-| 構造体の初期化子(初期値リスト) | 同じ構造体名の構造体による初期化だけに対応する([pynesis/language/struct.md](struct.md)の「初期化」を参照) |
+| 構造体の初期化子(初期値リスト) | 同じ型の構造体による初期化だけに対応する([pynesis/language/struct.md](struct.md)の「初期化」を参照) |
 | 入れ子の構造体・構造体のメンバの初期化子 | 将来対応する予定もない([pynesis/language/struct.md](struct.md)の「対応しない書き方」を参照) |
