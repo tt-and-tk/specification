@@ -26,15 +26,16 @@ void main(void) {
 メンバの構成を固定した`struct`に対応する．メンバは，スカラー型(整数型・ポインタ)または固定長の配列だけで構成する．  
 
 # 定義
-構造体の定義は，次の3つの形に対応する．いずれも，グローバルスコープの直下にだけ書ける．  
+構造体の定義は，次の4つの形に対応する．いずれも，グローバルスコープの直下にだけ書ける．  
 
 ```c
 struct Tag { int x; char c; };       // 構造体名の定義だけ(この時点では変数を作らない)
 struct Tag2 { int x; } v1;           // 定義と同時に変数v1を宣言する
 struct { int x; } v2;                // 無名の構造体．再利用できないため，変数の宣言は必須
+typedef struct { int x; } Point;     // 定義と同時に別名を付ける(無名の構造体でも変数の宣言は要らない)
 ```
 
-構造体の定義と同時にtypedefで別名を付ける形(`typedef struct { int x; } Point;`)は，[pynesis/language/typedef.md](typedef.md)を参照．  
+typedefで別名を付ける形は，[pynesis/language/typedef.md](typedef.md)を参照．  
 
 構造体名をほかの名前と同じ名前にできるかどうかと，参照できる範囲は，[pynesis/language/scope.md](scope.md)の「グローバルスコープ」を参照．  
 
