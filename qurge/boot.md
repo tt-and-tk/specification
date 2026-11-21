@@ -32,7 +32,7 @@ PLへ書き込んだ後もPSが受け持つのは，次の2つである．
 ボードの電源用のUSBは，PSのUART0にだけつながっている．このため，PL上のUARTの橋渡し回路が，PSのS_AXI_GP0ポートを通してUART0のレジスタを読み書きする．S_AXI_GP0ポートは，PLの回路がPS内の周辺回路のレジスタを読み書きするための入口である．CPUは，橋渡し回路をレジスタ`6'h31`で操作する([qurge/cpu/register.md](cpu/register.md)を参照)．  
 
 # SRSTによる起動のやり直し
-ボードのSRSTのボタン([board.md](../board.md)の「SRSTのボタン」を参照)は，PSをリセットするボタンであり，CPUのリセットとは別のものである．CPUのリセットは，CPUをプログラムの先頭から実行し直させる信号であり，PSから入る．[qurge/memory.md](memory.md)と[qurge/cpu/exception.md](cpu/exception.md)のリセットは，CPUのリセットを指す．  
+ボードのSRSTのボタン([board.md](../board.md)の「SRSTのボタン」を参照)は，PSをリセットするボタンであり，CPUのリセットとは別のものである．CPUのリセットは，CPUをプログラムの先頭から実行し直させる信号であり，PSから入る．  
 
 SRSTを押すと，PSが起動からやり直し，「電源を入れたときの流れ」と同じ手順でPLを書き込み直す．書き込み直す間は，PLの書き込みの完了を示すDONEのLEDが消える．  
 
