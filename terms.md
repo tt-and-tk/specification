@@ -3,14 +3,14 @@ description: Pynthesisの構成要素の名称と，Pynthesis全体で共通に�
 ---
 
 # 用語
-Pynthesisの構成要素の名称と，複数の構成要素にまたがって使う用語の意味を定める．仕様書と各リポジトリの文章は，これらの語をここで定めた意味で使い，文書ごとには定義しない．  
+Pynthesisの構成要素の名称と，Pynthesis全体で共通に使う用語の意味を定める．仕様書と各リポジトリの文章は，これらの語をここで定めた意味で使う．  
 
 # 構成要素の名称
 Pynthesisの全体と構成要素には，PYNQ-Z2ボードを使うことにちなみ「pynq」を共通の要素として組み込んだ，ギリシャ語由来の造語を付けている．  
 
 | 名称 | 対象 | 由来 |
 |:-|:-|:-|
-| Pynthesis(ピンセシス) | 自作パソコンのプロジェクト全体 | pynq + 「組み上げる」を意味するギリシャ語(synthesis) |
+| Pynthesis(ピンセシス) | 自作パソコンと，それを作るプロジェクトの全体 | pynq + 「組み上げる」を意味するギリシャ語(synthesis) |
 | Qurge(クージ) | CPU・メモリ・ROM等のハードウェア | pynq + 「自らの技術で材料から物を作り上げる職人」を意味するDemiurge |
 | Pynesis(ピネシス) | 自作プログラミング言語 | pynq + 「まだないものを生み出す行為」を意味するギリシャ語(poiesis) |
 | Pyntaxis(ピンタクシス) | 自作アセンブリ言語 | pynq + 「順序立てて並べる」を意味するギリシャ語(syntaxis) |
@@ -18,7 +18,7 @@ Pynthesisの全体と構成要素には，PYNQ-Z2ボードを使うことにち�
 
 各名称に対応するリポジトリは，次のとおりである．  
 
-- Pynthesis: 自作パソコンのプロジェクト全体を表す用語のため対応するリポジトリなし  
+- Pynthesis: 自作パソコンとプロジェクトの全体を表す名称のため対応するリポジトリなし  
 - Pynesis: [pynesis](https://github.com/tt-and-tk/pynesis)  
 - Pyntaxis: [pyntaxis](https://github.com/tt-and-tk/pyntaxis)  
 - Qurge: [qurge](https://github.com/tt-and-tk/qurge)  
