@@ -33,6 +33,8 @@ enum Tag { A, B = 3, C };    // 列挙型名を付けた定義
 enum { D, E };               // 無名の列挙型．列挙子だけを定義する
 ```
 
+列挙型の定義と同時にtypedefで別名を付ける形(`typedef enum { OFF, ON } Switch;`)は，[pynesis/language/typedef.md](typedef.md)を参照．  
+
 列挙子はカンマで区切り，最後の列挙子の後ろにもカンマを書ける．列挙子を1つも持たない定義は，コンパイルエラーになる．  
 
 列挙型名・列挙子をほかの名前と同じ名前にできるかどうかと，参照できる範囲は，[pynesis/language/scope.md](scope.md)の「グローバルスコープ」を参照．  

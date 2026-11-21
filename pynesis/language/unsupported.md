@@ -16,7 +16,6 @@ audience: Pynesisでプログラムを書く人
 | 整数リテラルの接尾辞(`10u`など) | 型はキャストで指定する(`(unsigned int)10`．[pynesis/language/type.md](type.md)の「キャスト」を参照) |
 | `union` | |
 | カンマ区切りの複数変数宣言 | 個別に対応を検討する予定である(pynesisリポジトリ issue #15) |
-| `typedef` | 個別に対応を検討する予定である(pynesisリポジトリ issue #16) |
 | 構造体を関数の引数・戻り値にすること | 構造体へのポインタを引数・戻り値にして受け渡せる([pynesis/language/struct.md](struct.md)の「構造体を値として使う書き方の制限」を参照)．個別に対応を検討する予定である(pynesisリポジトリ issue #17) |
 | `static`を付けたローカル変数(呼び出しをまたいで値を保つ変数) | `static`は，グローバル変数の宣言と関数の定義にだけ付けられる([pynesis/language/scope.md](scope.md)の「static」を参照) |
 | `goto`・ラベル文 | |
@@ -28,5 +27,5 @@ audience: Pynesisでプログラムを書く人
 | 関数呼び出しの結果などに付ける添字(`f()[i]`) | 添字を付けられる式は，[pynesis/language/pointer.md](pointer.md)の「添字を付けられる式」を参照．ほかの式が指す要素は，`*`・`->`で読み書きできる(`*(f() + i)`) |
 | 多次元配列(`int a[2][3]`) | 宣言できるのは1次元の配列だけである([pynesis/language/array.md](array.md)を参照) |
 | 配列の初期化子(初期値リスト) | 文字列リテラルによる`char`の配列の初期化だけに対応する([pynesis/language/array.md](array.md)を参照) |
-| 構造体の初期化子(初期値リスト) | 同じ構造体名の構造体による初期化だけに対応する([pynesis/language/struct.md](struct.md)の「初期化」を参照) |
+| 構造体の初期化子(初期値リスト) | 同じ型の構造体による初期化だけに対応する([pynesis/language/struct.md](struct.md)の「初期化」を参照) |
 | 入れ子の構造体・構造体のメンバの初期化子 | 将来対応する予定もない([pynesis/language/struct.md](struct.md)の「対応しない書き方」を参照) |
