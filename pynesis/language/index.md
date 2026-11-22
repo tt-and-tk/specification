@@ -14,6 +14,7 @@ language/
 ├── array.md        配列と文字列
 ├── struct.md       構造体
 ├── enum.md         列挙型
+├── typedef.md      型の別名(typedef)
 ├── pointer.md      ポインタと関数ポインタ
 ├── operator.md     演算子とsizeof
 ├── control.md      制御構文

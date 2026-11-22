@@ -30,7 +30,7 @@ void main(void) {
 | 整数型 | 式 | 定数式(「定数式」を参照) |
 | ポインタ | 式 | 番地がコンパイル時に確定する式([pynesis/language/pointer.md](pointer.md)の「グローバル変数の初期化子」を参照) |
 | 配列 | サイズを省いた`char`・`unsigned char`の配列にだけ，文字列リテラルを書ける([pynesis/language/array.md](array.md)の「配列の初期化子」を参照)．構造体の配列を含むほかの配列には書けない | ローカル変数と同じ |
-| 配列でない構造体 | 同じ構造体名の構造体([pynesis/language/struct.md](struct.md)の「初期化」を参照) | 書けない |
+| 配列でない構造体 | 同じ型の構造体([pynesis/language/struct.md](struct.md)の「初期化」を参照) | 書けない |
 
 グローバル変数の初期化子は，値がコンパイル時に確定する式に限る．通常の変数や関数呼び出しを書けば，初期化の実行順序が決まらなくなるためである．グローバル変数の初期化子の値は，`main`の本体を実行する前に書き込む([pynesis/language/function.md](function.md)の「main関数」を参照)．  
 
