@@ -34,4 +34,8 @@ asm2mc.exe -pt hello.pt -bin HELLO          # 実行ファイルHELLOを出力�
 同じフラグや，`-pt`を付けない引数を複数回指定した場合は，エラーにはならず，最後に指定した値を使う．  
 
 # エラー
-アセンブリに誤りがある場合と，命令数が上限([pyntaxis/language/target.md](../language/target.md)の「命令数の上限」を参照)を超える場合は，エラーになる．エラーになった場合は，出力ファイルを作らない．  
+次の場合は，エラーになる．エラーになった場合は，出力ファイルを作らない．  
+
+- アセンブリに誤りがある  
+- 命令数が上限([pyntaxis/language/target.md](../language/target.md)の「命令数の上限」を参照)を超える  
+- 大きさの宣言が，出力先の決まり([pyntaxis/language/target.md](../language/target.md)の「大きさの宣言」を参照)に合わない．ROM用のアセンブリを実行ファイルへ変換した場合と，実行ファイル用のアセンブリをROMへ変換した場合も，これに当たる  
