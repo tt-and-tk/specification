@@ -31,7 +31,7 @@ int c = sizeof(char *);       // 4
 
 `sizeof`は，次の2つの形にだけ対応する．  
 
-- `sizeof(型名)`: 整数型とそのポインタ．`sizeof(unsigned int)`・`sizeof(char *)`・`sizeof(enum Tag)`のように書ける．整数型とそのポインタのtypedef名も書ける  
+- `sizeof(型名)`: 整数型とそのポインタと，それらのtypedef名．`sizeof(unsigned int)`・`sizeof(char *)`・`sizeof(enum Tag)`のように書ける  
 - `sizeof(名前)`: スカラー変数・配列変数・構造体変数(構造体の配列を含む)・列挙子の名前  
 
 結果は常に`int`型の，コンパイル時に決まる定数である．  

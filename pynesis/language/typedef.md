@@ -42,11 +42,12 @@ typedefは，次の形で宣言する．
 別名を付ける構造体・列挙型は，プログラムのどこかで定義されている必要がある．定義がなければ，そのtypedef名を使っていなくてもコンパイルエラーになる．  
 
 # 使い方
-typedef名は，元の型の型名を書ける場所に，元の型の型名と同じく書ける．ただし，次の`sizeof`と`const`の制限と，「対応しない書き方」に挙げた組み合わせを除く．  
+typedef名は，元の型の型名を書ける場所に，元の型の型名と同じく書ける．`T *p`のように`*`を付けると，別名の型を指すポインタになる．  
 
-- `T *p`のように`*`を付けると，別名の型を指すポインタになる  
-- `const T x = 1;`のように`const`を前に付けられるのは整数型の別名だけで，const変数になる([pynesis/language/variable.md](variable.md)の「const変数」を参照)  
-- `sizeof(T)`は，`sizeof`に書ける型名(整数型とそのポインタ)の別名にだけ書ける([pynesis/language/operator.md](operator.md)の「sizeof」を参照)  
+`const`と`sizeof`には，typedef名と組み合わせるときに次の制限がある．このほか，「対応しない書き方」に挙げた組み合わせもコンパイルエラーになる．  
+
+- `const`: `const T x = 1;`のように前に付けられるのは，整数型の別名だけである．付けた変数はconst変数になる([pynesis/language/variable.md](variable.md)の「const変数」を参照)  
+- `sizeof`: `sizeof(T)`に書けるのは，`sizeof`に書ける型名(整数型とそのポインタ)の別名だけである([pynesis/language/operator.md](operator.md)の「sizeof」を参照)  
 
 別名の型と元の型は，区別しない．このため，typedef名の変数と元の型の変数の間で，代入・比較・構造体の代入ができる．エラーメッセージでは，型を元の型で表示する．ただし，typedef名を付けた無名構造体は，typedef名で表示する．  
 
@@ -64,7 +65,7 @@ typedef void (*F)(F);                  // 引数の型に自身を書いてい�
 ```
 
 # 名前の規則
-typedef名は，構造体名と同じ規則に従う([pynesis/language/scope.md](scope.md)の「グローバルスコープ」を参照)．  
+typedef名は，グローバルスコープの名前として次の規則に従う([pynesis/language/scope.md](scope.md)の「グローバルスコープ」を参照)．  
 
 - 変数(const変数を含む)・関数・構造体名・列挙型名・列挙子・ハードウェア変数・ほかのtypedef名と，同じ名前にできない  
 - 同じ名前のローカル変数・関数の引数は宣言できない(シャドーイングを認めない)  
