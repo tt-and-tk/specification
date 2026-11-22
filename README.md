@@ -1,26 +1,7 @@
 # Pynthesis 仕様書
 
 自作パソコンのプロジェクトPynthesisの仕様と，各リポジトリのソースを変更する開発の手順をまとめたものであり，各リポジトリの実装が参照する唯一の一次情報源である．  
-
-## 名称について
-
-このプロジェクト全体および構成要素には，PYNQ-Z2ボードを使うことにちなみ「pynq」を共通の要素として組み込んだ，ギリシャ語由来の造語を付けている．  
-
-| 名称 | 対象 | 由来 |
-|:-|:-|:-|
-| Pynthesis(ピンセシス) | 自作パソコンのプロジェクト全体 | pynq + 「組み上げる」を意味するギリシャ語(synthesis) |
-| Qurge(クージ) | CPU・メモリ・ROM等のハードウェア | pynq + 「自らの技術で材料から物を作り上げる職人」を意味するDemiurge |
-| Pynesis(ピネシス) | 自作プログラミング言語 | pynq + 「まだないものを生み出す行為」を意味するギリシャ語(poiesis) |
-| Pyntaxis(ピンタクシス) | 自作アセンブリ言語 | pynq + 「順序立てて並べる」を意味するギリシャ語(syntaxis) |
-| Qosmos(コスモス) | 自作OS．シェルやファイルシステムなど，ROM上で動くソフトウェアの一式 | pynq + 「秩序ある世界」を意味するギリシャ語(kosmos)．Demiurgeが混沌から秩序ある世界を形作ることにちなみ，Qurgeが動かす世界として同じくpynqのqを冠する |
-
-各名称に対応するリポジトリは，次のとおりである．  
-
-- Pynthesis: 自作パソコンのプロジェクト全体を表す用語のため対応するリポジトリなし  
-- Pynesis: [pynesis](https://github.com/tt-and-tk/pynesis)  
-- Pyntaxis: [pyntaxis](https://github.com/tt-and-tk/pyntaxis)  
-- Qurge: [qurge](https://github.com/tt-and-tk/qurge)  
-- Qosmos: 専用のリポジトリはなく，[qurge](https://github.com/tt-and-tk/qurge)の`mypc.srcs/pn/`に置く  
+Pynthesisの構成要素の名称と，Pynthesis全体で共通に使う用語は，[terms.md](terms.md)を参照．  
 
 ## 各文書
 
@@ -30,6 +11,7 @@
 
 ```
 specification/
+├── terms.md           構成要素の名称と，Pynthesis全体で共通に使う用語
 ├── operation.md       実機の準備・接続・起動のやり直し・実行ファイルを置く方法の手順
 ├── board.md           ボードとシールドの物理的な構成と，ピンの割り当て
 ├── qurge/             ハードウェアQurgeの仕様．起動の仕組み・メインメモリ・ROM
