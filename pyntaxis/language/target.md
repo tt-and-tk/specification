@@ -38,10 +38,10 @@ audience: Pyntaxisでプログラムを書く人
 
 数値の書き方は，イミディエイトデータと同じである([pyntaxis/language/program.md](program.md)の「数値の書き方」を参照)．ただし，負の値は書けず，32ビットで表せる値に限る．  
 
-命令列(1命令8バイト)・`.reserve`の値・`.stack`の値の合計が，32512バイトを超える場合は，アセンブルがエラーになる．`.stack`を省略した場合は，4096バイトとして合計する．32512バイトは，シェルが割り振れる最も大きい領域から決まる([qosmos/kernel/memory.md](../../qosmos/kernel/memory.md)の「領域の割り振り」を参照)．  
+命令列(1命令8バイト)・`.reserve`の値・`.stack`の値の合計が，32512バイトを超える場合は，アセンブルがエラーになる．`.stack`を省略した場合は，4096バイトとして合計する．32512バイトは，シェルが割り振れる最も大きい領域から決まる([qosmos/kernel/memory.md](../../qosmos/kernel/memory.md)の「領域の大きさ」を参照)．  
 
 # 命令数の上限
 命令数が次の上限を超える場合は，アセンブルがエラーになる．  
 
 - ROM: 16384命令．ROMの容量で決まる([qurge/rom.md](../../qurge/rom.md)の「容量と命令数の上限」を参照)  
-- 実行ファイル: 4064命令．シェルが割り振れる最も大きい領域で決まる([qosmos/kernel/memory.md](../../qosmos/kernel/memory.md)の「領域の割り振り」を参照)  
+- 実行ファイル: 4064命令．シェルが割り振れる最も大きい領域で決まる([qosmos/kernel/memory.md](../../qosmos/kernel/memory.md)の「領域の大きさ」を参照)  
