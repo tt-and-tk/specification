@@ -38,4 +38,4 @@ asm2mc.exe -pt hello.pt -bin HELLO          # 実行ファイルHELLOを出力�
 
 - アセンブリに誤りがある  
 - 命令数が上限([pyntaxis/language/target.md](../language/target.md)の「命令数の上限」を参照)を超える  
-- 大きさの宣言が，出力先の決まり([pyntaxis/language/target.md](../language/target.md)の「大きさの宣言」を参照)に合わない．ROM用のアセンブリを実行ファイルへ変換した場合と，実行ファイル用のアセンブリをROMへ変換した場合も，これに当たる  
+- `.reserve`・`.stack`の指令が，出力先の決まり([pyntaxis/language/target.md](../language/target.md)の「領域の大きさの指令」を参照)に合わない．ROM用のアセンブリを実行ファイルへ変換した場合と，実行ファイル用のアセンブリをROMへ変換した場合も，これに当たる  
