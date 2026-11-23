@@ -51,4 +51,6 @@ ROMへ出力する場合は，`main`の中のすべての`ret`を，自分自身
 SystemVerilogのROMのモジュール`rom_sv`を出力する．ROMの動作は[qurge/rom.md](../../qurge/rom.md)を参照．各命令を，ROMの先頭から順に並べる．各命令は，機械語を作る関数(`machine.svh`)の呼び出しとして書く．関数の引数は，アセンブリに書いた引数の順に並べる．  
 
 ## 実行ファイル
-1つの命令の機械語は8バイトである．各命令の機械語を，先頭から順に並べる．ヘッダは持たない．各命令のバイトの並びは，[qurge/cpu/isa.md](../../qurge/cpu/isa.md)の「基本構成」を参照．  
+16バイトのヘッダの後ろに，各命令の機械語を先頭から順に並べる．1つの命令の機械語は8バイトである．各命令のバイトの並びは，[qurge/cpu/isa.md](../../qurge/cpu/isa.md)の「基本構成」を参照．  
+
+ヘッダには，命令列のバイト数(命令数×8)と，`.reserve`・`.stack`の指令に書いた値([pyntaxis/language/target.md](../language/target.md)の「領域の大きさの指令」を参照)を書く．`.stack`を省略した場合は，スタックの量に未定を表す値を書く．ヘッダの形式は，[qosmos/program/executable.md](../../qosmos/program/executable.md)の「形式」を参照．  
