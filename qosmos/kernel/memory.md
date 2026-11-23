@@ -19,6 +19,7 @@ Qosmosは，メインメモリ([qurge/memory.md](../../qurge/memory.md)を参照
 - 領域の位置と大きさ  
 - 領域の大きさから決まる，アセンブラの実行ファイルの命令数の上限と大きさの検査([pyntaxis/language/target.md](../../pyntaxis/language/target.md)の「命令数の上限」と「大きさの宣言」を参照)  
 - 領域の大きさから決まる，コンパイラの検査の上限([pynesis/compiler/check.md](../../pynesis/compiler/check.md)の「検査に使う値」を参照)  
+
 # 実行ファイルの領域
 シェルは，どの実行ファイルにも同じ位置・大きさの領域を割り振る．実行ファイルは，領域の先頭を0とする番地(以下，領域の中の番地)で，ユーザーモードとして動く([qurge/cpu/mode.md](../../qurge/cpu/mode.md)の「番地の変換」を参照)．領域は，先頭から次のように使う．  
 
@@ -28,7 +29,9 @@ Qosmosは，メインメモリ([qurge/memory.md](../../qurge/memory.md)を参照
 | 命令列の直後から，引数の置き場まで | 実行ファイルが自由に使う範囲．命令列の直後に確保する範囲と，スタックを置く．スタックは，シェルが引数の置き場の中に決めたSP([qosmos/kernel/exec.md](exec.md)の「引数の置き方」を参照)から下へ伸びる．Pynesisのコンパイラの使い方は，[pynesis/language/limit.md](../../pynesis/language/limit.md)の「変数に使えるメモリ」を参照 |
 | `0x7F00`〜`0x7FFF` | 引数の置き場．シェルが実行ファイルへ渡すコマンド名と引数を置く，領域の末尾の256バイト |
 
-命令列・命令列の直後に確保する範囲・スタックの量の合計は，ヘッダに書いた値で，引数の置き場より手前の32512バイトに収まる必要がある．スタックの量が未定の実行ファイルは，4096バイトとして合計する．この4096バイトを変える場合は，アセンブラとコンパイラの検査に使う値([pyntaxis/language/target.md](../../pyntaxis/language/target.md)の「大きさの宣言」，[pynesis/compiler/check.md](../../pynesis/compiler/check.md)の「検査に使う値」を参照)も合わせて変える．スタックが，命令列の直後に確保する範囲と重なっても，CPUは検出しない([qurge/cpu/exception.md](../../qurge/cpu/exception.md)の「検出しない不正」を参照)．  
+ヘッダに書いた命令列・命令列の直後に確保する範囲・スタックの量を合計した値は，引数の置き場より手前の32512バイトに収まる必要がある．スタックの量が未定の実行ファイルは，4096バイトとして合計する．
+
+この4096バイトを変える場合は，アセンブラとコンパイラの検査に使う値([pyntaxis/language/target.md](../../pyntaxis/language/target.md)の「大きさの宣言」，[pynesis/compiler/check.md](../../pynesis/compiler/check.md)の「検査に使う値」を参照)も合わせて変える．スタックが，命令列の直後に確保する範囲と重なっても，CPUは検出しない([qurge/cpu/exception.md](../../qurge/cpu/exception.md)の「検出しない不正」を参照)．  
 
 ## 引数の置き場の大きさ
 引数の置き場の256バイトは，1行の入力([qosmos/user/console.md](../user/console.md)の「1行の入力」を参照)から作るコマンド名と引数を，最も大きくなる場合(211バイト)でも収められる大きさである．211バイトは，次の合計である．  
