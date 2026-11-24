@@ -38,6 +38,6 @@ SRSTを押すと，PSが起動からやり直し，「電源を入れたとき�
 
 SRSTを押すと，次のものが起動時の状態に戻る．  
 
-- CPU: CPUのリセットにより，レジスタが初期値に戻る(各レジスタの初期値は[qurge/cpu/register.md](cpu/register.md)を参照)  
+- CPUのレジスタ: CPUのリセットにより，初期値に戻る(各レジスタの初期値は[qurge/cpu/register.md](cpu/register.md)を参照)  
 - メモリの内容: PLを書き込み直すため，ビットストリームが持つ初期値に戻る([qurge/memory.md](memory.md)の「リセット後の内容」を参照)  
-- TCPの接続: ROMの先頭から実行し直したQosmosがEthernetモジュールをリセットするため，切れる  
+- TCPの接続: ROMの先頭から実行し直したQosmosがEthernetモジュールをリセットするため，切れる([qosmos/kernel/boot.md](../qosmos/kernel/boot.md)の「ネットワークの項目」を参照)  
