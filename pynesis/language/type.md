@@ -95,7 +95,7 @@ const変数は例外であり，初期化子の値を，切り詰めずにその
 - `return -1;`する`unsigned char`の関数`f`で，`f() == 255`は偽になる  
 
 # キャスト
-`(型名)式`と書くと，式の値を型名の型へ変換する．前置の単項演算子と同じ優先順位で結合する(`(unsigned int)a / b`は`((unsigned int)a) / b`，`(int *)p[i]`は`(int *)(p[i])`)．  
+`(型名)式`と書くと，式の値を型名の型へ変換する．前置の単項演算子と同じ優先順位で結合する([pynesis/language/operator.md](operator.md)の「優先順位と結合規則」を参照．`(unsigned int)a / b`は`((unsigned int)a) / b`，`(int *)p[i]`は`(int *)(p[i])`)．  
 
 | 変換 | 結果 |
 |:-|:-|
