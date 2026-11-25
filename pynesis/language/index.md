@@ -16,7 +16,7 @@ language/
 ├── enum.md         列挙型
 ├── typedef.md      型の別名(typedef)
 ├── pointer.md      ポインタと関数ポインタ
-├── operator.md     演算子とsizeof
+├── operator.md     演算子・優先順位・結合規則・評価順・sizeof
 ├── control.md      制御構文
 ├── function.md     関数・main関数・static関数
 ├── preprocessor.md #include・#pragma onceなどの指令
