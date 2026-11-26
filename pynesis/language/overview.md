@@ -37,14 +37,14 @@ void main(void) {                    // プログラムの開始点
 プログラムは，次のどちらかの形に変換する．どちらにするかはコンパイラの起動引数で指定する([pynesis/compiler/usage.md](../compiler/usage.md)を参照)．  
 
 - ROM: CPUに組み込むROMとして置き，リセット後に`main`から実行する．カーネルモードで動く([qurge/cpu/mode.md](../../qurge/cpu/mode.md)を参照)．Qosmos自身がこの形で動く  
-- 実行ファイル: Qosmosの実行ファイルとしてSDカードに置き，シェルから実行する([qosmos/program/executable.md](../../qosmos/program/executable.md)を参照)．ユーザーモードで動く([qurge/cpu/mode.md](../../qurge/cpu/mode.md)を参照)  
+- 実行ファイル: Qosmosの実行ファイルとしてSDカードに置き，シェルか別の実行ファイルから起動する([qosmos/program/executable.md](../../qosmos/program/executable.md)を参照)．ユーザーモードで動く([qurge/cpu/mode.md](../../qurge/cpu/mode.md)を参照)  
 
 言語の仕様は出力先によらず同じであり，次の点だけが異なる．  
 
 | | ROM | 実行ファイル |
 |:-|:-|:-|
 | `main`の形 | `void main(void)` | `int main(int argc, char **argv)`・`int main(void)` |
-| `main`の終了 | その場で止まる | 戻り値を終了状態としてシェルへ伝える |
+| `main`の終了 | その場で止まる | 戻り値を終了状態として起動した側へ伝える |
 | ハードウェア変数 | 読み書きできる | 読み書きできない(コンパイルエラー) |
 | `sysret()` | 使える | 使えない(コンパイルエラー) |
 | 量的制限 | ROMの命令数とメモリの前半で決まる | 実行ファイルの領域で決まる |

@@ -74,7 +74,7 @@ audience: コンパイラの仕組みを知りたい・変えたい人
 
 # 実行ファイルのmain
 ## 引数の受け取り
-実行ファイルの`main`は，ほかの関数と同じ規約で引数を読む．シェルは`main`を呼び出さずに実行を始めるが，`argc`と`argv`を，この規約で2つの引数を渡して呼び出した場合と同じ位置に置く([qosmos/kernel/exec.md](../../qosmos/kernel/exec.md)の「引数の置き方」を参照)．このため，`main`は`int main(int argc, char **argv)`の引数として受け取れる．  
+実行ファイルの`main`は，ほかの関数と同じ規約で引数を読む．Qosmosは`main`を呼び出さずに実行を始めるが，`argc`と`argv`を，この規約で2つの引数を渡して呼び出した場合と同じ位置に置く([qosmos/kernel/exec.md](../../qosmos/kernel/exec.md)の「引数の置き方」を参照)．このため，`main`は`int main(int argc, char **argv)`の引数として受け取れる．  
 
 ## 終了
 実行ファイルの`main`は，Qosmosの「実行ファイルの終了」の機能([qosmos/program/syscall.md](../../qosmos/program/syscall.md)を参照)を呼んで終える．`return`文の位置と，最後の文が`return`文でない`main`の終わりで，フレームを解放してからこの機能を呼ぶ．戻り値を，終了状態としてこの機能へ渡す．値の並べ方は，組み込み関数`syscall`と同じである(「システムコールの呼び出し」を参照)．  
