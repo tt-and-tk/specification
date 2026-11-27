@@ -4,7 +4,7 @@ audience: Qurgeのソースを変更する人
 ---
 
 # ビットストリームの書き込み
-ビットストリームの合成の手順は，[qurge/develop/source.md](source.md)の「合成」を参照．合成したビットストリームをボードへ書き込む方法は，次の2つである．  
+合成したビットストリームをボードへ書き込む方法は，次の2つである．  
 
 - BOOT.BIN: SDカードに置き，電源を入れると書き込まれる．BOOT.BINの役割は[qurge/boot.md](../boot.md)を参照  
 - JTAG: 動作を確かめる段階で，BOOT.BINを作り直さずに書き込む  
@@ -12,7 +12,7 @@ audience: Qurgeのソースを変更する人
 # BOOT.BINの作成
 VivadoとVitis(版はVivadoと揃える)のbinディレクトリ(`vivado`・`xsct`・`bootgen`)にPATHを通し，コマンドプロンプトから次を行う．出力は，リポジトリ直下の`mypc.boot/`(Git管理の対象外)に置かれる．  
 
-1. Vivadoで`Generate Bitstream`を実行する  
+1. Vivadoで，[qurge/develop/source.md](source.md)の「合成」の手順でビットストリームを合成する  
 2. 最初の1回と，ブロックダイアグラムでPS(`processing_system7_0`)の設定を変えたときは，`mypc.srcs\boot\make_fsbl.bat`を実行してFSBLを作る．FSBLはPSの設定だけに依存するため，自作のHDLやROMの内容を変えただけなら作り直さなくてよい  
 3. `mypc.srcs\boot\make_boot.bat`を実行すると，`mypc.boot\BOOT.BIN`ができる  
 
