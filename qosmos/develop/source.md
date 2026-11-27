@@ -4,7 +4,7 @@ audience: Qosmosのソースを変更する人
 ---
 
 # ソースの構成とROMの生成
-QosmosはPynesisで書き，`qurge`リポジトリの`mypc.srcs/pn/`に置く．QosmosはROMに入れて動かすため，ソースを変更したら，ROMの内容を生成し直してから合成する．  
+QosmosはPynesisで書き，`qurge`リポジトリの`mypc.srcs/pn/`に置く．QosmosはROMに入れて動かすため，ソースを変更したら，ROMの内容を生成し直してから，[qurge/develop/source.md](../../qurge/develop/source.md)の「ROMの内容が変わったときの合成」の手順で合成する．  
 
 # ソースの構成
 - 入口: `qosmos.pn`  
