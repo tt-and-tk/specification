@@ -7,7 +7,7 @@ audience: Pyntaxisでプログラムを書く人
 アセンブリは，次のどちらかの出力先へ変換される．どちらにするかはアセンブラの起動引数で指定する([pyntaxis/assembler/usage.md](../assembler/usage.md)を参照)．  
 
 - ROM: CPUに組み込むROMとして置き，リセット後に`main`から実行する  
-- 実行ファイル: Qosmosの実行ファイルとしてSDカードに置き，シェルか別の実行ファイルから起動する([qosmos/program/executable.md](../../qosmos/program/executable.md)を参照)  
+- 実行ファイル: Qosmosの実行ファイルとしてSDカードに置き，シェルかプロセスから起動する([qosmos/program/executable.md](../../qosmos/program/executable.md)を参照)  
 
 出力先によって，次の3つが異なる．それ以外の書き方は，出力先によらず共通である．  
 
@@ -22,7 +22,7 @@ audience: Pyntaxisでプログラムを書く人
 `main`の`ret`は，プログラムの終了を表す．`main`の`ret`を実行すると，その命令自身へ飛ぶことを繰り返し，以降の命令へ進まない．CPUは動き続けており，CPUの停止([qurge/cpu/exception.md](../../qurge/cpu/exception.md)の「停止と復帰」を参照)とは異なる．  
 
 ## 実行ファイル
-実行ファイルは，Qosmosの終了のシステムコールで終える([qosmos/program/syscall.md](../../qosmos/program/syscall.md)を参照)．Qosmosは`main`を呼び出さずに実行し始めるため，`main`の`ret`では終えられない．  
+プロセスは，Qosmosの終了のシステムコールで終える([qosmos/program/syscall.md](../../qosmos/program/syscall.md)を参照)．Qosmosは`main`を呼び出さずに実行し始めるため，`main`の`ret`では終えられない．  
 
 # 領域の大きさの指令
 ## ROM

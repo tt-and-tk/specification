@@ -77,7 +77,7 @@ audience: コンパイラの仕組みを知りたい・変えたい人
 実行ファイルの`main`は，ほかの関数と同じ規約で引数を読む．Qosmosは`main`を呼び出さずに実行を始めるが，`argc`と`argv`を，この規約で2つの引数を渡して呼び出した場合と同じ位置に置く([qosmos/kernel/exec.md](../../qosmos/kernel/exec.md)の「引数の置き方」を参照)．このため，`main`は`int main(int argc, char **argv)`の引数として受け取れる．  
 
 ## 終了
-実行ファイルの`main`は，Qosmosの「実行ファイルの終了」の機能([qosmos/program/syscall.md](../../qosmos/program/syscall.md)を参照)を呼んで終える．`return`文の位置と，最後の文が`return`文でない`main`の終わりで，フレームを解放してからこの機能を呼ぶ．戻り値を，終了状態としてこの機能へ渡す．値の並べ方は，組み込み関数`syscall`と同じである(「システムコールの呼び出し」を参照)．  
+実行ファイルの`main`は，Qosmosの「プロセスの終了」の機能([qosmos/program/syscall.md](../../qosmos/program/syscall.md)を参照)を呼んで終える．`return`文の位置と，最後の文が`return`文でない`main`の終わりで，フレームを解放してからこの機能を呼ぶ．戻り値を，終了状態としてこの機能へ渡す．値の並べ方は，組み込み関数`syscall`と同じである(「システムコールの呼び出し」を参照)．  
 
 # システムコールの呼び出し
 組み込み関数`syscall(number, a, b, c, d)`([pynesis/language/builtin.md](../language/builtin.md)を参照)は，Qosmosの取り決めに従って値を並べ，Pyntaxisの`syscall`を実行する．取り決めでは，Pyntaxisの`syscall`を実行する時点のSPから，戻り値の置き場・機能の番号・引数`a`〜`d`の6つの値を4バイトずつ並べる([qosmos/program/syscall.md](../../qosmos/program/syscall.md)の「アセンブリから呼ぶ場合」を参照)．  
@@ -93,7 +93,7 @@ audience: コンパイラの仕組みを知りたい・変えたい人
 - 値を求めてからSPを動かす理由: 値を求める間にローカル変数を読み書きする位置は，フレームを確保した時点のSPを基準にしているため  
 - SPを動かしてから書き込む理由: 取り決めが，SPからの位置で値を受け渡すため  
 
-OSは，戻るときにレジスタの値を保たない([qosmos/program/syscall.md](../../qosmos/program/syscall.md)を参照)．このため，式の途中で組み込み関数`syscall`を呼ぶ場合は，関数呼び出しと同じく，値を求め終えたレジスタをフレームの退避領域へ退避し，戻った後に復元する(「レジスタの使い方」を参照)．  
+Qosmosは，戻るときにレジスタの値を保たない([qosmos/program/syscall.md](../../qosmos/program/syscall.md)を参照)．このため，式の途中で組み込み関数`syscall`を呼ぶ場合は，関数呼び出しと同じく，値を求め終えたレジスタをフレームの退避領域へ退避し，戻った後に復元する(「レジスタの使い方」を参照)．  
 
 # レジスタの使い方
 コンパイラは，汎用レジスタr0〜r15(`6'h00`〜`6'h0f`)を，式の値を求めるための一時的なレジスタとして使う．変数(const変数とハードウェア変数を除く)はメモリ上に置くため，変数の値をレジスタに持ち続けることはない．式の値は，r0から順に割り当てて求める．式の複雑さの上限は，[pynesis/language/limit.md](../language/limit.md)の「式の複雑さ」を参照．  
