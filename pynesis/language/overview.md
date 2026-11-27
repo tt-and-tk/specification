@@ -47,6 +47,6 @@ void main(void) {                    // プログラムの開始点
 | `main`の終了 | その場で止まる | 戻り値を終了状態として起動した側へ伝える |
 | ハードウェア変数 | 読み書きできる | 読み書きできない(コンパイルエラー) |
 | `sysret()` | 使える | 使えない(コンパイルエラー) |
-| 量的制限 | ROMの命令数とメモリの前半で決まる | 実行ファイルの領域で決まる |
+| 量的制限 | ROMの命令数とカーネル用の範囲で決まる | Qosmosが割り振る領域で決まる |
 
 それぞれの詳細は，[pynesis/language/function.md](function.md)の「main関数」，[pynesis/language/hardware.md](hardware.md)，[pynesis/language/builtin.md](builtin.md)の「ユーザーモードへ移る組み込み関数」，[pynesis/language/limit.md](limit.md)を参照．  
