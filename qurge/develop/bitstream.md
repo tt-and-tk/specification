@@ -12,7 +12,7 @@ audience: Qurgeのソースを変更する人
 # BOOT.BINの作成
 VivadoとVitis(版はVivadoと揃える)のbinディレクトリ(`vivado`・`xsct`・`bootgen`)にPATHを通し，コマンドプロンプトから次を行う．出力は，リポジトリ直下の`mypc.boot/`(Git管理の対象外)に置かれる．  
 
-1. Vivadoで，[qurge/develop/source.md](source.md)の「合成」の手順でビットストリームを合成する  
+1. [qurge/develop/source.md](source.md)の「合成」の手順に従い，Vivadoでビットストリームを合成する  
 2. 最初の1回と，ブロックダイアグラムでPS(`processing_system7_0`)の設定を変えたときは，`mypc.srcs\boot\make_fsbl.bat`を実行してFSBLを作る．FSBLはPSの設定だけに依存するため，自作のHDLやROMの内容を変えただけなら作り直さなくてよい  
 3. `mypc.srcs\boot\make_boot.bat`を実行すると，`mypc.boot\BOOT.BIN`ができる  
 
