@@ -12,7 +12,7 @@ audience: Qosmosを使う人
 | UARTで接続した端末 | ボードの電源用のUSB(PROG/UART)をパソコンにつなぎ，USBのシリアル通信(UART)でやり取りする | 常に |
 
 端末のつなぎ方の手順は，[operation.md](../../operation.md)の「接続」を参照．  
-実行ファイルは，システムコールを通してコンソールを使う([qosmos/program/syscall.md](../program/syscall.md)を参照)．  
+実行ファイルを実行したコマンドは，システムコールを通してコンソールを使う([qosmos/program/syscall.md](../program/syscall.md)を参照)．  
 
 # 2つの端末の関係
 2つの端末は，1つの画面を2か所で共有する形で使う．それぞれの事項の，2つの端末での扱いは次のとおりである．  
