@@ -54,9 +54,9 @@ mypc.srcs/
 チェックアウトした直後は，`mypc.xpr`に登録済みのデザインチェックポイントが見つからない旨の警告が出る．最初の合成で生成されるため，対処は要らない．  
 
 ## ROMの内容が変わったときの合成
-ROMの内容(`rom_sv.sv`)を含む自作のHDLを取り込んだブロックは，トップの合成(Design Runsの`synth_1`)とは別に，Design Runsの`top_mother_board_0_0_synth_1`で合成される．`rom_sv.sv`が変わっても，Vivadoがこのブロックの合成をやり直さないことがある．このときはトップの合成と実装だけがやり直され，ビットストリームには古いROMの内容が入る．  
+自作のHDLを取り込んだブロックは，トップの合成(Design Runsの`synth_1`)とは別に，Design Runsの`top_mother_board_0_0_synth_1`で合成される．ROMの内容(`rom_sv.sv`)は，このブロックに含まれる．`rom_sv.sv`が変わっても，Vivadoがこのブロックの合成をやり直さないことがある．このときはトップの合成と実装だけがやり直され，ビットストリームには古いROMの内容が入る．  
 
-`rom_sv.sv`の内容は，ROMの内容を生成し直したとき([qosmos/develop/source.md](../../qosmos/develop/source.md)の「ROMの生成」を参照)に変わる．`rom_sv.sv`はGit管理の対象のため，`git pull`やブランチの切り替えでも変わる．前回の合成の後に`rom_sv.sv`の内容が変わったときは，次の手順で合成する．  
+ROMの内容は，Qosmosのソースから生成し直したときに変わることがある．生成し直す必要があるときは，[qosmos/develop/source.md](../../qosmos/develop/source.md)の「ROMの生成」を参照．また，`rom_sv.sv`はGit管理の対象のため，`git pull`やブランチの切り替えでも変わることがある．前回の合成の後にROMの内容が変わったときは，次の手順で合成する．  
 
 1. 次のどちらかの方法で，ブロックの合成とトップの合成をリセットする．トップの合成もリセットするのは，ブロックの合成をリセットしたときにトップの合成も一緒にリセットされるかを確かめていないためである  
     - Design Runs: `top_mother_board_0_0_synth_1`と`synth_1`をそれぞれ右クリックし，`Reset Runs`を実行する  
