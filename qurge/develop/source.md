@@ -54,7 +54,7 @@ mypc.srcs/
 チェックアウトした直後は，`mypc.xpr`に登録済みのデザインチェックポイントが見つからない旨の警告が出る．最初の合成で生成されるため，対処は要らない．  
 
 ## ROMの内容が変わったときの合成
-自作のHDLを取り込んだブロックは，Out-of-Context合成で合成する設定になっている．Out-of-Context合成とは，ブロックダイアグラムのブロックを，トップの合成(Design Runsの`synth_1`)とは別に合成し，その結果をトップの合成へ取り込む方式である．このブロックの合成は，Design Runsに`top_mother_board_0_0_synth_1`として表示される．  
+自作のHDLを取り込んだブロックは，Out-of-Context合成の設定になっている．Out-of-Context合成とは，ブロックダイアグラムのブロックを，トップの合成(Design Runsの`synth_1`)とは別に合成し，合成済みの回路をトップの合成へ取り込む方式である．このブロックの合成は，Design Runsに`top_mother_board_0_0_synth_1`として表示される．  
 
 ROMの内容(`rom_sv.sv`)はこのブロックの中にあるが，`rom_sv.sv`が変わってもVivadoがこのブロックの合成をやり直さないことがある．このときはトップの合成と実装だけがやり直され，ビットストリームには古いROMの内容が入る．このため，前回の合成の後に次のどちらかで`rom_sv.sv`の内容が変わったときは，この節の手順で合成する．  
 
@@ -64,10 +64,10 @@ ROMの内容(`rom_sv.sv`)はこのブロックの中にあるが，`rom_sv.sv`�
 手順は次のとおりである．  
 
 1. 次のどちらかの方法で，ブロックの合成とトップの合成をリセットする．トップの合成もリセットするのは，ブロックの合成をリセットしたときにトップの合成も一緒にリセットされるかを確かめていないためである  
-    - Design Runs: `top_mother_board_0_0_synth_1`と`synth_1`をそれぞれ右クリックし，`Reset Runs`を実行する．`Reset Runs`が無効で選べない場合は，Tclコンソールの方法を使う  
+    - Design Runs: `top_mother_board_0_0_synth_1`と`synth_1`をそれぞれ右クリックし，`Reset Runs`を実行する．`Reset Runs`は無効で選べないことがある．無効になる条件は確かめていない．無効の場合は，Tclコンソールの方法を使う  
     - Tclコンソール: `reset_runs top_mother_board_0_0_synth_1 synth_1`を実行する  
 2. `Generate Bitstream`を実行する  
-3. `mypc.runs/top_mother_board_0_0_synth_1/top_mother_board_0_0.dcp`の更新日時が，`rom_sv.sv`の更新日時より新しいことを確かめる．このファイルはブロックの合成の結果で，ブロックの合成がやり直されると書き換わる．`mypc.runs/`はVivadoが合成・実装の結果を置くディレクトリで，Git管理の対象外である  
+3. `mypc.runs/top_mother_board_0_0_synth_1/top_mother_board_0_0.dcp`の更新日時が，`rom_sv.sv`の更新日時より新しいことを確かめる．このファイルは，ブロックの合成が書き出すデザインチェックポイントであり，ブロックの合成がやり直されると書き換わる．`mypc.runs/`はVivadoが合成・実装の結果を置くディレクトリで，Git管理の対象外である  
 
 # Vivadoが書き換えるファイル
 `mypc.xpr`とブロックダイアグラムは，Vivadoが内容を自動で書き換える．ソースを変更していないのに生じたこれらの差分は，コミットしない．  
