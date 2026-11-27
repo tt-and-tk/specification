@@ -19,7 +19,7 @@ VivadoとVitis(版はVivadoと揃える)のbinディレクトリ(`vivado`・`xsc
 BOOT.BINを置くSDカードの用意の仕方は，[operation.md](../../operation.md)の「SDカード」を参照．  
 
 # 開発中の書き込み
-BOOT.BINを置いたカードで一度起動した後に，VivadoのHardware ManagerからJTAG(USB)でビットストリームを書き込んで上書きしてよい．ビットストリームを作り直すたびにBOOT.BINを作り直さずに済む．  
+BOOT.BINを置いたカードで一度起動した後に，[qurge/develop/source.md](source.md)の「合成」の手順で合成したビットストリームを，VivadoのHardware ManagerからJTAG(USB)で書き込んで上書きしてよい．ビットストリームを作り直すたびにBOOT.BINを作り直さずに済む．  
 
 先にBOOT.BINで起動しておくのは，JTAGではPSを初期化しないためである．CPUのクロックとリセットは，FSBLがPSを初期化して初めて供給される．  
 
