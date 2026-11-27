@@ -41,4 +41,4 @@ SRSTを押すと，CPUのレジスタとメモリの内容は，電源を入れ�
 - CPUのレジスタ: CPUのリセットにより，初期値になる(各レジスタの初期値は[qurge/cpu/register.md](cpu/register.md)を参照)  
 - メモリの内容: PLを書き込み直すため，ビットストリームが持つ初期値になる([qurge/memory.md](memory.md)の「リセット後の内容」を参照)  
 
-ほかの起動のやり直し方と，戻るものを比べた表は，[operation.md](../operation.md)の「起動とやり直し」を参照．  
+ほかの起動のやり直し方と比べた表は，[operation.md](../operation.md)の「起動とやり直し」を参照．  
