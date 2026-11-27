@@ -4,7 +4,7 @@ audience: Qosmosの実行ファイルを作る人
 ---
 
 # 実行ファイル
-SDカードの`/bin`に置いた実行ファイルは，その名前をシェルにコマンド名として入力するか，プロセスから`spawn`で指定すれば実行できる(`spawn`は[qosmos/program/syscall.md](syscall.md)の「実行ファイルを起動する」を参照)．実行ファイルとプロセスの使い分けは，[terms.md](../../terms.md)の「実行ファイルとプロセス」を参照．  
+SDカードの`/bin`に置いた実行ファイルは，その名前をシェルにコマンド名として入力するか，プロセスから`spawn`で指定すれば実行できる(`spawn`は[qosmos/program/syscall.md](syscall.md)の「実行ファイルを起動する」を参照)．  
 
 ```c
 // hello.pn: 引数を1つずつ出力する実行ファイル

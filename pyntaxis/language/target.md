@@ -7,7 +7,7 @@ audience: Pyntaxisでプログラムを書く人
 アセンブリは，次のどちらかの出力先へ変換される．どちらにするかはアセンブラの起動引数で指定する([pyntaxis/assembler/usage.md](../assembler/usage.md)を参照)．  
 
 - ROM: CPUに組み込むROMとして置き，リセット後に`main`から実行する  
-- 実行ファイル: Qosmosの実行ファイルとしてSDカードに置き，シェルか別の実行ファイルから起動する([qosmos/program/executable.md](../../qosmos/program/executable.md)を参照)  
+- 実行ファイル: Qosmosの実行ファイルとしてSDカードに置き，シェルかプロセスから起動する([qosmos/program/executable.md](../../qosmos/program/executable.md)を参照)  
 
 出力先によって，次の3つが異なる．それ以外の書き方は，出力先によらず共通である．  
 
