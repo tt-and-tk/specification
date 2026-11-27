@@ -45,7 +45,7 @@ Pynthesisの全体と構成要素には，PYNQ-Z2ボードを使うことにち�
 | 語 | 指すもの | この語で書く事柄 |
 |:-|:-|:-|
 | 実行ファイル | Qosmosが実行するプログラムのファイルと，その中身(形式・ヘッダ・命令列)([qosmos/program/executable.md](qosmos/program/executable.md)を参照) | コンパイラ・アセンブラが作るもの，プログラムを書く人が守る取り決め |
-| プロセス | Qosmosがメモリに置いた実行ファイル([qosmos/kernel/exec.md](qosmos/kernel/exec.md)を参照) | 起動する側，システムコールを呼ぶ側，例外や終了のシステムコールによる終了，領域など，動いている間の事柄 |
+| プロセス | Qosmosがメモリに置いた実行ファイル([qosmos/kernel/exec.md](qosmos/kernel/exec.md)を参照) | 動いている間の事柄(領域や，例外による終了など) |
 
 ## 実機
 「実機」は，PYNQ-Z2ボードにシールドを重ねた，Pynthesisの実物を指す([board.md](board.md)を参照)．シミュレーションと区別して，実物での動作や操作を述べるときに使う．  
