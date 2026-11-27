@@ -4,7 +4,7 @@ audience: Qosmosの実行ファイルを作る人
 ---
 
 # システムコール
-メモリに置いた実行ファイルを，プロセスと呼ぶ([qosmos/kernel/exec.md](../kernel/exec.md)を参照)．プロセスは，システムコールを通してQosmosの機能を呼び出す．Pynesisでは，ライブラリ`lib/syscall.pn`(`qurge`の`mypc.srcs/pn/lib/syscall.pn`)を取り込めば，各機能を関数として呼べる．  
+プロセス([terms.md](../../terms.md)の「実行ファイルとプロセス」を参照)は，システムコールを通してQosmosの機能を呼び出す．Pynesisでは，ライブラリ`lib/syscall.pn`(`qurge`の`mypc.srcs/pn/lib/syscall.pn`)を取り込めば，各機能を関数として呼べる．  
 
 ```c
 #include "lib/syscall.pn"

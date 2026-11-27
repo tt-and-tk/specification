@@ -7,7 +7,7 @@ audience: Qosmosの仕組みを知りたい・変えたい人
 実行ファイルを作る人から見た使い方は，[qosmos/program/syscall.md](../program/syscall.md)を参照．  
 
 # 受け付けの手順
-プロセス(メモリに置いた実行ファイル．[qosmos/kernel/exec.md](exec.md)を参照)がPyntaxisの`syscall`を実行すると，CPUはカーネルモードにして，KENTRYが示すシステムコールハンドラへ飛ぶ([qurge/cpu/mode.md](../../qurge/cpu/mode.md)の「動作状態の切り替え」を参照)．システムコールハンドラは，次の順に処理する．  
+プロセス([terms.md](../../terms.md)の「実行ファイルとプロセス」を参照)がPyntaxisの`syscall`を実行すると，CPUはカーネルモードにして，KENTRYが示すシステムコールハンドラへ飛ぶ([qurge/cpu/mode.md](../../qurge/cpu/mode.md)の「動作状態の切り替え」を参照)．システムコールハンドラは，次の順に処理する．  
 
 1. プロセスのSPを控え，SPをカーネルモードのスタックへ切り替える．切り替えるまでは，関数を呼ばない．SPが領域の中の番地のままで，カーネルモードではそのまま使えないためである  
 2. 控えたSPから並べた値を読む(「並べた値の読み出し」を参照)  

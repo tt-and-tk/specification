@@ -34,7 +34,13 @@ Qosmosは，電源を入れたとき(SRSTのボタンを押したときを含む
 [FAIL] SD card: reset (CMD0): no response (0xff)
 [ OK ] Ethernet: reset
 [ OK ] Ethernet: network settings (IP 192.168.10.200)
-  (Qosmosの名前)
+  ___
+ / _ \  ___  ___ _ __ ___   ___  ___
+| | | |/ _ \/ __| '_ ` _ \ / _ \/ __|
+| |_| | (_) \__ \ | | | | | (_) \__ \
+ \__\_\\___/|___/_| |_| |_|\___/|___/
+
+   order out of chaos, on Qurge
 Storage is not available. Insert a card and run reboot.
 > 
 ```
