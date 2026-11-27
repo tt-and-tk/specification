@@ -6,7 +6,7 @@ audience: Qosmosの仕組みを知りたい・変えたい人
 # Qosmosの仕組みの文書
 ```
 kernel/
-├── boot.md        起動の手順と，ストレージ・ネットワークの各段階
+├── boot.md        起動のきっかけと手順，ストレージ・ネットワークの各段階
 ├── memory.md      メインメモリの割り振りと，実行ファイルの領域
 ├── console.md     UARTの送受信と，telnetの接続・送受信・オプション交渉
 ├── filesystem.md  FAT32ファイルシステムのマウントと書き込み

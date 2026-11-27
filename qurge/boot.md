@@ -36,8 +36,9 @@ PLへ書き込んだ後もPSが受け持つのは，次の2つである．
 
 SRSTを押すと，PSが起動からやり直し，「電源を入れたときの流れ」と同じ手順で，PLを書き込み直した後にCPUがリセットを受け取ってROMの先頭から実行し直す．PLを書き込み直す間は，PLの書き込みの完了を示すDONEのLEDが消える．  
 
-SRSTを押すと，次のものが起動時の状態に戻る．  
+SRSTを押すと，CPUのレジスタとメモリの内容は，電源を入れたときの状態に戻る．  
 
-- CPUのレジスタ: CPUのリセットにより，初期値に戻る(各レジスタの初期値は[qurge/cpu/register.md](cpu/register.md)を参照)  
-- メモリの内容: PLを書き込み直すため，ビットストリームが持つ初期値に戻る([qurge/memory.md](memory.md)の「リセット後の内容」を参照)  
-- TCPの接続: ROMの先頭から実行し直したQosmosがEthernetモジュールをリセットするため，切れる([qosmos/kernel/boot.md](../qosmos/kernel/boot.md)の「ネットワークの項目」を参照)  
+- CPUのレジスタ: CPUのリセットにより，初期値になる(各レジスタの初期値は[qurge/cpu/register.md](cpu/register.md)を参照)  
+- メモリの内容: PLを書き込み直すため，ビットストリームが持つ初期値になる([qurge/memory.md](memory.md)の「リセット後の内容」を参照)  
+
+ほかの起動のやり直し方と比べた表は，[operation.md](../operation.md)の「起動とやり直し」を参照．  
