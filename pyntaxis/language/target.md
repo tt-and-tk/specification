@@ -15,7 +15,7 @@ audience: Pyntaxisでプログラムを書く人
 |:-|:-|:-|
 | `main`の終わり方 | `ret`で終える | 終了のシステムコールで終える |
 | 領域の大きさの指令 | 書けない | `.reserve`を書き，`.stack`を書ける |
-| 命令数の上限 | 16384命令 | 4064命令 |
+| 命令数の上限 | 16384命令 | 12256命令 |
 
 # mainの終わり方
 ## ROM
@@ -38,10 +38,10 @@ Qosmosが割り振る領域に必要な大きさを，`.reserve`・`.stack`の2�
 
 数値の書き方は，イミディエイトデータと同じである([pyntaxis/language/program.md](program.md)の「数値の書き方」を参照)．ただし，負の値は書けず，32ビットで表せる値に限る．  
 
-命令列(1命令8バイト)・`.reserve`の値・`.stack`の値の合計が，32512バイトを超える場合は，アセンブルがエラーになる．`.stack`を省略した場合は，4096バイトとして合計する．32512バイトは，Qosmosが割り振れる最も大きい領域から決まる([qosmos/kernel/memory.md](../../qosmos/kernel/memory.md)の「領域の大きさ」を参照)．  
+命令列(1命令8バイト)・`.reserve`の値・`.stack`の値の合計が，98048バイトを超える場合は，アセンブルがエラーになる．`.stack`を省略した場合は，4096バイトとして合計する．98048バイトは，Qosmosが割り振れる最も大きい領域から決まる([qosmos/kernel/memory.md](../../qosmos/kernel/memory.md)の「領域の大きさ」を参照)．  
 
 # 命令数の上限
 命令数が次の上限を超える場合は，アセンブルがエラーになる．  
 
 - ROM: 16384命令．ROMの容量で決まる([qurge/rom.md](../../qurge/rom.md)の「容量と命令数の上限」を参照)  
-- 実行ファイル: 4064命令．Qosmosが割り振れる最も大きい領域で決まる([qosmos/kernel/memory.md](../../qosmos/kernel/memory.md)の「領域の大きさ」を参照)  
+- 実行ファイル: 12256命令．Qosmosが割り振れる最も大きい領域で決まる([qosmos/kernel/memory.md](../../qosmos/kernel/memory.md)の「領域の大きさ」を参照)  

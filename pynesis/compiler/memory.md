@@ -30,8 +30,8 @@ audience: コンパイラの仕組みを知りたい・変えたい人
 
 スタックは，次の番地から下へ伸びる．  
 
-- ROM用: メモリの前半の上端([qurge/cpu/mode.md](../../qurge/cpu/mode.md)の「メモリを読み書きできる範囲」を参照)  
-- 実行ファイル用: Qosmosが引数の置き場の中に決めたSP([qosmos/kernel/memory.md](../../qosmos/kernel/memory.md)の「実行ファイルの領域」を参照)  
+- ROM用: カーネル用の範囲の上端([qurge/cpu/mode.md](../../qurge/cpu/mode.md)の「メモリを読み書きできる範囲」を参照)  
+- 実行ファイル用: Qosmosが引数の置き場の中に決めたSP([qosmos/kernel/memory.md](../../qosmos/kernel/memory.md)の「プロセスの領域」を参照)  
 
 ローカル変数・引数の番地を`&`で取ると，SPにフレームの中の位置を足した，実行時の番地になる．  
 
