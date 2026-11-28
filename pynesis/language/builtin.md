@@ -65,7 +65,7 @@ Qosmosから戻ると，Qosmosが書き込んだ戻り値を`syscall`の値と�
 番号と引数をQosmosへ渡すために生成する命令の並びは，[pynesis/compiler/call.md](../compiler/call.md)の「システムコールの呼び出し」を参照．  
 
 # ユーザーモードへ移る組み込み関数
-`sysret()`は，Qosmosがプロセスへ移るために使う．プロセスを始めるときと，システムコールからプロセスへ戻るときに使う([qurge/cpu/mode.md](../../qurge/cpu/mode.md)の「動作状態の切り替え」を参照)．  
+`sysret()`は，ROMのプログラムがユーザーモードのプログラムへ移るために使う([qurge/cpu/mode.md](../../qurge/cpu/mode.md)の「動作状態の切り替え」を参照)．移る前にSP以外のレジスタも戻す場合は，戻した後にPynesisの文を挟めないため，`sysret()`ではなく，asm文の中にPyntaxisの`sysret`を書く([pynesis/language/hardware.md](hardware.md)の「SPへの書き込み」を参照)．Qosmosがプロセスへ移るときは，こちらの書き方を使う([qosmos/kernel/exec.md](../../qosmos/kernel/exec.md)の「戻る手順」を参照)．  
 
 `sysret()`は引数を取らない．ユーザーモードにして，KRETの番地へ飛ぶ．`sysret()`の後に書いた文へは進まない．プロセスが組み込み関数`syscall`でカーネルモードへ入った後なら，KRETは，その`syscall`の呼び出しの直後を指している．  
 
