@@ -23,7 +23,7 @@ int main(void) {
 |:-|:-|
 | `streq(a, b)` | `char`配列`a`・`b`の内容が一致するか比較し，一致すれば`1`，不一致なら`0`を返す(`int`) |
 | `strcopy(dst, src)` | `char`配列`src`の内容を，ヌル終端付きで`char`配列`dst`へコピーする |
-| `syscall(number, a, b, c, d)` | 番号`number`のシステムコールを引数`a`〜`d`を渡して呼び，OSが返した戻り値を返す(`int`) |
+| `syscall(number, a, b, c, d)` | 番号`number`のシステムコールを引数`a`〜`d`を渡して呼び，Qosmosが返した戻り値を返す(`int`) |
 | `sysret()` | ユーザーモードへ移り，KRETの番地へ飛ぶ．値を返さない(`void`) |
 
 組み込み関数の名前は予約語であり，同じ名前の変数・関数は宣言できない(宣言した時点でコンパイルエラーになる)．  
@@ -57,16 +57,16 @@ int main(void) {
 # システムコールを呼ぶ組み込み関数
 `syscall(number, a, b, c, d)`は，Qosmosのシステムコールを番号で呼ぶ．実行ファイルからシステムコールを呼ぶには，ふだんはQosmosのライブラリ`lib/syscall.pn`の関数(`file_read`など)を使う．ライブラリの関数は，内部でこの組み込み関数を呼ぶ．ライブラリの使い方と，番号と機能の対応は，[qosmos/program/syscall.md](../../qosmos/program/syscall.md)を参照．番号は，ライブラリが取り込む`syscall_number.pn`に定数として定義されている．  
 
-OSが戻ると，OSが書き込んだ戻り値を`syscall`の値として，次の処理へ進む．  
+Qosmosから戻ると，Qosmosが書き込んだ戻り値を`syscall`の値として，次の処理へ進む．  
 
 引数は，5つとも`int`として渡す．関数の`int`型の引数と同じく，ポインタを渡すとコンパイルエラーになる([pynesis/language/pointer.md](pointer.md)の「型の一致」を参照)．ポインタは`int`へキャストして渡す．機能が使わない引数には，`0`などを渡す．  
 戻り値の型は`int`である．  
 
-番号と引数をOSへ渡すために生成する命令の並びは，[pynesis/compiler/call.md](../compiler/call.md)の「システムコールの呼び出し」を参照．  
+番号と引数をQosmosへ渡すために生成する命令の並びは，[pynesis/compiler/call.md](../compiler/call.md)の「システムコールの呼び出し」を参照．  
 
 # ユーザーモードへ移る組み込み関数
-`sysret()`は，OSが実行ファイルへ移るために使う．実行ファイルを始めるときと，システムコールから実行ファイルへ戻るときに使う([qurge/cpu/mode.md](../../qurge/cpu/mode.md)の「動作状態の切り替え」を参照)．  
+`sysret()`は，Qosmosがプロセスへ移るために使う．プロセスを始めるときと，システムコールからプロセスへ戻るときに使う([qurge/cpu/mode.md](../../qurge/cpu/mode.md)の「動作状態の切り替え」を参照)．  
 
-`sysret()`は引数を取らない．ユーザーモードにして，KRETの番地へ飛ぶ．`sysret()`の後に書いた文へは進まない．実行ファイルが組み込み関数`syscall`でカーネルモードへ入った後なら，KRETは，その`syscall`の呼び出しの直後を指している．  
+`sysret()`は引数を取らない．ユーザーモードにして，KRETの番地へ飛ぶ．`sysret()`の後に書いた文へは進まない．プロセスが組み込み関数`syscall`でカーネルモードへ入った後なら，KRETは，その`syscall`の呼び出しの直後を指している．  
 
 ユーザーモードで実行すると例外になるため，実行ファイルでは使えない(コンパイルエラー)．asm文([pynesis/language/asm.md](asm.md)を参照)に書いたPyntaxisの`sysret`は，実行ファイルに書いてもコンパイルエラーにならず，実行時に例外になる．  

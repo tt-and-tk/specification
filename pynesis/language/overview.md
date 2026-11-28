@@ -37,7 +37,7 @@ void main(void) {                    // プログラムの開始点
 プログラムは，次のどちらかの形に変換する．どちらにするかはコンパイラの起動引数で指定する([pynesis/compiler/usage.md](../compiler/usage.md)を参照)．  
 
 - ROM: CPUに組み込むROMとして置き，リセット後に`main`から実行する．カーネルモードで動く([qurge/cpu/mode.md](../../qurge/cpu/mode.md)を参照)．Qosmos自身がこの形で動く  
-- 実行ファイル: Qosmosの実行ファイルとしてSDカードに置き，シェルか別の実行ファイルから起動する([qosmos/program/executable.md](../../qosmos/program/executable.md)を参照)．ユーザーモードで動く([qurge/cpu/mode.md](../../qurge/cpu/mode.md)を参照)  
+- 実行ファイル: Qosmosの実行ファイルとしてSDカードに置き，シェルかプロセスから起動する([qosmos/program/executable.md](../../qosmos/program/executable.md)を参照)．プロセスとしてユーザーモードで動く([qurge/cpu/mode.md](../../qurge/cpu/mode.md)を参照)  
 
 言語の仕様は出力先によらず同じであり，次の点だけが異なる．  
 
@@ -47,6 +47,6 @@ void main(void) {                    // プログラムの開始点
 | `main`の終了 | その場で止まる | 戻り値を終了状態として起動した側へ伝える |
 | ハードウェア変数 | 読み書きできる | 読み書きできない(コンパイルエラー) |
 | `sysret()` | 使える | 使えない(コンパイルエラー) |
-| 量的制限 | ROMの命令数とカーネル用の範囲([qurge/cpu/mode.md](../../qurge/cpu/mode.md)の「メモリを読み書きできる範囲」を参照)で決まる | Qosmosが割り振る領域で決まる |
+| 量的制限 | ROMの命令数とカーネル用の範囲([qurge/cpu/mode.md](../../qurge/cpu/mode.md)の「メモリを読み書きできる範囲」を参照)で決まる | プロセスの領域で決まる |
 
 それぞれの詳細は，[pynesis/language/function.md](function.md)の「main関数」，[pynesis/language/hardware.md](hardware.md)，[pynesis/language/builtin.md](builtin.md)の「ユーザーモードへ移る組み込み関数」，[pynesis/language/limit.md](limit.md)を参照．  

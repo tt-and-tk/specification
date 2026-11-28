@@ -27,7 +27,7 @@ specification/
 │   └── develop/       コンパイラのソースの構成・ビルド・実装の決まり・テスト
 └── qosmos/            OS Qosmos
     ├── user/          利用者から見たQosmosの動作．起動時の表示・コンソール・シェル・組み込みコマンド・ファイル
-    ├── program/       実行ファイルから見たQosmos．実行ファイルの作り方と，システムコールの使い方
+    ├── program/       実行ファイルを作る人から見たQosmos．実行ファイルの作り方と，システムコールの使い方
     ├── kernel/        Qosmosの内部で，各機能を実現する仕組み
     └── develop/       Qosmosのソースの構成と，ROMの生成
 ```

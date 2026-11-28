@@ -79,7 +79,7 @@ int fact(int n) {             // 再帰呼び出しもできる
 | 出力先 | 定義できる形 | 理由 |
 |:-|:-|:-|
 | ROM | `void main(void)` | リセット後に実行が始まり，値を受け渡す呼び出し元が存在しないため |
-| 実行ファイル | `int main(int argc, char **argv)`・`int main(void)` | 実行ファイルを起動した側(シェルか親の実行ファイル)がコマンド名と引数を渡し，`main`の戻り値を終了状態として受け取るため(渡す値は[qosmos/program/executable.md](../../qosmos/program/executable.md)を参照)．Qosmosは常に引数を渡すが，使わないプログラムは`int main(void)`と書ける |
+| 実行ファイル | `int main(int argc, char **argv)`・`int main(void)` | 実行ファイルを起動した側(シェルか親のプロセス)がコマンド名と引数を渡し，`main`の戻り値を終了状態として受け取るため(渡す値は[qosmos/program/executable.md](../../qosmos/program/executable.md)を参照)．Qosmosは常に引数を渡すが，使わないプログラムは`int main(void)`と書ける |
 
 引数の名前は任意である．引数なしは，関数一般と同じく`(void)`・`()`のどちらでもよい．`argv`は，C言語のような配列の形(`char *argv[]`)では書けない．関数一般と同じく，配列の形の引数を宣言できないためである．  
 
