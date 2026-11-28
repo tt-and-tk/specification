@@ -45,7 +45,7 @@ asm文の入力に書いた関数名([pynesis/language/asm.md](../language/asm.m
 - 整数を経由したキャストで，型の異なる関数ポインタとして呼び出す関数  
 - `main`: 呼び出せないため，見積もりの対象にもしない([pynesis/language/function.md](../language/function.md)の「main関数」を参照)  
 - asm文の雛形に関数名を直接書いた`call`の呼び出し先: コンパイラは雛形の命令の内容を調べないため([pynesis/language/asm.md](../language/asm.md)を参照)  
-- ハンドラの番地の変数(KENTRYなど)が示す番地へ，CPUが飛ぶ先(システムコールハンドラ・例外ハンドラ・割り込みハンドラ．[pynesis/language/hardware.md](../language/hardware.md)を参照): 飛び先は，実行時にその変数へ書き込んだ値で決まるため．ハンドラを関数ポインタを通して呼ぶ場合は，「関数ポインタを通した呼び出し」のとおりに見積もる  
+- CPUがKENTRY・EENTRY・IENTRYの値に従って飛ぶ，システムコールハンドラ・例外ハンドラ・割り込みハンドラ([pynesis/language/hardware.md](../language/hardware.md)を参照): 飛び先は，実行時にこれらの変数へ書き込んだ値で決まるため．ハンドラを関数ポインタを通して呼ぶ場合は，「関数ポインタを通した呼び出し」のとおりに見積もる  
 
 ## 見積もらない場合
 次の場合は，スタックの量を見積もらない．  

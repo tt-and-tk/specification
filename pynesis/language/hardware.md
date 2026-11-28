@@ -43,7 +43,7 @@ KENTRY = (unsigned int)handler;    // システムコールハンドラの番地
 | `GPIO24_26` | `6'h30` | GPIO24〜26 | 不可 | 可 |
 | `UART` | `6'h31` | USBのシリアル通信(PSのUART0)の送受信 | 可 | 可 |
 
-型はすべて`unsigned int`として扱う．番地や周辺機器の状態を表すビット列として使うためである(演算の結果への影響は[pynesis/language/type.md](type.md)の「型変換」を参照)．ハンドラの関数の番地をKENTRYなどのハンドラの番地の変数へ書き込むには，`(unsigned int)handler`のようにキャストする([pynesis/language/type.md](type.md)の「キャスト」を参照)．  
+型はすべて`unsigned int`として扱う．番地やサイクル数のように負にならない値と，周辺機器の状態を表すビット列として使うためである(演算の結果への影響は[pynesis/language/type.md](type.md)の「型変換」を参照)．ハンドラの関数の番地を，ハンドラの番地を表す変数(KENTRY・EENTRY・IENTRY)へ書き込むには，`(unsigned int)handler`のようにキャストする([pynesis/language/type.md](type.md)の「キャスト」を参照)．  
 
 ハードウェア変数はレジスタに置かれ，メモリ上の番地を持たない．このため，`&`で番地を取るとエラーになる．  
 
