@@ -1,5 +1,5 @@
 ---
-description: 実行ファイルの作り方・置き場所・引数と終了状態・使えるメモリ
+description: 実行ファイルの作り方・置き場所・引数とレジスタと終了状態・使えるメモリ
 audience: Qosmosの実行ファイルを作る人
 ---
 
@@ -60,6 +60,18 @@ Pynesisでは，`main`の`argc`・`argv`で受け取る([pynesis/language/functi
 - `argv`: 各文字列(ヌル終端)へのポインタの配列．`argv[0]`はコマンド名(起動を求める1行のとおりの綴り)で，最後の要素の次に`nullptr`を置く  
 
 引数の置き場の詳細は，[qosmos/kernel/exec.md](../kernel/exec.md)の「引数の置き方」を参照．  
+
+# 始まる時点のレジスタ
+プロセスが始まる時点のレジスタは，次のとおりである．  
+
+| レジスタ | 値 |
+|:-|:-|
+| PC | 0(実行ファイルの先頭の命令) |
+| SP | 引数の置き場に決めた値(「引数」を参照) |
+| r0〜r15・RSI・RAX | 0 |
+
+# 動いている間の割り込み
+Qosmosは，プロセスが動いている間，10msごとにタイマー割り込みでプロセスを止め，止めた命令から続きを実行させる([qosmos/kernel/exec.md](../kernel/exec.md)の「割り込みで止めたとき」を参照)．止める前と後で，プロセスのレジスタとメモリの値は変わらない．このため，プロセスは，止められることを考えずに書いてよい．アセンブリやasm文でレジスタを使う場合も同じである．  
 
 # 終了状態
 プロセスは，終了のシステムコールで終える([qosmos/program/syscall.md](syscall.md)の「プロセスの終了」を参照)．渡した値が終了状態になり，起動した側へ伝わる．シェルから起動した場合はシェルの終了状態になり([qosmos/user/shell.md](../user/shell.md)の「終了状態」を参照)，プロセスから起動した場合は親へ返る([qosmos/program/syscall.md](syscall.md)の「実行ファイルを起動する」を参照)．  
@@ -165,5 +177,5 @@ Pynesisのコンパイラは，次の取り決めを満たす実行ファイル�
 - 領域に必要な大きさを，Pyntaxisの`.reserve`・`.stack`の指令で書く([pyntaxis/language/target.md](../../pyntaxis/language/target.md)の「領域の大きさの指令」を参照)．`.reserve`には，命令列の直後から固定の番地で読み書きする範囲の大きさを書く．`.stack`には，スタックを最も深く積んだときの量を書く．量を求められなければ，`.stack`を省略する  
 - 終了のシステムコールで終える．Qosmosは領域の先頭の命令からPyntaxisの`call`を使わずに実行を始め，戻り先を積まないため，Pyntaxisの`ret`では終えられない([pyntaxis/language/target.md](../../pyntaxis/language/target.md)の「mainの終わり方」を参照)  
 - 固定の番地(グローバル変数など)は，領域の中の番地(領域の先頭を0とする番地)で指定する  
-- Qosmosの機能は，システムコールを通して呼び出す  
+- Qosmosの機能は，システムコールを通して呼び出す．システムコールの後のレジスタの値は，[qosmos/program/syscall.md](syscall.md)の取り決めに従う  
 - SPは，スタックの確保と参照にだけ使う  
