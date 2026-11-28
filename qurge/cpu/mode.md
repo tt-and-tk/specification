@@ -71,7 +71,7 @@ SYSCALL・SYSRETの機械語は，[qurge/cpu/isa.md](isa.md)の「ジャンプ�
 - KENTRY: ユーザーモードのプログラムが実行するSYSCALLの飛び先となる，システムコールハンドラの番地  
 - EENTRY: 例外ハンドラの番地([qurge/cpu/exception.md](exception.md)の「例外ハンドラへ飛ぶ処理」を参照)  
 - IENTRY: 割り込みハンドラの番地([qurge/cpu/timer-interrupt.md](timer-interrupt.md)を参照)  
-- TINTERVAL: タイマー割り込みの間隔．0ならタイマー割り込みは起きない([qurge/cpu/timer-interrupt.md](timer-interrupt.md)を参照)  
+- TINTERVAL: 割り込み周期．0ならタイマー割り込みは起きない([qurge/cpu/timer-interrupt.md](timer-interrupt.md)を参照)  
 
 KRETを書き込まずにSYSRETを実行すると，KRETに残っていたPC(初期値なら0)の命令を取り出そうとする．USIZEを設定していれば，その命令を意図せずユーザーモードで実行してしまう．USIZEが初期値の0のままなら，最初の命令の取り出しで例外を起こす．  
 カーネルモードのSPのままユーザーモードへ移ると，CALLはその値を領域の中の番地とみなして戻り先を積む．その番地が範囲外なら例外を起こし，範囲内なら領域の意図しない位置を書き換えてしまう．  
@@ -124,4 +124,4 @@ USIZEも8の倍数のため，領域は8バイトの命令をちょうど整数�
 
 ユーザーモードでは，SYSRETを実行できない．3種類のレジスタを命令のオペランドに使う場合と，SYSRETを実行しようとする場合は，例外を起こす(例外の条件は[qurge/cpu/exception.md](exception.md)の「命令の内容の条件」，そのときの動作は[qurge/cpu/exception.md](exception.md)の「例外ハンドラへ飛ぶ処理」を参照)．  
 
-SYSCALLは，ユーザーモードでも実行できる．SYSCALLは飛び先をKENTRYから読み，戻り先をKRETへ書き込む．どちらもユーザーモードでは読み書きできないレジスタだが，命令のオペランドとしての読み書きではないため，制限の対象外である．  
+SYSCALLは，ユーザーモードでは読み書きできないKENTRYとKRETを使う(飛び先をKENTRYから読み，戻り先をKRETへ書き込む)．ただし，この読み書きは命令のオペランドとしての読み書きではないため制限の対象外であり，SYSCALLはユーザーモードでも実行できる．  
